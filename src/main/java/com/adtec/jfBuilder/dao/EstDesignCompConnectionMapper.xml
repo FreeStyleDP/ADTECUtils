@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignCompConnectionMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignCompConnectionKey" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="bus_id" property="busId" jdbcType="CHAR" />
+    <id column="connection_src" property="connectionSrc" jdbcType="CHAR" />
+    <id column="connection_dest" property="connectionDest" jdbcType="CHAR" />
+    <id column="type" property="type" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignCompConnectionKey" >
+    delete from est_design_comp_connection
+    where project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+      and connection_src = #{connectionSrc,jdbcType=CHAR}
+      and connection_dest = #{connectionDest,jdbcType=CHAR}
+      and type = #{type,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignCompConnectionKey" >
+    insert into est_design_comp_connection (project_id, bus_id, connection_src, 
+      connection_dest, type)
+    values (#{projectId,jdbcType=CHAR}, #{busId,jdbcType=CHAR}, #{connectionSrc,jdbcType=CHAR}, 
+      #{connectionDest,jdbcType=CHAR}, #{type,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignCompConnectionKey" >
+    insert into est_design_comp_connection
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="busId != null" >
+        bus_id,
+      </if>
+      <if test="connectionSrc != null" >
+        connection_src,
+      </if>
+      <if test="connectionDest != null" >
+        connection_dest,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="busId != null" >
+        #{busId,jdbcType=CHAR},
+      </if>
+      <if test="connectionSrc != null" >
+        #{connectionSrc,jdbcType=CHAR},
+      </if>
+      <if test="connectionDest != null" >
+        #{connectionDest,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

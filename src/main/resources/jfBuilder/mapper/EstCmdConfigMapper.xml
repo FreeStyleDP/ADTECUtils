@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstCmdConfigMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstCmdConfig" >
+    <id column="adapter_name" property="adapterName" jdbcType="CHAR" />
+    <result column="start_cmd" property="startCmd" jdbcType="CHAR" />
+    <result column="stop_cmd" property="stopCmd" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    adapter_name, start_cmd, stop_cmd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_cmd_config
+    where adapter_name = #{adapterName,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_cmd_config
+    where adapter_name = #{adapterName,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstCmdConfig" >
+    insert into est_cmd_config (adapter_name, start_cmd, stop_cmd
+      )
+    values (#{adapterName,jdbcType=CHAR}, #{startCmd,jdbcType=CHAR}, #{stopCmd,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstCmdConfig" >
+    insert into est_cmd_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adapterName != null" >
+        adapter_name,
+      </if>
+      <if test="startCmd != null" >
+        start_cmd,
+      </if>
+      <if test="stopCmd != null" >
+        stop_cmd,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adapterName != null" >
+        #{adapterName,jdbcType=CHAR},
+      </if>
+      <if test="startCmd != null" >
+        #{startCmd,jdbcType=CHAR},
+      </if>
+      <if test="stopCmd != null" >
+        #{stopCmd,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstCmdConfig" >
+    update est_cmd_config
+    <set >
+      <if test="startCmd != null" >
+        start_cmd = #{startCmd,jdbcType=CHAR},
+      </if>
+      <if test="stopCmd != null" >
+        stop_cmd = #{stopCmd,jdbcType=CHAR},
+      </if>
+    </set>
+    where adapter_name = #{adapterName,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstCmdConfig" >
+    update est_cmd_config
+    set start_cmd = #{startCmd,jdbcType=CHAR},
+      stop_cmd = #{stopCmd,jdbcType=CHAR}
+    where adapter_name = #{adapterName,jdbcType=CHAR}
+  </update>
+</mapper>

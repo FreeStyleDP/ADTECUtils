@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstSvcLogicCheckMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstSvcLogicCheck" >
+    <result column="service_id" property="serviceId" jdbcType="CHAR" />
+    <result column="svc_type" property="svcType" jdbcType="CHAR" />
+    <result column="io_genre" property="ioGenre" jdbcType="CHAR" />
+    <result column="io_elem_id" property="ioElemId" jdbcType="CHAR" />
+    <result column="elem_id" property="elemId" jdbcType="CHAR" />
+    <result column="elem_item_id" property="elemItemId" jdbcType="CHAR" />
+    <result column="chk_type" property="chkType" jdbcType="CHAR" />
+    <result column="chk_parm" property="chkParm" jdbcType="CHAR" />
+    <result column="rel_elem_item_id" property="relElemItemId" jdbcType="CHAR" />
+    <result column="exception_code_id" property="exceptionCodeId" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstSvcLogicCheck" >
+    insert into est_svc_logic_check (service_id, svc_type, io_genre, 
+      io_elem_id, elem_id, elem_item_id, 
+      chk_type, chk_parm, rel_elem_item_id, 
+      exception_code_id)
+    values (#{serviceId,jdbcType=CHAR}, #{svcType,jdbcType=CHAR}, #{ioGenre,jdbcType=CHAR}, 
+      #{ioElemId,jdbcType=CHAR}, #{elemId,jdbcType=CHAR}, #{elemItemId,jdbcType=CHAR}, 
+      #{chkType,jdbcType=CHAR}, #{chkParm,jdbcType=CHAR}, #{relElemItemId,jdbcType=CHAR}, 
+      #{exceptionCodeId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstSvcLogicCheck" >
+    insert into est_svc_logic_check
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        service_id,
+      </if>
+      <if test="svcType != null" >
+        svc_type,
+      </if>
+      <if test="ioGenre != null" >
+        io_genre,
+      </if>
+      <if test="ioElemId != null" >
+        io_elem_id,
+      </if>
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+      <if test="elemItemId != null" >
+        elem_item_id,
+      </if>
+      <if test="chkType != null" >
+        chk_type,
+      </if>
+      <if test="chkParm != null" >
+        chk_parm,
+      </if>
+      <if test="relElemItemId != null" >
+        rel_elem_item_id,
+      </if>
+      <if test="exceptionCodeId != null" >
+        exception_code_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=CHAR},
+      </if>
+      <if test="svcType != null" >
+        #{svcType,jdbcType=CHAR},
+      </if>
+      <if test="ioGenre != null" >
+        #{ioGenre,jdbcType=CHAR},
+      </if>
+      <if test="ioElemId != null" >
+        #{ioElemId,jdbcType=CHAR},
+      </if>
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="elemItemId != null" >
+        #{elemItemId,jdbcType=CHAR},
+      </if>
+      <if test="chkType != null" >
+        #{chkType,jdbcType=CHAR},
+      </if>
+      <if test="chkParm != null" >
+        #{chkParm,jdbcType=CHAR},
+      </if>
+      <if test="relElemItemId != null" >
+        #{relElemItemId,jdbcType=CHAR},
+      </if>
+      <if test="exceptionCodeId != null" >
+        #{exceptionCodeId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

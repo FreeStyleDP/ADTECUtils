@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDataAreaMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDataArea" >
+    <id column="data_area_id" property="dataAreaId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="data_area_name" property="dataAreaName" jdbcType="CHAR" />
+    <result column="data_area_desc" property="dataAreaDesc" jdbcType="CHAR" />
+    <result column="data_area_type" property="dataAreaType" jdbcType="CHAR" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_area_id, project_id, env_id, data_area_name, data_area_desc, data_area_type, 
+    cloud_project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_data_area
+    where data_area_id = #{dataAreaId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_data_area
+    where data_area_id = #{dataAreaId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDataArea" >
+    insert into est_data_area (data_area_id, project_id, env_id, 
+      data_area_name, data_area_desc, data_area_type, 
+      cloud_project_id)
+    values (#{dataAreaId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{dataAreaName,jdbcType=CHAR}, #{dataAreaDesc,jdbcType=CHAR}, #{dataAreaType,jdbcType=CHAR}, 
+      #{cloudProjectId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDataArea" >
+    insert into est_data_area
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataAreaId != null" >
+        data_area_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="dataAreaName != null" >
+        data_area_name,
+      </if>
+      <if test="dataAreaDesc != null" >
+        data_area_desc,
+      </if>
+      <if test="dataAreaType != null" >
+        data_area_type,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataAreaId != null" >
+        #{dataAreaId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaName != null" >
+        #{dataAreaName,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaDesc != null" >
+        #{dataAreaDesc,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaType != null" >
+        #{dataAreaType,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDataArea" >
+    update est_data_area
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaName != null" >
+        data_area_name = #{dataAreaName,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaDesc != null" >
+        data_area_desc = #{dataAreaDesc,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaType != null" >
+        data_area_type = #{dataAreaType,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </set>
+    where data_area_id = #{dataAreaId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDataArea" >
+    update est_data_area
+    set project_id = #{projectId,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      data_area_name = #{dataAreaName,jdbcType=CHAR},
+      data_area_desc = #{dataAreaDesc,jdbcType=CHAR},
+      data_area_type = #{dataAreaType,jdbcType=CHAR},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+    where data_area_id = #{dataAreaId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDataCacheTimeMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDataCacheTime" >
+    <id column="data_cache_id" property="dataCacheId" jdbcType="CHAR" />
+    <id column="seq_no" property="seqNo" jdbcType="SMALLINT" />
+    <result column="begin_time" property="beginTime" jdbcType="CHAR" />
+    <result column="end_time" property="endTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_cache_id, seq_no, begin_time, end_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTimeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_data_cache_time
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTimeKey" >
+    delete from est_data_cache_time
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTime" >
+    insert into est_data_cache_time (data_cache_id, seq_no, begin_time, 
+      end_time)
+    values (#{dataCacheId,jdbcType=CHAR}, #{seqNo,jdbcType=SMALLINT}, #{beginTime,jdbcType=CHAR}, 
+      #{endTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTime" >
+    insert into est_data_cache_time
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataCacheId != null" >
+        data_cache_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="beginTime != null" >
+        begin_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataCacheId != null" >
+        #{dataCacheId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=SMALLINT},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=CHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTime" >
+    update est_data_cache_time
+    <set >
+      <if test="beginTime != null" >
+        begin_time = #{beginTime,jdbcType=CHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDataCacheTime" >
+    update est_data_cache_time
+    set begin_time = #{beginTime,jdbcType=CHAR},
+      end_time = #{endTime,jdbcType=CHAR}
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=SMALLINT}
+  </update>
+</mapper>

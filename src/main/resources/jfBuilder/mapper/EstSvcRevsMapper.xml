@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstSvcRevsMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstSvcRevsKey" >
+    <id column="svc_id" property="svcId" jdbcType="CHAR" />
+    <id column="comps_flag" property="compsFlag" jdbcType="SMALLINT" />
+    <id column="elem_id" property="elemId" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstSvcRevsKey" >
+    delete from est_svc_revs
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and comps_flag = #{compsFlag,jdbcType=SMALLINT}
+      and elem_id = #{elemId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstSvcRevsKey" >
+    insert into est_svc_revs (svc_id, comps_flag, elem_id
+      )
+    values (#{svcId,jdbcType=CHAR}, #{compsFlag,jdbcType=SMALLINT}, #{elemId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstSvcRevsKey" >
+    insert into est_svc_revs
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="compsFlag != null" >
+        comps_flag,
+      </if>
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="compsFlag != null" >
+        #{compsFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

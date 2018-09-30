@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstComMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstCom" >
+    <id column="type_name" property="typeName" jdbcType="CHAR" />
+    <id column="com_type" property="comType" jdbcType="CHAR" />
+    <id column="agt_type" property="agtType" jdbcType="CHAR" />
+    <result column="type_desc" property="typeDesc" jdbcType="VARCHAR" />
+    <result column="cust_lib" property="custLib" jdbcType="VARCHAR" />
+    <result column="link_rule" property="linkRule" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    type_name, com_type, agt_type, type_desc, cust_lib, link_rule
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstComKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_com
+    where type_name = #{typeName,jdbcType=CHAR}
+      and com_type = #{comType,jdbcType=CHAR}
+      and agt_type = #{agtType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstComKey" >
+    delete from est_com
+    where type_name = #{typeName,jdbcType=CHAR}
+      and com_type = #{comType,jdbcType=CHAR}
+      and agt_type = #{agtType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstCom" >
+    insert into est_com (type_name, com_type, agt_type, 
+      type_desc, cust_lib, link_rule
+      )
+    values (#{typeName,jdbcType=CHAR}, #{comType,jdbcType=CHAR}, #{agtType,jdbcType=CHAR}, 
+      #{typeDesc,jdbcType=VARCHAR}, #{custLib,jdbcType=VARCHAR}, #{linkRule,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstCom" >
+    insert into est_com
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeName != null" >
+        type_name,
+      </if>
+      <if test="comType != null" >
+        com_type,
+      </if>
+      <if test="agtType != null" >
+        agt_type,
+      </if>
+      <if test="typeDesc != null" >
+        type_desc,
+      </if>
+      <if test="custLib != null" >
+        cust_lib,
+      </if>
+      <if test="linkRule != null" >
+        link_rule,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeName != null" >
+        #{typeName,jdbcType=CHAR},
+      </if>
+      <if test="comType != null" >
+        #{comType,jdbcType=CHAR},
+      </if>
+      <if test="agtType != null" >
+        #{agtType,jdbcType=CHAR},
+      </if>
+      <if test="typeDesc != null" >
+        #{typeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="custLib != null" >
+        #{custLib,jdbcType=VARCHAR},
+      </if>
+      <if test="linkRule != null" >
+        #{linkRule,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstCom" >
+    update est_com
+    <set >
+      <if test="typeDesc != null" >
+        type_desc = #{typeDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="custLib != null" >
+        cust_lib = #{custLib,jdbcType=VARCHAR},
+      </if>
+      <if test="linkRule != null" >
+        link_rule = #{linkRule,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where type_name = #{typeName,jdbcType=CHAR}
+      and com_type = #{comType,jdbcType=CHAR}
+      and agt_type = #{agtType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstCom" >
+    update est_com
+    set type_desc = #{typeDesc,jdbcType=VARCHAR},
+      cust_lib = #{custLib,jdbcType=VARCHAR},
+      link_rule = #{linkRule,jdbcType=VARCHAR}
+    where type_name = #{typeName,jdbcType=CHAR}
+      and com_type = #{comType,jdbcType=CHAR}
+      and agt_type = #{agtType,jdbcType=CHAR}
+  </update>
+</mapper>

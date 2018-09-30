@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDatadictMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDatadict" >
+    <id column="data_id" property="dataId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="data_name" property="dataName" jdbcType="CHAR" />
+    <result column="data_desc" property="dataDesc" jdbcType="VARCHAR" />
+    <result column="data_cname" property="dataCname" jdbcType="VARCHAR" />
+    <result column="data_type" property="dataType" jdbcType="CHAR" />
+    <result column="data_maxlen" property="dataMaxlen" jdbcType="INTEGER" />
+    <result column="data_dec" property="dataDec" jdbcType="SMALLINT" />
+    <result column="basetype_id" property="basetypeId" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="desensitization_id" property="desensitizationId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_id, project_id, relation_id, data_name, data_desc, data_cname, data_type, data_maxlen, 
+    data_dec, basetype_id, resource_id, grp_id, crt_user, crt_date_time, lst_mod_user, 
+    lst_mod_date_time, desensitization_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_datadict
+    where data_id = #{dataId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_datadict
+    where data_id = #{dataId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDatadict" >
+    insert into est_datadict (data_id, project_id, relation_id, 
+      data_name, data_desc, data_cname, 
+      data_type, data_maxlen, data_dec, 
+      basetype_id, resource_id, grp_id, 
+      crt_user, crt_date_time, lst_mod_user, 
+      lst_mod_date_time, desensitization_id)
+    values (#{dataId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{dataName,jdbcType=CHAR}, #{dataDesc,jdbcType=VARCHAR}, #{dataCname,jdbcType=VARCHAR}, 
+      #{dataType,jdbcType=CHAR}, #{dataMaxlen,jdbcType=INTEGER}, #{dataDec,jdbcType=SMALLINT}, 
+      #{basetypeId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, #{grpId,jdbcType=CHAR}, 
+      #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, 
+      #{lstModDateTime,jdbcType=CHAR}, #{desensitizationId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDatadict" >
+    insert into est_datadict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="dataName != null" >
+        data_name,
+      </if>
+      <if test="dataDesc != null" >
+        data_desc,
+      </if>
+      <if test="dataCname != null" >
+        data_cname,
+      </if>
+      <if test="dataType != null" >
+        data_type,
+      </if>
+      <if test="dataMaxlen != null" >
+        data_maxlen,
+      </if>
+      <if test="dataDec != null" >
+        data_dec,
+      </if>
+      <if test="basetypeId != null" >
+        basetype_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="desensitizationId != null" >
+        desensitization_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataId != null" >
+        #{dataId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=CHAR},
+      </if>
+      <if test="dataDesc != null" >
+        #{dataDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCname != null" >
+        #{dataCname,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="dataMaxlen != null" >
+        #{dataMaxlen,jdbcType=INTEGER},
+      </if>
+      <if test="dataDec != null" >
+        #{dataDec,jdbcType=SMALLINT},
+      </if>
+      <if test="basetypeId != null" >
+        #{basetypeId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="desensitizationId != null" >
+        #{desensitizationId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDatadict" >
+    update est_datadict
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dataName != null" >
+        data_name = #{dataName,jdbcType=CHAR},
+      </if>
+      <if test="dataDesc != null" >
+        data_desc = #{dataDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="dataCname != null" >
+        data_cname = #{dataCname,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null" >
+        data_type = #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="dataMaxlen != null" >
+        data_maxlen = #{dataMaxlen,jdbcType=INTEGER},
+      </if>
+      <if test="dataDec != null" >
+        data_dec = #{dataDec,jdbcType=SMALLINT},
+      </if>
+      <if test="basetypeId != null" >
+        basetype_id = #{basetypeId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="desensitizationId != null" >
+        desensitization_id = #{desensitizationId,jdbcType=CHAR},
+      </if>
+    </set>
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDatadict" >
+    update est_datadict
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      data_name = #{dataName,jdbcType=CHAR},
+      data_desc = #{dataDesc,jdbcType=VARCHAR},
+      data_cname = #{dataCname,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=CHAR},
+      data_maxlen = #{dataMaxlen,jdbcType=INTEGER},
+      data_dec = #{dataDec,jdbcType=SMALLINT},
+      basetype_id = #{basetypeId,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      desensitization_id = #{desensitizationId,jdbcType=CHAR}
+    where data_id = #{dataId,jdbcType=CHAR}
+  </update>
+</mapper>

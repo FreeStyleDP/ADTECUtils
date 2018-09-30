@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstRouteEntranceMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstRouteEntrance" >
+    <id column="src_dta_id" property="srcDtaId" jdbcType="CHAR" />
+    <id column="rule_id" property="ruleId" jdbcType="CHAR" />
+    <id column="serial_no" property="serialNo" jdbcType="SMALLINT" />
+    <result column="entrance_desc" property="entranceDesc" jdbcType="VARCHAR" />
+    <result column="match_expression" property="matchExpression" jdbcType="CHAR" />
+    <result column="dest_dta_id" property="destDtaId" jdbcType="CHAR" />
+    <result column="dest_type" property="destType" jdbcType="CHAR" />
+    <result column="svc_id" property="svcId" jdbcType="CHAR" />
+    <result column="node_id" property="nodeId" jdbcType="CHAR" />
+    <result column="resp_flag" property="respFlag" jdbcType="CHAR" />
+    <result column="node_svc_name" property="nodeSvcName" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    src_dta_id, rule_id, serial_no, entrance_desc, match_expression, dest_dta_id, dest_type, 
+    svc_id, node_id, resp_flag, node_svc_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstRouteEntranceKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_route_entrance
+    where src_dta_id = #{srcDtaId,jdbcType=CHAR}
+      and rule_id = #{ruleId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstRouteEntranceKey" >
+    delete from est_route_entrance
+    where src_dta_id = #{srcDtaId,jdbcType=CHAR}
+      and rule_id = #{ruleId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstRouteEntrance" >
+    insert into est_route_entrance (src_dta_id, rule_id, serial_no, 
+      entrance_desc, match_expression, dest_dta_id, 
+      dest_type, svc_id, node_id, resp_flag, 
+      node_svc_name)
+    values (#{srcDtaId,jdbcType=CHAR}, #{ruleId,jdbcType=CHAR}, #{serialNo,jdbcType=SMALLINT}, 
+      #{entranceDesc,jdbcType=VARCHAR}, #{matchExpression,jdbcType=CHAR}, #{destDtaId,jdbcType=CHAR}, 
+      #{destType,jdbcType=CHAR}, #{svcId,jdbcType=CHAR}, #{nodeId,jdbcType=CHAR}, #{respFlag,jdbcType=CHAR}, 
+      #{nodeSvcName,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstRouteEntrance" >
+    insert into est_route_entrance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="srcDtaId != null" >
+        src_dta_id,
+      </if>
+      <if test="ruleId != null" >
+        rule_id,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="entranceDesc != null" >
+        entrance_desc,
+      </if>
+      <if test="matchExpression != null" >
+        match_expression,
+      </if>
+      <if test="destDtaId != null" >
+        dest_dta_id,
+      </if>
+      <if test="destType != null" >
+        dest_type,
+      </if>
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="nodeId != null" >
+        node_id,
+      </if>
+      <if test="respFlag != null" >
+        resp_flag,
+      </if>
+      <if test="nodeSvcName != null" >
+        node_svc_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="srcDtaId != null" >
+        #{srcDtaId,jdbcType=CHAR},
+      </if>
+      <if test="ruleId != null" >
+        #{ruleId,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=SMALLINT},
+      </if>
+      <if test="entranceDesc != null" >
+        #{entranceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="matchExpression != null" >
+        #{matchExpression,jdbcType=CHAR},
+      </if>
+      <if test="destDtaId != null" >
+        #{destDtaId,jdbcType=CHAR},
+      </if>
+      <if test="destType != null" >
+        #{destType,jdbcType=CHAR},
+      </if>
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=CHAR},
+      </if>
+      <if test="respFlag != null" >
+        #{respFlag,jdbcType=CHAR},
+      </if>
+      <if test="nodeSvcName != null" >
+        #{nodeSvcName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstRouteEntrance" >
+    update est_route_entrance
+    <set >
+      <if test="entranceDesc != null" >
+        entrance_desc = #{entranceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="matchExpression != null" >
+        match_expression = #{matchExpression,jdbcType=CHAR},
+      </if>
+      <if test="destDtaId != null" >
+        dest_dta_id = #{destDtaId,jdbcType=CHAR},
+      </if>
+      <if test="destType != null" >
+        dest_type = #{destType,jdbcType=CHAR},
+      </if>
+      <if test="svcId != null" >
+        svc_id = #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="nodeId != null" >
+        node_id = #{nodeId,jdbcType=CHAR},
+      </if>
+      <if test="respFlag != null" >
+        resp_flag = #{respFlag,jdbcType=CHAR},
+      </if>
+      <if test="nodeSvcName != null" >
+        node_svc_name = #{nodeSvcName,jdbcType=CHAR},
+      </if>
+    </set>
+    where src_dta_id = #{srcDtaId,jdbcType=CHAR}
+      and rule_id = #{ruleId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstRouteEntrance" >
+    update est_route_entrance
+    set entrance_desc = #{entranceDesc,jdbcType=VARCHAR},
+      match_expression = #{matchExpression,jdbcType=CHAR},
+      dest_dta_id = #{destDtaId,jdbcType=CHAR},
+      dest_type = #{destType,jdbcType=CHAR},
+      svc_id = #{svcId,jdbcType=CHAR},
+      node_id = #{nodeId,jdbcType=CHAR},
+      resp_flag = #{respFlag,jdbcType=CHAR},
+      node_svc_name = #{nodeSvcName,jdbcType=CHAR}
+    where src_dta_id = #{srcDtaId,jdbcType=CHAR}
+      and rule_id = #{ruleId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+</mapper>

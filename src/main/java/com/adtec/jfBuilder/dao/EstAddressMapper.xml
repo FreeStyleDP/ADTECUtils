@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstAddress" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="addr_name" property="addrName" jdbcType="CHAR" />
+    <result column="ip_addr" property="ipAddr" jdbcType="CHAR" />
+    <result column="user_name" property="userName" jdbcType="CHAR" />
+    <result column="passwd" property="passwd" jdbcType="CHAR" />
+    <result column="def_addr" property="defAddr" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="escmd_port" property="escmdPort" jdbcType="CHAR" />
+    <result column="is_passive" property="isPassive" jdbcType="CHAR" />
+    <result column="ftp_type" property="ftpType" jdbcType="CHAR" />
+    <result column="ip_port" property="ipPort" jdbcType="CHAR" />
+    <result column="is_console" property="isConsole" jdbcType="CHAR" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="refresh_web_name" property="refreshWebName" jdbcType="VARCHAR" />
+    <result column="docker_port" property="dockerPort" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, addr_name, ip_addr, user_name, passwd, def_addr, env_id, escmd_port, 
+    is_passive, ftp_type, ip_port, is_console, cloud_project_id, refresh_web_name, docker_port
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstAddressKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_address
+    where project_id = #{projectId,jdbcType=CHAR}
+      and addr_name = #{addrName,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstAddressKey" >
+    delete from est_address
+    where project_id = #{projectId,jdbcType=CHAR}
+      and addr_name = #{addrName,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstAddress" >
+    insert into est_address (project_id, addr_name, ip_addr, 
+      user_name, passwd, def_addr, env_id, 
+      escmd_port, is_passive, ftp_type, 
+      ip_port, is_console, cloud_project_id, 
+      refresh_web_name, docker_port)
+    values (#{projectId,jdbcType=CHAR}, #{addrName,jdbcType=CHAR}, #{ipAddr,jdbcType=CHAR}, 
+      #{userName,jdbcType=CHAR}, #{passwd,jdbcType=CHAR}, #{defAddr,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{escmdPort,jdbcType=CHAR}, #{isPassive,jdbcType=CHAR}, #{ftpType,jdbcType=CHAR}, 
+      #{ipPort,jdbcType=CHAR}, #{isConsole,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, 
+      #{refreshWebName,jdbcType=VARCHAR}, #{dockerPort,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstAddress" >
+    insert into est_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="addrName != null" >
+        addr_name,
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="passwd != null" >
+        passwd,
+      </if>
+      <if test="defAddr != null" >
+        def_addr,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="escmdPort != null" >
+        escmd_port,
+      </if>
+      <if test="isPassive != null" >
+        is_passive,
+      </if>
+      <if test="ftpType != null" >
+        ftp_type,
+      </if>
+      <if test="ipPort != null" >
+        ip_port,
+      </if>
+      <if test="isConsole != null" >
+        is_console,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="refreshWebName != null" >
+        refresh_web_name,
+      </if>
+      <if test="dockerPort != null" >
+        docker_port,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="addrName != null" >
+        #{addrName,jdbcType=CHAR},
+      </if>
+      <if test="ipAddr != null" >
+        #{ipAddr,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="passwd != null" >
+        #{passwd,jdbcType=CHAR},
+      </if>
+      <if test="defAddr != null" >
+        #{defAddr,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="escmdPort != null" >
+        #{escmdPort,jdbcType=CHAR},
+      </if>
+      <if test="isPassive != null" >
+        #{isPassive,jdbcType=CHAR},
+      </if>
+      <if test="ftpType != null" >
+        #{ftpType,jdbcType=CHAR},
+      </if>
+      <if test="ipPort != null" >
+        #{ipPort,jdbcType=CHAR},
+      </if>
+      <if test="isConsole != null" >
+        #{isConsole,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="refreshWebName != null" >
+        #{refreshWebName,jdbcType=VARCHAR},
+      </if>
+      <if test="dockerPort != null" >
+        #{dockerPort,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstAddress" >
+    update est_address
+    <set >
+      <if test="ipAddr != null" >
+        ip_addr = #{ipAddr,jdbcType=CHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="passwd != null" >
+        passwd = #{passwd,jdbcType=CHAR},
+      </if>
+      <if test="defAddr != null" >
+        def_addr = #{defAddr,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="escmdPort != null" >
+        escmd_port = #{escmdPort,jdbcType=CHAR},
+      </if>
+      <if test="isPassive != null" >
+        is_passive = #{isPassive,jdbcType=CHAR},
+      </if>
+      <if test="ftpType != null" >
+        ftp_type = #{ftpType,jdbcType=CHAR},
+      </if>
+      <if test="ipPort != null" >
+        ip_port = #{ipPort,jdbcType=CHAR},
+      </if>
+      <if test="isConsole != null" >
+        is_console = #{isConsole,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="refreshWebName != null" >
+        refresh_web_name = #{refreshWebName,jdbcType=VARCHAR},
+      </if>
+      <if test="dockerPort != null" >
+        docker_port = #{dockerPort,jdbcType=CHAR},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=CHAR}
+      and addr_name = #{addrName,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstAddress" >
+    update est_address
+    set ip_addr = #{ipAddr,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=CHAR},
+      passwd = #{passwd,jdbcType=CHAR},
+      def_addr = #{defAddr,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      escmd_port = #{escmdPort,jdbcType=CHAR},
+      is_passive = #{isPassive,jdbcType=CHAR},
+      ftp_type = #{ftpType,jdbcType=CHAR},
+      ip_port = #{ipPort,jdbcType=CHAR},
+      is_console = #{isConsole,jdbcType=CHAR},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      refresh_web_name = #{refreshWebName,jdbcType=VARCHAR},
+      docker_port = #{dockerPort,jdbcType=CHAR}
+    where project_id = #{projectId,jdbcType=CHAR}
+      and addr_name = #{addrName,jdbcType=CHAR}
+  </update>
+</mapper>

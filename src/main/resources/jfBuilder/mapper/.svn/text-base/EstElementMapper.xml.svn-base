@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstElementMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstElement" >
+    <id column="elem_id" property="elemId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="elem_name" property="elemName" jdbcType="CHAR" />
+    <result column="elem_desc" property="elemDesc" jdbcType="VARCHAR" />
+    <result column="xml_label_name" property="xmlLabelName" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="table_id" property="tableId" jdbcType="CHAR" />
+    <result column="view_id" property="viewId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    elem_id, project_id, relation_id, elem_name, elem_desc, xml_label_name, resource_id, 
+    grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time, table_id, view_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_element
+    where elem_id = #{elemId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_element
+    where elem_id = #{elemId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstElement" >
+    insert into est_element (elem_id, project_id, relation_id, 
+      elem_name, elem_desc, xml_label_name, 
+      resource_id, grp_id, crt_user, 
+      crt_date_time, lst_mod_user, lst_mod_date_time, 
+      table_id, view_id)
+    values (#{elemId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{elemName,jdbcType=CHAR}, #{elemDesc,jdbcType=VARCHAR}, #{xmlLabelName,jdbcType=CHAR}, 
+      #{resourceId,jdbcType=CHAR}, #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, 
+      #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, 
+      #{tableId,jdbcType=CHAR}, #{viewId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstElement" >
+    insert into est_element
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="elemName != null" >
+        elem_name,
+      </if>
+      <if test="elemDesc != null" >
+        elem_desc,
+      </if>
+      <if test="xmlLabelName != null" >
+        xml_label_name,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+      <if test="viewId != null" >
+        view_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="elemName != null" >
+        #{elemName,jdbcType=CHAR},
+      </if>
+      <if test="elemDesc != null" >
+        #{elemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlLabelName != null" >
+        #{xmlLabelName,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="viewId != null" >
+        #{viewId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstElement" >
+    update est_element
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="elemName != null" >
+        elem_name = #{elemName,jdbcType=CHAR},
+      </if>
+      <if test="elemDesc != null" >
+        elem_desc = #{elemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="xmlLabelName != null" >
+        xml_label_name = #{xmlLabelName,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="viewId != null" >
+        view_id = #{viewId,jdbcType=CHAR},
+      </if>
+    </set>
+    where elem_id = #{elemId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstElement" >
+    update est_element
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      elem_name = #{elemName,jdbcType=CHAR},
+      elem_desc = #{elemDesc,jdbcType=VARCHAR},
+      xml_label_name = #{xmlLabelName,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      table_id = #{tableId,jdbcType=CHAR},
+      view_id = #{viewId,jdbcType=CHAR}
+    where elem_id = #{elemId,jdbcType=CHAR}
+  </update>
+</mapper>

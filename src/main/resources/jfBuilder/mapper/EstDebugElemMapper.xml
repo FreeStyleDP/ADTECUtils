@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDebugElemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDebugElem" >
+    <id column="union_id" property="unionId" jdbcType="CHAR" />
+    <id column="elem_id" property="elemId" jdbcType="CHAR" />
+    <result column="debug_val" property="debugVal" jdbcType="VARCHAR" />
+    <result column="max_indx" property="maxIndx" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    union_id, elem_id, debug_val, max_indx
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDebugElemKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_debug_elem
+    where union_id = #{unionId,jdbcType=CHAR}
+      and elem_id = #{elemId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDebugElemKey" >
+    delete from est_debug_elem
+    where union_id = #{unionId,jdbcType=CHAR}
+      and elem_id = #{elemId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDebugElem" >
+    insert into est_debug_elem (union_id, elem_id, debug_val, 
+      max_indx)
+    values (#{unionId,jdbcType=CHAR}, #{elemId,jdbcType=CHAR}, #{debugVal,jdbcType=VARCHAR}, 
+      #{maxIndx,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDebugElem" >
+    insert into est_debug_elem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="unionId != null" >
+        union_id,
+      </if>
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+      <if test="debugVal != null" >
+        debug_val,
+      </if>
+      <if test="maxIndx != null" >
+        max_indx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="unionId != null" >
+        #{unionId,jdbcType=CHAR},
+      </if>
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="debugVal != null" >
+        #{debugVal,jdbcType=VARCHAR},
+      </if>
+      <if test="maxIndx != null" >
+        #{maxIndx,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDebugElem" >
+    update est_debug_elem
+    <set >
+      <if test="debugVal != null" >
+        debug_val = #{debugVal,jdbcType=VARCHAR},
+      </if>
+      <if test="maxIndx != null" >
+        max_indx = #{maxIndx,jdbcType=INTEGER},
+      </if>
+    </set>
+    where union_id = #{unionId,jdbcType=CHAR}
+      and elem_id = #{elemId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDebugElem" >
+    update est_debug_elem
+    set debug_val = #{debugVal,jdbcType=VARCHAR},
+      max_indx = #{maxIndx,jdbcType=INTEGER}
+    where union_id = #{unionId,jdbcType=CHAR}
+      and elem_id = #{elemId,jdbcType=CHAR}
+  </update>
+</mapper>

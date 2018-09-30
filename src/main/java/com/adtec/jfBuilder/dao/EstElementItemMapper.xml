@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstElementItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstElementItem" >
+    <id column="elem_item_id" property="elemItemId" jdbcType="CHAR" />
+    <result column="elem_id" property="elemId" jdbcType="CHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="item_name" property="itemName" jdbcType="CHAR" />
+    <result column="item_desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="item_type" property="itemType" jdbcType="CHAR" />
+    <result column="elem_name" property="elemName" jdbcType="CHAR" />
+    <result column="data_name" property="dataName" jdbcType="CHAR" />
+    <result column="constant" property="constant" jdbcType="CHAR" />
+    <result column="security_pro" property="securityPro" jdbcType="CHAR" />
+    <result column="node_type" property="nodeType" jdbcType="CHAR" />
+    <result column="array_flag" property="arrayFlag" jdbcType="CHAR" />
+    <result column="scope_expr" property="scopeExpr" jdbcType="CHAR" />
+    <result column="item_default" property="itemDefault" jdbcType="VARCHAR" />
+    <result column="column_id" property="columnId" jdbcType="CHAR" />
+    <result column="enum_name" property="enumName" jdbcType="CHAR" />
+    <result column="enum_kvp" property="enumKvp" jdbcType="CHAR" />
+    <result column="relate_itemname" property="relateItemname" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    elem_item_id, elem_id, seq_no, item_name, item_desc, item_type, elem_name, data_name, 
+    constant, security_pro, node_type, array_flag, scope_expr, item_default, column_id, 
+    enum_name, enum_kvp, relate_itemname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_element_item
+    where elem_item_id = #{elemItemId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_element_item
+    where elem_item_id = #{elemItemId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstElementItem" >
+    insert into est_element_item (elem_item_id, elem_id, seq_no, 
+      item_name, item_desc, item_type, 
+      elem_name, data_name, constant, 
+      security_pro, node_type, array_flag, 
+      scope_expr, item_default, column_id, 
+      enum_name, enum_kvp, relate_itemname
+      )
+    values (#{elemItemId,jdbcType=CHAR}, #{elemId,jdbcType=CHAR}, #{seqNo,jdbcType=INTEGER}, 
+      #{itemName,jdbcType=CHAR}, #{itemDesc,jdbcType=VARCHAR}, #{itemType,jdbcType=CHAR}, 
+      #{elemName,jdbcType=CHAR}, #{dataName,jdbcType=CHAR}, #{constant,jdbcType=CHAR}, 
+      #{securityPro,jdbcType=CHAR}, #{nodeType,jdbcType=CHAR}, #{arrayFlag,jdbcType=CHAR}, 
+      #{scopeExpr,jdbcType=CHAR}, #{itemDefault,jdbcType=VARCHAR}, #{columnId,jdbcType=CHAR}, 
+      #{enumName,jdbcType=CHAR}, #{enumKvp,jdbcType=CHAR}, #{relateItemname,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstElementItem" >
+    insert into est_element_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="elemItemId != null" >
+        elem_item_id,
+      </if>
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemDesc != null" >
+        item_desc,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="elemName != null" >
+        elem_name,
+      </if>
+      <if test="dataName != null" >
+        data_name,
+      </if>
+      <if test="constant != null" >
+        constant,
+      </if>
+      <if test="securityPro != null" >
+        security_pro,
+      </if>
+      <if test="nodeType != null" >
+        node_type,
+      </if>
+      <if test="arrayFlag != null" >
+        array_flag,
+      </if>
+      <if test="scopeExpr != null" >
+        scope_expr,
+      </if>
+      <if test="itemDefault != null" >
+        item_default,
+      </if>
+      <if test="columnId != null" >
+        column_id,
+      </if>
+      <if test="enumName != null" >
+        enum_name,
+      </if>
+      <if test="enumKvp != null" >
+        enum_kvp,
+      </if>
+      <if test="relateItemname != null" >
+        relate_itemname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="elemItemId != null" >
+        #{elemItemId,jdbcType=CHAR},
+      </if>
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=CHAR},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="elemName != null" >
+        #{elemName,jdbcType=CHAR},
+      </if>
+      <if test="dataName != null" >
+        #{dataName,jdbcType=CHAR},
+      </if>
+      <if test="constant != null" >
+        #{constant,jdbcType=CHAR},
+      </if>
+      <if test="securityPro != null" >
+        #{securityPro,jdbcType=CHAR},
+      </if>
+      <if test="nodeType != null" >
+        #{nodeType,jdbcType=CHAR},
+      </if>
+      <if test="arrayFlag != null" >
+        #{arrayFlag,jdbcType=CHAR},
+      </if>
+      <if test="scopeExpr != null" >
+        #{scopeExpr,jdbcType=CHAR},
+      </if>
+      <if test="itemDefault != null" >
+        #{itemDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="columnId != null" >
+        #{columnId,jdbcType=CHAR},
+      </if>
+      <if test="enumName != null" >
+        #{enumName,jdbcType=CHAR},
+      </if>
+      <if test="enumKvp != null" >
+        #{enumKvp,jdbcType=CHAR},
+      </if>
+      <if test="relateItemname != null" >
+        #{relateItemname,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstElementItem" >
+    update est_element_item
+    <set >
+      <if test="elemId != null" >
+        elem_id = #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=CHAR},
+      </if>
+      <if test="itemDesc != null" >
+        item_desc = #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="itemType != null" >
+        item_type = #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="elemName != null" >
+        elem_name = #{elemName,jdbcType=CHAR},
+      </if>
+      <if test="dataName != null" >
+        data_name = #{dataName,jdbcType=CHAR},
+      </if>
+      <if test="constant != null" >
+        constant = #{constant,jdbcType=CHAR},
+      </if>
+      <if test="securityPro != null" >
+        security_pro = #{securityPro,jdbcType=CHAR},
+      </if>
+      <if test="nodeType != null" >
+        node_type = #{nodeType,jdbcType=CHAR},
+      </if>
+      <if test="arrayFlag != null" >
+        array_flag = #{arrayFlag,jdbcType=CHAR},
+      </if>
+      <if test="scopeExpr != null" >
+        scope_expr = #{scopeExpr,jdbcType=CHAR},
+      </if>
+      <if test="itemDefault != null" >
+        item_default = #{itemDefault,jdbcType=VARCHAR},
+      </if>
+      <if test="columnId != null" >
+        column_id = #{columnId,jdbcType=CHAR},
+      </if>
+      <if test="enumName != null" >
+        enum_name = #{enumName,jdbcType=CHAR},
+      </if>
+      <if test="enumKvp != null" >
+        enum_kvp = #{enumKvp,jdbcType=CHAR},
+      </if>
+      <if test="relateItemname != null" >
+        relate_itemname = #{relateItemname,jdbcType=CHAR},
+      </if>
+    </set>
+    where elem_item_id = #{elemItemId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstElementItem" >
+    update est_element_item
+    set elem_id = #{elemId,jdbcType=CHAR},
+      seq_no = #{seqNo,jdbcType=INTEGER},
+      item_name = #{itemName,jdbcType=CHAR},
+      item_desc = #{itemDesc,jdbcType=VARCHAR},
+      item_type = #{itemType,jdbcType=CHAR},
+      elem_name = #{elemName,jdbcType=CHAR},
+      data_name = #{dataName,jdbcType=CHAR},
+      constant = #{constant,jdbcType=CHAR},
+      security_pro = #{securityPro,jdbcType=CHAR},
+      node_type = #{nodeType,jdbcType=CHAR},
+      array_flag = #{arrayFlag,jdbcType=CHAR},
+      scope_expr = #{scopeExpr,jdbcType=CHAR},
+      item_default = #{itemDefault,jdbcType=VARCHAR},
+      column_id = #{columnId,jdbcType=CHAR},
+      enum_name = #{enumName,jdbcType=CHAR},
+      enum_kvp = #{enumKvp,jdbcType=CHAR},
+      relate_itemname = #{relateItemname,jdbcType=CHAR}
+    where elem_item_id = #{elemItemId,jdbcType=CHAR}
+  </update>
+</mapper>

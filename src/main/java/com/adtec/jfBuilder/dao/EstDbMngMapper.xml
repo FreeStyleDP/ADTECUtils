@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDbMng" >
+    <id column="db_mng_id" property="dbMngId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="db_mng_name" property="dbMngName" jdbcType="CHAR" />
+    <result column="sub_sys_no" property="subSysNo" jdbcType="SMALLINT" />
+    <result column="db_name" property="dbName" jdbcType="CHAR" />
+    <result column="db_user_name" property="dbUserName" jdbcType="CHAR" />
+    <result column="db_user_pwd" property="dbUserPwd" jdbcType="CHAR" />
+    <result column="db_default_flag" property="dbDefaultFlag" jdbcType="SMALLINT" />
+    <result column="XA_flag" property="xaFlag" jdbcType="SMALLINT" />
+    <result column="XA_connect_str" property="xaConnectStr" jdbcType="CHAR" />
+    <result column="XA_close_str" property="xaCloseStr" jdbcType="CHAR" />
+    <result column="RM_name" property="rmName" jdbcType="CHAR" />
+    <result column="TMS_inst_num" property="tmsInstNum" jdbcType="SMALLINT" />
+    <result column="TMS_mchn_id" property="tmsMchnId" jdbcType="CHAR" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    db_mng_id, project_id, env_id, db_mng_name, sub_sys_no, db_name, db_user_name, db_user_pwd, 
+    db_default_flag, XA_flag, XA_connect_str, XA_close_str, RM_name, TMS_inst_num, TMS_mchn_id, 
+    cloud_project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_mng
+    where db_mng_id = #{dbMngId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_db_mng
+    where db_mng_id = #{dbMngId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDbMng" >
+    insert into est_db_mng (db_mng_id, project_id, env_id, 
+      db_mng_name, sub_sys_no, db_name, 
+      db_user_name, db_user_pwd, db_default_flag, 
+      XA_flag, XA_connect_str, XA_close_str, 
+      RM_name, TMS_inst_num, TMS_mchn_id, 
+      cloud_project_id)
+    values (#{dbMngId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{dbMngName,jdbcType=CHAR}, #{subSysNo,jdbcType=SMALLINT}, #{dbName,jdbcType=CHAR}, 
+      #{dbUserName,jdbcType=CHAR}, #{dbUserPwd,jdbcType=CHAR}, #{dbDefaultFlag,jdbcType=SMALLINT}, 
+      #{xaFlag,jdbcType=SMALLINT}, #{xaConnectStr,jdbcType=CHAR}, #{xaCloseStr,jdbcType=CHAR}, 
+      #{rmName,jdbcType=CHAR}, #{tmsInstNum,jdbcType=SMALLINT}, #{tmsMchnId,jdbcType=CHAR}, 
+      #{cloudProjectId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDbMng" >
+    insert into est_db_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dbMngId != null" >
+        db_mng_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="dbMngName != null" >
+        db_mng_name,
+      </if>
+      <if test="subSysNo != null" >
+        sub_sys_no,
+      </if>
+      <if test="dbName != null" >
+        db_name,
+      </if>
+      <if test="dbUserName != null" >
+        db_user_name,
+      </if>
+      <if test="dbUserPwd != null" >
+        db_user_pwd,
+      </if>
+      <if test="dbDefaultFlag != null" >
+        db_default_flag,
+      </if>
+      <if test="xaFlag != null" >
+        XA_flag,
+      </if>
+      <if test="xaConnectStr != null" >
+        XA_connect_str,
+      </if>
+      <if test="xaCloseStr != null" >
+        XA_close_str,
+      </if>
+      <if test="rmName != null" >
+        RM_name,
+      </if>
+      <if test="tmsInstNum != null" >
+        TMS_inst_num,
+      </if>
+      <if test="tmsMchnId != null" >
+        TMS_mchn_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dbMngId != null" >
+        #{dbMngId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="dbMngName != null" >
+        #{dbMngName,jdbcType=CHAR},
+      </if>
+      <if test="subSysNo != null" >
+        #{subSysNo,jdbcType=SMALLINT},
+      </if>
+      <if test="dbName != null" >
+        #{dbName,jdbcType=CHAR},
+      </if>
+      <if test="dbUserName != null" >
+        #{dbUserName,jdbcType=CHAR},
+      </if>
+      <if test="dbUserPwd != null" >
+        #{dbUserPwd,jdbcType=CHAR},
+      </if>
+      <if test="dbDefaultFlag != null" >
+        #{dbDefaultFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="xaFlag != null" >
+        #{xaFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="xaConnectStr != null" >
+        #{xaConnectStr,jdbcType=CHAR},
+      </if>
+      <if test="xaCloseStr != null" >
+        #{xaCloseStr,jdbcType=CHAR},
+      </if>
+      <if test="rmName != null" >
+        #{rmName,jdbcType=CHAR},
+      </if>
+      <if test="tmsInstNum != null" >
+        #{tmsInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="tmsMchnId != null" >
+        #{tmsMchnId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDbMng" >
+    update est_db_mng
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="dbMngName != null" >
+        db_mng_name = #{dbMngName,jdbcType=CHAR},
+      </if>
+      <if test="subSysNo != null" >
+        sub_sys_no = #{subSysNo,jdbcType=SMALLINT},
+      </if>
+      <if test="dbName != null" >
+        db_name = #{dbName,jdbcType=CHAR},
+      </if>
+      <if test="dbUserName != null" >
+        db_user_name = #{dbUserName,jdbcType=CHAR},
+      </if>
+      <if test="dbUserPwd != null" >
+        db_user_pwd = #{dbUserPwd,jdbcType=CHAR},
+      </if>
+      <if test="dbDefaultFlag != null" >
+        db_default_flag = #{dbDefaultFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="xaFlag != null" >
+        XA_flag = #{xaFlag,jdbcType=SMALLINT},
+      </if>
+      <if test="xaConnectStr != null" >
+        XA_connect_str = #{xaConnectStr,jdbcType=CHAR},
+      </if>
+      <if test="xaCloseStr != null" >
+        XA_close_str = #{xaCloseStr,jdbcType=CHAR},
+      </if>
+      <if test="rmName != null" >
+        RM_name = #{rmName,jdbcType=CHAR},
+      </if>
+      <if test="tmsInstNum != null" >
+        TMS_inst_num = #{tmsInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="tmsMchnId != null" >
+        TMS_mchn_id = #{tmsMchnId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </set>
+    where db_mng_id = #{dbMngId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbMng" >
+    update est_db_mng
+    set project_id = #{projectId,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      db_mng_name = #{dbMngName,jdbcType=CHAR},
+      sub_sys_no = #{subSysNo,jdbcType=SMALLINT},
+      db_name = #{dbName,jdbcType=CHAR},
+      db_user_name = #{dbUserName,jdbcType=CHAR},
+      db_user_pwd = #{dbUserPwd,jdbcType=CHAR},
+      db_default_flag = #{dbDefaultFlag,jdbcType=SMALLINT},
+      XA_flag = #{xaFlag,jdbcType=SMALLINT},
+      XA_connect_str = #{xaConnectStr,jdbcType=CHAR},
+      XA_close_str = #{xaCloseStr,jdbcType=CHAR},
+      RM_name = #{rmName,jdbcType=CHAR},
+      TMS_inst_num = #{tmsInstNum,jdbcType=SMALLINT},
+      TMS_mchn_id = #{tmsMchnId,jdbcType=CHAR},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+    where db_mng_id = #{dbMngId,jdbcType=CHAR}
+  </update>
+</mapper>

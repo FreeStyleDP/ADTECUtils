@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstMchnMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstMchnMng" >
+    <id column="mchn_id" property="mchnId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="mchn_name" property="mchnName" jdbcType="CHAR" />
+    <result column="mchn_ip" property="mchnIp" jdbcType="CHAR" />
+    <result column="mchn_port" property="mchnPort" jdbcType="CHAR" />
+    <result column="use_moni" property="useMoni" jdbcType="CHAR" />
+    <result column="oper_db" property="operDb" jdbcType="CHAR" />
+    <result column="node_no" property="nodeNo" jdbcType="CHAR" />
+    <result column="mchn_weight" property="mchnWeight" jdbcType="SMALLINT" />
+    <result column="mchn_file_port" property="mchnFilePort" jdbcType="CHAR" />
+    <result column="min_inst_num" property="minInstNum" jdbcType="SMALLINT" />
+    <result column="max_inst_num" property="maxInstNum" jdbcType="SMALLINT" />
+    <result column="max_conn_num" property="maxConnNum" jdbcType="SMALLINT" />
+    <result column="listen_port" property="listenPort" jdbcType="CHAR" />
+    <result column="moni_svr_port" property="moniSvrPort" jdbcType="CHAR" />
+    <result column="moni_syn_port" property="moniSynPort" jdbcType="CHAR" />
+    <result column="push_port" property="pushPort" jdbcType="CHAR" />
+    <result column="push_num" property="pushNum" jdbcType="SMALLINT" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="java_web_name" property="javaWebName" jdbcType="VARCHAR" />
+    <result column="https_port" property="httpsPort" jdbcType="CHAR" />
+    <result column="https_max_num" property="httpsMaxNum" jdbcType="SMALLINT" />
+    <result column="max_thread_num" property="maxThreadNum" jdbcType="SMALLINT" />
+    <result column="is_long" property="isLong" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    mchn_id, project_id, env_id, mchn_name, mchn_ip, mchn_port, use_moni, oper_db, node_no, 
+    mchn_weight, mchn_file_port, min_inst_num, max_inst_num, max_conn_num, listen_port, 
+    moni_svr_port, moni_syn_port, push_port, push_num, cloud_project_id, java_web_name, 
+    https_port, https_max_num, max_thread_num, is_long
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_mchn_mng
+    where mchn_id = #{mchnId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_mchn_mng
+    where mchn_id = #{mchnId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstMchnMng" >
+    insert into est_mchn_mng (mchn_id, project_id, env_id, 
+      mchn_name, mchn_ip, mchn_port, 
+      use_moni, oper_db, node_no, mchn_weight, 
+      mchn_file_port, min_inst_num, max_inst_num, 
+      max_conn_num, listen_port, moni_svr_port, 
+      moni_syn_port, push_port, push_num, 
+      cloud_project_id, java_web_name, https_port, 
+      https_max_num, max_thread_num, is_long
+      )
+    values (#{mchnId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{mchnName,jdbcType=CHAR}, #{mchnIp,jdbcType=CHAR}, #{mchnPort,jdbcType=CHAR}, 
+      #{useMoni,jdbcType=CHAR}, #{operDb,jdbcType=CHAR}, #{nodeNo,jdbcType=CHAR}, #{mchnWeight,jdbcType=SMALLINT}, 
+      #{mchnFilePort,jdbcType=CHAR}, #{minInstNum,jdbcType=SMALLINT}, #{maxInstNum,jdbcType=SMALLINT}, 
+      #{maxConnNum,jdbcType=SMALLINT}, #{listenPort,jdbcType=CHAR}, #{moniSvrPort,jdbcType=CHAR}, 
+      #{moniSynPort,jdbcType=CHAR}, #{pushPort,jdbcType=CHAR}, #{pushNum,jdbcType=SMALLINT}, 
+      #{cloudProjectId,jdbcType=CHAR}, #{javaWebName,jdbcType=VARCHAR}, #{httpsPort,jdbcType=CHAR}, 
+      #{httpsMaxNum,jdbcType=SMALLINT}, #{maxThreadNum,jdbcType=SMALLINT}, #{isLong,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstMchnMng" >
+    insert into est_mchn_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mchnId != null" >
+        mchn_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="mchnName != null" >
+        mchn_name,
+      </if>
+      <if test="mchnIp != null" >
+        mchn_ip,
+      </if>
+      <if test="mchnPort != null" >
+        mchn_port,
+      </if>
+      <if test="useMoni != null" >
+        use_moni,
+      </if>
+      <if test="operDb != null" >
+        oper_db,
+      </if>
+      <if test="nodeNo != null" >
+        node_no,
+      </if>
+      <if test="mchnWeight != null" >
+        mchn_weight,
+      </if>
+      <if test="mchnFilePort != null" >
+        mchn_file_port,
+      </if>
+      <if test="minInstNum != null" >
+        min_inst_num,
+      </if>
+      <if test="maxInstNum != null" >
+        max_inst_num,
+      </if>
+      <if test="maxConnNum != null" >
+        max_conn_num,
+      </if>
+      <if test="listenPort != null" >
+        listen_port,
+      </if>
+      <if test="moniSvrPort != null" >
+        moni_svr_port,
+      </if>
+      <if test="moniSynPort != null" >
+        moni_syn_port,
+      </if>
+      <if test="pushPort != null" >
+        push_port,
+      </if>
+      <if test="pushNum != null" >
+        push_num,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="javaWebName != null" >
+        java_web_name,
+      </if>
+      <if test="httpsPort != null" >
+        https_port,
+      </if>
+      <if test="httpsMaxNum != null" >
+        https_max_num,
+      </if>
+      <if test="maxThreadNum != null" >
+        max_thread_num,
+      </if>
+      <if test="isLong != null" >
+        is_long,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mchnId != null" >
+        #{mchnId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="mchnName != null" >
+        #{mchnName,jdbcType=CHAR},
+      </if>
+      <if test="mchnIp != null" >
+        #{mchnIp,jdbcType=CHAR},
+      </if>
+      <if test="mchnPort != null" >
+        #{mchnPort,jdbcType=CHAR},
+      </if>
+      <if test="useMoni != null" >
+        #{useMoni,jdbcType=CHAR},
+      </if>
+      <if test="operDb != null" >
+        #{operDb,jdbcType=CHAR},
+      </if>
+      <if test="nodeNo != null" >
+        #{nodeNo,jdbcType=CHAR},
+      </if>
+      <if test="mchnWeight != null" >
+        #{mchnWeight,jdbcType=SMALLINT},
+      </if>
+      <if test="mchnFilePort != null" >
+        #{mchnFilePort,jdbcType=CHAR},
+      </if>
+      <if test="minInstNum != null" >
+        #{minInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxInstNum != null" >
+        #{maxInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxConnNum != null" >
+        #{maxConnNum,jdbcType=SMALLINT},
+      </if>
+      <if test="listenPort != null" >
+        #{listenPort,jdbcType=CHAR},
+      </if>
+      <if test="moniSvrPort != null" >
+        #{moniSvrPort,jdbcType=CHAR},
+      </if>
+      <if test="moniSynPort != null" >
+        #{moniSynPort,jdbcType=CHAR},
+      </if>
+      <if test="pushPort != null" >
+        #{pushPort,jdbcType=CHAR},
+      </if>
+      <if test="pushNum != null" >
+        #{pushNum,jdbcType=SMALLINT},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="javaWebName != null" >
+        #{javaWebName,jdbcType=VARCHAR},
+      </if>
+      <if test="httpsPort != null" >
+        #{httpsPort,jdbcType=CHAR},
+      </if>
+      <if test="httpsMaxNum != null" >
+        #{httpsMaxNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxThreadNum != null" >
+        #{maxThreadNum,jdbcType=SMALLINT},
+      </if>
+      <if test="isLong != null" >
+        #{isLong,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstMchnMng" >
+    update est_mchn_mng
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="mchnName != null" >
+        mchn_name = #{mchnName,jdbcType=CHAR},
+      </if>
+      <if test="mchnIp != null" >
+        mchn_ip = #{mchnIp,jdbcType=CHAR},
+      </if>
+      <if test="mchnPort != null" >
+        mchn_port = #{mchnPort,jdbcType=CHAR},
+      </if>
+      <if test="useMoni != null" >
+        use_moni = #{useMoni,jdbcType=CHAR},
+      </if>
+      <if test="operDb != null" >
+        oper_db = #{operDb,jdbcType=CHAR},
+      </if>
+      <if test="nodeNo != null" >
+        node_no = #{nodeNo,jdbcType=CHAR},
+      </if>
+      <if test="mchnWeight != null" >
+        mchn_weight = #{mchnWeight,jdbcType=SMALLINT},
+      </if>
+      <if test="mchnFilePort != null" >
+        mchn_file_port = #{mchnFilePort,jdbcType=CHAR},
+      </if>
+      <if test="minInstNum != null" >
+        min_inst_num = #{minInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxInstNum != null" >
+        max_inst_num = #{maxInstNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxConnNum != null" >
+        max_conn_num = #{maxConnNum,jdbcType=SMALLINT},
+      </if>
+      <if test="listenPort != null" >
+        listen_port = #{listenPort,jdbcType=CHAR},
+      </if>
+      <if test="moniSvrPort != null" >
+        moni_svr_port = #{moniSvrPort,jdbcType=CHAR},
+      </if>
+      <if test="moniSynPort != null" >
+        moni_syn_port = #{moniSynPort,jdbcType=CHAR},
+      </if>
+      <if test="pushPort != null" >
+        push_port = #{pushPort,jdbcType=CHAR},
+      </if>
+      <if test="pushNum != null" >
+        push_num = #{pushNum,jdbcType=SMALLINT},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="javaWebName != null" >
+        java_web_name = #{javaWebName,jdbcType=VARCHAR},
+      </if>
+      <if test="httpsPort != null" >
+        https_port = #{httpsPort,jdbcType=CHAR},
+      </if>
+      <if test="httpsMaxNum != null" >
+        https_max_num = #{httpsMaxNum,jdbcType=SMALLINT},
+      </if>
+      <if test="maxThreadNum != null" >
+        max_thread_num = #{maxThreadNum,jdbcType=SMALLINT},
+      </if>
+      <if test="isLong != null" >
+        is_long = #{isLong,jdbcType=CHAR},
+      </if>
+    </set>
+    where mchn_id = #{mchnId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstMchnMng" >
+    update est_mchn_mng
+    set project_id = #{projectId,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      mchn_name = #{mchnName,jdbcType=CHAR},
+      mchn_ip = #{mchnIp,jdbcType=CHAR},
+      mchn_port = #{mchnPort,jdbcType=CHAR},
+      use_moni = #{useMoni,jdbcType=CHAR},
+      oper_db = #{operDb,jdbcType=CHAR},
+      node_no = #{nodeNo,jdbcType=CHAR},
+      mchn_weight = #{mchnWeight,jdbcType=SMALLINT},
+      mchn_file_port = #{mchnFilePort,jdbcType=CHAR},
+      min_inst_num = #{minInstNum,jdbcType=SMALLINT},
+      max_inst_num = #{maxInstNum,jdbcType=SMALLINT},
+      max_conn_num = #{maxConnNum,jdbcType=SMALLINT},
+      listen_port = #{listenPort,jdbcType=CHAR},
+      moni_svr_port = #{moniSvrPort,jdbcType=CHAR},
+      moni_syn_port = #{moniSynPort,jdbcType=CHAR},
+      push_port = #{pushPort,jdbcType=CHAR},
+      push_num = #{pushNum,jdbcType=SMALLINT},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      java_web_name = #{javaWebName,jdbcType=VARCHAR},
+      https_port = #{httpsPort,jdbcType=CHAR},
+      https_max_num = #{httpsMaxNum,jdbcType=SMALLINT},
+      max_thread_num = #{maxThreadNum,jdbcType=SMALLINT},
+      is_long = #{isLong,jdbcType=CHAR}
+    where mchn_id = #{mchnId,jdbcType=CHAR}
+  </update>
+</mapper>

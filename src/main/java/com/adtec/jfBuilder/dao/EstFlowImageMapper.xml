@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFlowImageMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstFlowImage" >
+    <id column="svc_id" property="svcId" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.adtec.jfBuilder.entity.EstFlowImage" extends="BaseResultMap" >
+    <result column="flow_image" property="flowImage" jdbcType="LONGVARBINARY" />
+    <result column="flow_jpg_image" property="flowJpgImage" jdbcType="LONGVARBINARY" />
+    <result column="flow_diagram_image" property="flowDiagramImage" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    svc_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    flow_image, flow_jpg_image, flow_diagram_image
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from est_flow_image
+    where svc_id = #{svcId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_flow_image
+    where svc_id = #{svcId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstFlowImage" >
+    insert into est_flow_image (svc_id, flow_image, flow_jpg_image, 
+      flow_diagram_image)
+    values (#{svcId,jdbcType=CHAR}, #{flowImage,jdbcType=LONGVARBINARY}, #{flowJpgImage,jdbcType=LONGVARBINARY}, 
+      #{flowDiagramImage,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstFlowImage" >
+    insert into est_flow_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="flowImage != null" >
+        flow_image,
+      </if>
+      <if test="flowJpgImage != null" >
+        flow_jpg_image,
+      </if>
+      <if test="flowDiagramImage != null" >
+        flow_diagram_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="flowImage != null" >
+        #{flowImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="flowJpgImage != null" >
+        #{flowJpgImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="flowDiagramImage != null" >
+        #{flowDiagramImage,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstFlowImage" >
+    update est_flow_image
+    <set >
+      <if test="flowImage != null" >
+        flow_image = #{flowImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="flowJpgImage != null" >
+        flow_jpg_image = #{flowJpgImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="flowDiagramImage != null" >
+        flow_diagram_image = #{flowDiagramImage,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where svc_id = #{svcId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adtec.jfBuilder.entity.EstFlowImage" >
+    update est_flow_image
+    set flow_image = #{flowImage,jdbcType=LONGVARBINARY},
+      flow_jpg_image = #{flowJpgImage,jdbcType=LONGVARBINARY},
+      flow_diagram_image = #{flowDiagramImage,jdbcType=LONGVARBINARY}
+    where svc_id = #{svcId,jdbcType=CHAR}
+  </update>
+</mapper>

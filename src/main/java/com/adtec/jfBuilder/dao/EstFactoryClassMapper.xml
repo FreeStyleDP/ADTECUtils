@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFactoryClassMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstFactoryClass" >
+    <id column="factory_id" property="factoryId" jdbcType="CHAR" />
+    <result column="factory_name" property="factoryName" jdbcType="CHAR" />
+    <result column="factory_desc" property="factoryDesc" jdbcType="CHAR" />
+    <result column="factory_type" property="factoryType" jdbcType="CHAR" />
+    <result column="factory_content" property="factoryContent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    factory_id, factory_name, factory_desc, factory_type, factory_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_factory_class
+    where factory_id = #{factoryId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_factory_class
+    where factory_id = #{factoryId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstFactoryClass" >
+    insert into est_factory_class (factory_id, factory_name, factory_desc, 
+      factory_type, factory_content)
+    values (#{factoryId,jdbcType=CHAR}, #{factoryName,jdbcType=CHAR}, #{factoryDesc,jdbcType=CHAR}, 
+      #{factoryType,jdbcType=CHAR}, #{factoryContent,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstFactoryClass" >
+    insert into est_factory_class
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="factoryId != null" >
+        factory_id,
+      </if>
+      <if test="factoryName != null" >
+        factory_name,
+      </if>
+      <if test="factoryDesc != null" >
+        factory_desc,
+      </if>
+      <if test="factoryType != null" >
+        factory_type,
+      </if>
+      <if test="factoryContent != null" >
+        factory_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=CHAR},
+      </if>
+      <if test="factoryName != null" >
+        #{factoryName,jdbcType=CHAR},
+      </if>
+      <if test="factoryDesc != null" >
+        #{factoryDesc,jdbcType=CHAR},
+      </if>
+      <if test="factoryType != null" >
+        #{factoryType,jdbcType=CHAR},
+      </if>
+      <if test="factoryContent != null" >
+        #{factoryContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstFactoryClass" >
+    update est_factory_class
+    <set >
+      <if test="factoryName != null" >
+        factory_name = #{factoryName,jdbcType=CHAR},
+      </if>
+      <if test="factoryDesc != null" >
+        factory_desc = #{factoryDesc,jdbcType=CHAR},
+      </if>
+      <if test="factoryType != null" >
+        factory_type = #{factoryType,jdbcType=CHAR},
+      </if>
+      <if test="factoryContent != null" >
+        factory_content = #{factoryContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where factory_id = #{factoryId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstFactoryClass" >
+    update est_factory_class
+    set factory_name = #{factoryName,jdbcType=CHAR},
+      factory_desc = #{factoryDesc,jdbcType=CHAR},
+      factory_type = #{factoryType,jdbcType=CHAR},
+      factory_content = #{factoryContent,jdbcType=VARCHAR}
+    where factory_id = #{factoryId,jdbcType=CHAR}
+  </update>
+</mapper>

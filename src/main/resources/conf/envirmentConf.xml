@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<address>
+	<addr name="esb-107" desc="" ipAddr="160.161.12.107" port="22" userName="esb" pwd="sieabewe29" ></addr>
+	<addr name="esb-106" desc="" ipAddr="160.161.12.106" port="22" userName="esb" pwd="esb" ></addr>
+	<addr name="esb-105" desc="" ipAddr="160.161.12.105" port="22" userName="esb" pwd="esb" ></addr>
+	<addr name="esb-109" desc="" ipAddr="160.161.12.109" port="22" userName="esbbam" pwd="esbbam" ></addr>
+	<addr name="zhqz-120" desc="" ipAddr="160.161.12.120" port="22" userName="zhqz" pwd="zhqz1121" ></addr>
+	<addr name="zhqz-123" desc="" ipAddr="160.161.12.123" port="22" userName="zhqzbam" pwd="zhqzbam" ></addr>
+</address>

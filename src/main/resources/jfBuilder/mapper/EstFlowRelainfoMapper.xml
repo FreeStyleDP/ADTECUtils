@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFlowRelainfoMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstFlowRelainfoKey" >
+    <id column="svc_id" property="svcId" jdbcType="CHAR" />
+    <id column="flowpart_name" property="flowpartName" jdbcType="CHAR" />
+    <id column="relainfo_type" property="relainfoType" jdbcType="CHAR" />
+    <id column="relainfo_id" property="relainfoId" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstFlowRelainfoKey" >
+    delete from est_flow_relainfo
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and flowpart_name = #{flowpartName,jdbcType=CHAR}
+      and relainfo_type = #{relainfoType,jdbcType=CHAR}
+      and relainfo_id = #{relainfoId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstFlowRelainfoKey" >
+    insert into est_flow_relainfo (svc_id, flowpart_name, relainfo_type, 
+      relainfo_id)
+    values (#{svcId,jdbcType=CHAR}, #{flowpartName,jdbcType=CHAR}, #{relainfoType,jdbcType=CHAR}, 
+      #{relainfoId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstFlowRelainfoKey" >
+    insert into est_flow_relainfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="flowpartName != null" >
+        flowpart_name,
+      </if>
+      <if test="relainfoType != null" >
+        relainfo_type,
+      </if>
+      <if test="relainfoId != null" >
+        relainfo_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="flowpartName != null" >
+        #{flowpartName,jdbcType=CHAR},
+      </if>
+      <if test="relainfoType != null" >
+        #{relainfoType,jdbcType=CHAR},
+      </if>
+      <if test="relainfoId != null" >
+        #{relainfoId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

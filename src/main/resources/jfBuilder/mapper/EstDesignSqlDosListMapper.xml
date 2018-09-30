@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignSqlDosListMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignSqlDosList" >
+    <id column="sublist_id" property="sublistId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="sublist_type" property="sublistType" jdbcType="CHAR" />
+    <result column="link_type" property="linkType" jdbcType="CHAR" />
+    <result column="link_id" property="linkId" jdbcType="CHAR" />
+    <result column="type_flag" property="typeFlag" jdbcType="CHAR" />
+    <result column="mapper_name" property="mapperName" jdbcType="VARCHAR" />
+    <result column="in_elem_id" property="inElemId" jdbcType="CHAR" />
+    <result column="out_elem_id" property="outElemId" jdbcType="CHAR" />
+    <result column="page_flag" property="pageFlag" jdbcType="CHAR" />
+    <result column="svc_flag" property="svcFlag" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.adtec.entity.EstDesignSqlDosList" extends="BaseResultMap" >
+    <result column="sql_str" property="sqlStr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sublist_id, project_id, relation_id, sublist_type, link_type, link_id, type_flag, 
+    mapper_name, in_elem_id, out_elem_id, page_flag, svc_flag
+  </sql>
+  <sql id="Blob_Column_List" >
+    sql_str
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from est_design_sql_dos_list
+    where sublist_id = #{sublistId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_sql_dos_list
+    where sublist_id = #{sublistId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignSqlDosList" >
+    insert into est_design_sql_dos_list (sublist_id, project_id, relation_id, 
+      sublist_type, link_type, link_id, 
+      type_flag, mapper_name, in_elem_id, 
+      out_elem_id, page_flag, svc_flag, 
+      sql_str)
+    values (#{sublistId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{sublistType,jdbcType=CHAR}, #{linkType,jdbcType=CHAR}, #{linkId,jdbcType=CHAR}, 
+      #{typeFlag,jdbcType=CHAR}, #{mapperName,jdbcType=VARCHAR}, #{inElemId,jdbcType=CHAR}, 
+      #{outElemId,jdbcType=CHAR}, #{pageFlag,jdbcType=CHAR}, #{svcFlag,jdbcType=CHAR}, 
+      #{sqlStr,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignSqlDosList" >
+    insert into est_design_sql_dos_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sublistId != null" >
+        sublist_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="sublistType != null" >
+        sublist_type,
+      </if>
+      <if test="linkType != null" >
+        link_type,
+      </if>
+      <if test="linkId != null" >
+        link_id,
+      </if>
+      <if test="typeFlag != null" >
+        type_flag,
+      </if>
+      <if test="mapperName != null" >
+        mapper_name,
+      </if>
+      <if test="inElemId != null" >
+        in_elem_id,
+      </if>
+      <if test="outElemId != null" >
+        out_elem_id,
+      </if>
+      <if test="pageFlag != null" >
+        page_flag,
+      </if>
+      <if test="svcFlag != null" >
+        svc_flag,
+      </if>
+      <if test="sqlStr != null" >
+        sql_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sublistId != null" >
+        #{sublistId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="sublistType != null" >
+        #{sublistType,jdbcType=CHAR},
+      </if>
+      <if test="linkType != null" >
+        #{linkType,jdbcType=CHAR},
+      </if>
+      <if test="linkId != null" >
+        #{linkId,jdbcType=CHAR},
+      </if>
+      <if test="typeFlag != null" >
+        #{typeFlag,jdbcType=CHAR},
+      </if>
+      <if test="mapperName != null" >
+        #{mapperName,jdbcType=VARCHAR},
+      </if>
+      <if test="inElemId != null" >
+        #{inElemId,jdbcType=CHAR},
+      </if>
+      <if test="outElemId != null" >
+        #{outElemId,jdbcType=CHAR},
+      </if>
+      <if test="pageFlag != null" >
+        #{pageFlag,jdbcType=CHAR},
+      </if>
+      <if test="svcFlag != null" >
+        #{svcFlag,jdbcType=CHAR},
+      </if>
+      <if test="sqlStr != null" >
+        #{sqlStr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignSqlDosList" >
+    update est_design_sql_dos_list
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="sublistType != null" >
+        sublist_type = #{sublistType,jdbcType=CHAR},
+      </if>
+      <if test="linkType != null" >
+        link_type = #{linkType,jdbcType=CHAR},
+      </if>
+      <if test="linkId != null" >
+        link_id = #{linkId,jdbcType=CHAR},
+      </if>
+      <if test="typeFlag != null" >
+        type_flag = #{typeFlag,jdbcType=CHAR},
+      </if>
+      <if test="mapperName != null" >
+        mapper_name = #{mapperName,jdbcType=VARCHAR},
+      </if>
+      <if test="inElemId != null" >
+        in_elem_id = #{inElemId,jdbcType=CHAR},
+      </if>
+      <if test="outElemId != null" >
+        out_elem_id = #{outElemId,jdbcType=CHAR},
+      </if>
+      <if test="pageFlag != null" >
+        page_flag = #{pageFlag,jdbcType=CHAR},
+      </if>
+      <if test="svcFlag != null" >
+        svc_flag = #{svcFlag,jdbcType=CHAR},
+      </if>
+      <if test="sqlStr != null" >
+        sql_str = #{sqlStr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where sublist_id = #{sublistId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adtec.entity.EstDesignSqlDosList" >
+    update est_design_sql_dos_list
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      sublist_type = #{sublistType,jdbcType=CHAR},
+      link_type = #{linkType,jdbcType=CHAR},
+      link_id = #{linkId,jdbcType=CHAR},
+      type_flag = #{typeFlag,jdbcType=CHAR},
+      mapper_name = #{mapperName,jdbcType=VARCHAR},
+      in_elem_id = #{inElemId,jdbcType=CHAR},
+      out_elem_id = #{outElemId,jdbcType=CHAR},
+      page_flag = #{pageFlag,jdbcType=CHAR},
+      svc_flag = #{svcFlag,jdbcType=CHAR},
+      sql_str = #{sqlStr,jdbcType=LONGVARCHAR}
+    where sublist_id = #{sublistId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignSqlDosList" >
+    update est_design_sql_dos_list
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      sublist_type = #{sublistType,jdbcType=CHAR},
+      link_type = #{linkType,jdbcType=CHAR},
+      link_id = #{linkId,jdbcType=CHAR},
+      type_flag = #{typeFlag,jdbcType=CHAR},
+      mapper_name = #{mapperName,jdbcType=VARCHAR},
+      in_elem_id = #{inElemId,jdbcType=CHAR},
+      out_elem_id = #{outElemId,jdbcType=CHAR},
+      page_flag = #{pageFlag,jdbcType=CHAR},
+      svc_flag = #{svcFlag,jdbcType=CHAR}
+    where sublist_id = #{sublistId,jdbcType=CHAR}
+  </update>
+</mapper>

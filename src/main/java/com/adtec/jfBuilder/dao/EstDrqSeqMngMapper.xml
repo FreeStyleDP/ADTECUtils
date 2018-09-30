@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDrqSeqMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDrqSeqMng" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="seq_id" property="seqId" jdbcType="INTEGER" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="seq_desc" property="seqDesc" jdbcType="VARCHAR" />
+    <result column="min_val" property="minVal" jdbcType="INTEGER" />
+    <result column="max_val" property="maxVal" jdbcType="BIGINT" />
+    <result column="seq_step" property="seqStep" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, env_id, seq_id, cloud_project_id, seq_desc, min_val, max_val, seq_step
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_drq_seq_mng
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and seq_id = #{seqId,jdbcType=INTEGER}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMngKey" >
+    delete from est_drq_seq_mng
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and seq_id = #{seqId,jdbcType=INTEGER}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMng" >
+    insert into est_drq_seq_mng (project_id, env_id, seq_id, 
+      cloud_project_id, seq_desc, min_val, 
+      max_val, seq_step)
+    values (#{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, #{seqId,jdbcType=INTEGER}, 
+      #{cloudProjectId,jdbcType=CHAR}, #{seqDesc,jdbcType=VARCHAR}, #{minVal,jdbcType=INTEGER}, 
+      #{maxVal,jdbcType=BIGINT}, #{seqStep,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMng" >
+    insert into est_drq_seq_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="seqId != null" >
+        seq_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="seqDesc != null" >
+        seq_desc,
+      </if>
+      <if test="minVal != null" >
+        min_val,
+      </if>
+      <if test="maxVal != null" >
+        max_val,
+      </if>
+      <if test="seqStep != null" >
+        seq_step,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="seqId != null" >
+        #{seqId,jdbcType=INTEGER},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="seqDesc != null" >
+        #{seqDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="minVal != null" >
+        #{minVal,jdbcType=INTEGER},
+      </if>
+      <if test="maxVal != null" >
+        #{maxVal,jdbcType=BIGINT},
+      </if>
+      <if test="seqStep != null" >
+        #{seqStep,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMng" >
+    update est_drq_seq_mng
+    <set >
+      <if test="seqDesc != null" >
+        seq_desc = #{seqDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="minVal != null" >
+        min_val = #{minVal,jdbcType=INTEGER},
+      </if>
+      <if test="maxVal != null" >
+        max_val = #{maxVal,jdbcType=BIGINT},
+      </if>
+      <if test="seqStep != null" >
+        seq_step = #{seqStep,jdbcType=INTEGER},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and seq_id = #{seqId,jdbcType=INTEGER}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDrqSeqMng" >
+    update est_drq_seq_mng
+    set seq_desc = #{seqDesc,jdbcType=VARCHAR},
+      min_val = #{minVal,jdbcType=INTEGER},
+      max_val = #{maxVal,jdbcType=BIGINT},
+      seq_step = #{seqStep,jdbcType=INTEGER}
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and seq_id = #{seqId,jdbcType=INTEGER}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

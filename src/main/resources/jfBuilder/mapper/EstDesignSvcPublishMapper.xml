@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignSvcPublishMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignSvcPublish" >
+    <id column="svc_publish_id" property="svcPublishId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="sub_bus_id" property="subBusId" jdbcType="CHAR" />
+    <result column="src_svc_id" property="srcSvcId" jdbcType="CHAR" />
+    <result column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <result column="svc_name" property="svcName" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    svc_publish_id, project_id, sub_bus_id, src_svc_id, dta_id, svc_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_svc_publish
+    where svc_publish_id = #{svcPublishId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_svc_publish
+    where svc_publish_id = #{svcPublishId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignSvcPublish" >
+    insert into est_design_svc_publish (svc_publish_id, project_id, sub_bus_id, 
+      src_svc_id, dta_id, svc_name)
+    values (#{svcPublishId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{subBusId,jdbcType=CHAR}, 
+      #{srcSvcId,jdbcType=CHAR}, #{dtaId,jdbcType=CHAR}, #{svcName,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignSvcPublish" >
+    insert into est_design_svc_publish
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcPublishId != null" >
+        svc_publish_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="subBusId != null" >
+        sub_bus_id,
+      </if>
+      <if test="srcSvcId != null" >
+        src_svc_id,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="svcName != null" >
+        svc_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcPublishId != null" >
+        #{svcPublishId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="subBusId != null" >
+        #{subBusId,jdbcType=CHAR},
+      </if>
+      <if test="srcSvcId != null" >
+        #{srcSvcId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="svcName != null" >
+        #{svcName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignSvcPublish" >
+    update est_design_svc_publish
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="subBusId != null" >
+        sub_bus_id = #{subBusId,jdbcType=CHAR},
+      </if>
+      <if test="srcSvcId != null" >
+        src_svc_id = #{srcSvcId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        dta_id = #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="svcName != null" >
+        svc_name = #{svcName,jdbcType=CHAR},
+      </if>
+    </set>
+    where svc_publish_id = #{svcPublishId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignSvcPublish" >
+    update est_design_svc_publish
+    set project_id = #{projectId,jdbcType=CHAR},
+      sub_bus_id = #{subBusId,jdbcType=CHAR},
+      src_svc_id = #{srcSvcId,jdbcType=CHAR},
+      dta_id = #{dtaId,jdbcType=CHAR},
+      svc_name = #{svcName,jdbcType=CHAR}
+    where svc_publish_id = #{svcPublishId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstProject" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="project_name" property="projectName" jdbcType="CHAR" />
+    <result column="project_desc" property="projectDesc" jdbcType="VARCHAR" />
+    <result column="package_name" property="packageName" jdbcType="VARCHAR" />
+    <result column="evt_svc_before" property="evtSvcBefore" jdbcType="CHAR" />
+    <result column="evt_svc_after" property="evtSvcAfter" jdbcType="CHAR" />
+    <result column="evt_svc_failed" property="evtSvcFailed" jdbcType="CHAR" />
+    <result column="evt_svc_end" property="evtSvcEnd" jdbcType="CHAR" />
+    <result column="evt_init_end" property="evtInitEnd" jdbcType="CHAR" />
+    <result column="evt_term_begin" property="evtTermBegin" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="run_version" property="runVersion" jdbcType="VARCHAR" />
+    <result column="def_date_time" property="defDateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, project_name, project_desc, package_name, evt_svc_before, evt_svc_after, 
+    evt_svc_failed, evt_svc_end, evt_init_end, evt_term_begin, crt_user, crt_date_time, 
+    lst_mod_user, lst_mod_date_time, run_version, def_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_project
+    where project_id = #{projectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_project
+    where project_id = #{projectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstProject" >
+    insert into est_project (project_id, project_name, project_desc, 
+      package_name, evt_svc_before, evt_svc_after, 
+      evt_svc_failed, evt_svc_end, evt_init_end, 
+      evt_term_begin, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, run_version, 
+      def_date_time)
+    values (#{projectId,jdbcType=CHAR}, #{projectName,jdbcType=CHAR}, #{projectDesc,jdbcType=VARCHAR}, 
+      #{packageName,jdbcType=VARCHAR}, #{evtSvcBefore,jdbcType=CHAR}, #{evtSvcAfter,jdbcType=CHAR}, 
+      #{evtSvcFailed,jdbcType=CHAR}, #{evtSvcEnd,jdbcType=CHAR}, #{evtInitEnd,jdbcType=CHAR}, 
+      #{evtTermBegin,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{runVersion,jdbcType=VARCHAR}, 
+      #{defDateTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstProject" >
+    insert into est_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectDesc != null" >
+        project_desc,
+      </if>
+      <if test="packageName != null" >
+        package_name,
+      </if>
+      <if test="evtSvcBefore != null" >
+        evt_svc_before,
+      </if>
+      <if test="evtSvcAfter != null" >
+        evt_svc_after,
+      </if>
+      <if test="evtSvcFailed != null" >
+        evt_svc_failed,
+      </if>
+      <if test="evtSvcEnd != null" >
+        evt_svc_end,
+      </if>
+      <if test="evtInitEnd != null" >
+        evt_init_end,
+      </if>
+      <if test="evtTermBegin != null" >
+        evt_term_begin,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="runVersion != null" >
+        run_version,
+      </if>
+      <if test="defDateTime != null" >
+        def_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=CHAR},
+      </if>
+      <if test="projectDesc != null" >
+        #{projectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="packageName != null" >
+        #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="evtSvcBefore != null" >
+        #{evtSvcBefore,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcAfter != null" >
+        #{evtSvcAfter,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcFailed != null" >
+        #{evtSvcFailed,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcEnd != null" >
+        #{evtSvcEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtInitEnd != null" >
+        #{evtInitEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtTermBegin != null" >
+        #{evtTermBegin,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="runVersion != null" >
+        #{runVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="defDateTime != null" >
+        #{defDateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstProject" >
+    update est_project
+    <set >
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=CHAR},
+      </if>
+      <if test="projectDesc != null" >
+        project_desc = #{projectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="packageName != null" >
+        package_name = #{packageName,jdbcType=VARCHAR},
+      </if>
+      <if test="evtSvcBefore != null" >
+        evt_svc_before = #{evtSvcBefore,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcAfter != null" >
+        evt_svc_after = #{evtSvcAfter,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcFailed != null" >
+        evt_svc_failed = #{evtSvcFailed,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcEnd != null" >
+        evt_svc_end = #{evtSvcEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtInitEnd != null" >
+        evt_init_end = #{evtInitEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtTermBegin != null" >
+        evt_term_begin = #{evtTermBegin,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="runVersion != null" >
+        run_version = #{runVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="defDateTime != null" >
+        def_date_time = #{defDateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstProject" >
+    update est_project
+    set project_name = #{projectName,jdbcType=CHAR},
+      project_desc = #{projectDesc,jdbcType=VARCHAR},
+      package_name = #{packageName,jdbcType=VARCHAR},
+      evt_svc_before = #{evtSvcBefore,jdbcType=CHAR},
+      evt_svc_after = #{evtSvcAfter,jdbcType=CHAR},
+      evt_svc_failed = #{evtSvcFailed,jdbcType=CHAR},
+      evt_svc_end = #{evtSvcEnd,jdbcType=CHAR},
+      evt_init_end = #{evtInitEnd,jdbcType=CHAR},
+      evt_term_begin = #{evtTermBegin,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      run_version = #{runVersion,jdbcType=VARCHAR},
+      def_date_time = #{defDateTime,jdbcType=VARCHAR}
+    where project_id = #{projectId,jdbcType=CHAR}
+  </update>
+</mapper>

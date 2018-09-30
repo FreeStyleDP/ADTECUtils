@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDsAliasItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDsAliasItemKey" >
+    <id column="ds_id" property="dsId" jdbcType="CHAR" />
+    <id column="datasrc_mng_id" property="datasrcMngId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDsAliasItemKey" >
+    delete from est_ds_alias_item
+    where ds_id = #{dsId,jdbcType=CHAR}
+      and datasrc_mng_id = #{datasrcMngId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDsAliasItemKey" >
+    insert into est_ds_alias_item (ds_id, datasrc_mng_id, env_id
+      )
+    values (#{dsId,jdbcType=CHAR}, #{datasrcMngId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDsAliasItemKey" >
+    insert into est_ds_alias_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dsId != null" >
+        ds_id,
+      </if>
+      <if test="datasrcMngId != null" >
+        datasrc_mng_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dsId != null" >
+        #{dsId,jdbcType=CHAR},
+      </if>
+      <if test="datasrcMngId != null" >
+        #{datasrcMngId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDsAliasMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDsAlias" >
+    <id column="ds_id" property="dsId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="ds_name" property="dsName" jdbcType="CHAR" />
+    <result column="ds_desc" property="dsDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ds_id, project_id, ds_name, ds_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_ds_alias
+    where ds_id = #{dsId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_ds_alias
+    where ds_id = #{dsId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDsAlias" >
+    insert into est_ds_alias (ds_id, project_id, ds_name, 
+      ds_desc)
+    values (#{dsId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{dsName,jdbcType=CHAR}, 
+      #{dsDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDsAlias" >
+    insert into est_ds_alias
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dsId != null" >
+        ds_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="dsName != null" >
+        ds_name,
+      </if>
+      <if test="dsDesc != null" >
+        ds_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dsId != null" >
+        #{dsId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="dsName != null" >
+        #{dsName,jdbcType=CHAR},
+      </if>
+      <if test="dsDesc != null" >
+        #{dsDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDsAlias" >
+    update est_ds_alias
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="dsName != null" >
+        ds_name = #{dsName,jdbcType=CHAR},
+      </if>
+      <if test="dsDesc != null" >
+        ds_desc = #{dsDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ds_id = #{dsId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDsAlias" >
+    update est_ds_alias
+    set project_id = #{projectId,jdbcType=CHAR},
+      ds_name = #{dsName,jdbcType=CHAR},
+      ds_desc = #{dsDesc,jdbcType=VARCHAR}
+    where ds_id = #{dsId,jdbcType=CHAR}
+  </update>
+</mapper>

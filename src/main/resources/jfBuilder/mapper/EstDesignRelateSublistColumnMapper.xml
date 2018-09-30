@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignRelateSublistColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignRelateSublistColumn" >
+    <id column="view_id" property="viewId" jdbcType="CHAR" />
+    <id column="table_id" property="tableId" jdbcType="CHAR" />
+    <id column="column_id" property="columnId" jdbcType="CHAR" />
+    <result column="column_rename" property="columnRename" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    view_id, table_id, column_id, column_rename
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDesignRelateSublistColumnKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_relate_sublist_column
+    where view_id = #{viewId,jdbcType=CHAR}
+      and table_id = #{tableId,jdbcType=CHAR}
+      and column_id = #{columnId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDesignRelateSublistColumnKey" >
+    delete from est_design_relate_sublist_column
+    where view_id = #{viewId,jdbcType=CHAR}
+      and table_id = #{tableId,jdbcType=CHAR}
+      and column_id = #{columnId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignRelateSublistColumn" >
+    insert into est_design_relate_sublist_column (view_id, table_id, column_id, 
+      column_rename)
+    values (#{viewId,jdbcType=CHAR}, #{tableId,jdbcType=CHAR}, #{columnId,jdbcType=CHAR}, 
+      #{columnRename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignRelateSublistColumn" >
+    insert into est_design_relate_sublist_column
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        view_id,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+      <if test="columnId != null" >
+        column_id,
+      </if>
+      <if test="columnRename != null" >
+        column_rename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        #{viewId,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="columnId != null" >
+        #{columnId,jdbcType=CHAR},
+      </if>
+      <if test="columnRename != null" >
+        #{columnRename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignRelateSublistColumn" >
+    update est_design_relate_sublist_column
+    <set >
+      <if test="columnRename != null" >
+        column_rename = #{columnRename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where view_id = #{viewId,jdbcType=CHAR}
+      and table_id = #{tableId,jdbcType=CHAR}
+      and column_id = #{columnId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignRelateSublistColumn" >
+    update est_design_relate_sublist_column
+    set column_rename = #{columnRename,jdbcType=VARCHAR}
+    where view_id = #{viewId,jdbcType=CHAR}
+      and table_id = #{tableId,jdbcType=CHAR}
+      and column_id = #{columnId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDbColumn" >
+    <id column="tabid" property="tabid" jdbcType="INTEGER" />
+    <id column="colno" property="colno" jdbcType="SMALLINT" />
+    <result column="colname" property="colname" jdbcType="CHAR" />
+    <result column="coltype" property="coltype" jdbcType="SMALLINT" />
+    <result column="collength" property="collength" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tabid, colno, colname, coltype, collength
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDbColumnKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_column
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and colno = #{colno,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDbColumnKey" >
+    delete from est_db_column
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and colno = #{colno,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDbColumn" >
+    insert into est_db_column (tabid, colno, colname, 
+      coltype, collength)
+    values (#{tabid,jdbcType=INTEGER}, #{colno,jdbcType=SMALLINT}, #{colname,jdbcType=CHAR}, 
+      #{coltype,jdbcType=SMALLINT}, #{collength,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDbColumn" >
+    insert into est_db_column
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="colno != null" >
+        colno,
+      </if>
+      <if test="colname != null" >
+        colname,
+      </if>
+      <if test="coltype != null" >
+        coltype,
+      </if>
+      <if test="collength != null" >
+        collength,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="colno != null" >
+        #{colno,jdbcType=SMALLINT},
+      </if>
+      <if test="colname != null" >
+        #{colname,jdbcType=CHAR},
+      </if>
+      <if test="coltype != null" >
+        #{coltype,jdbcType=SMALLINT},
+      </if>
+      <if test="collength != null" >
+        #{collength,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDbColumn" >
+    update est_db_column
+    <set >
+      <if test="colname != null" >
+        colname = #{colname,jdbcType=CHAR},
+      </if>
+      <if test="coltype != null" >
+        coltype = #{coltype,jdbcType=SMALLINT},
+      </if>
+      <if test="collength != null" >
+        collength = #{collength,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and colno = #{colno,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDbColumn" >
+    update est_db_column
+    set colname = #{colname,jdbcType=CHAR},
+      coltype = #{coltype,jdbcType=SMALLINT},
+      collength = #{collength,jdbcType=SMALLINT}
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and colno = #{colno,jdbcType=SMALLINT}
+  </update>
+</mapper>

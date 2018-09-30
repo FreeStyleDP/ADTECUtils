@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignImageMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignImage" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="design_id" property="designId" jdbcType="CHAR" />
+    <id column="design_tyep" property="designTyep" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.adtec.jfBuilder.entity.EstDesignImageWithBLOBs" extends="BaseResultMap" >
+    <result column="design_image" property="designImage" jdbcType="LONGVARBINARY" />
+    <result column="design_jpg_image" property="designJpgImage" jdbcType="LONGVARBINARY" />
+    <result column="design_diagram_image" property="designDiagramImage" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, design_id, design_tyep, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    design_image, design_jpg_image, design_diagram_image
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="com.adtec.jfBuilder.entity.EstDesignImageKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from est_design_image
+    where project_id = #{projectId,jdbcType=CHAR}
+      and design_id = #{designId,jdbcType=CHAR}
+      and design_tyep = #{designTyep,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignImageKey" >
+    delete from est_design_image
+    where project_id = #{projectId,jdbcType=CHAR}
+      and design_id = #{designId,jdbcType=CHAR}
+      and design_tyep = #{designTyep,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignImageWithBLOBs" >
+    insert into est_design_image (project_id, design_id, design_tyep, 
+      crt_user, crt_date_time, lst_mod_user, 
+      lst_mod_date_time, design_image, design_jpg_image, 
+      design_diagram_image)
+    values (#{projectId,jdbcType=CHAR}, #{designId,jdbcType=CHAR}, #{designTyep,jdbcType=CHAR}, 
+      #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, 
+      #{lstModDateTime,jdbcType=CHAR}, #{designImage,jdbcType=LONGVARBINARY}, #{designJpgImage,jdbcType=LONGVARBINARY}, 
+      #{designDiagramImage,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignImageWithBLOBs" >
+    insert into est_design_image
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="designId != null" >
+        design_id,
+      </if>
+      <if test="designTyep != null" >
+        design_tyep,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="designImage != null" >
+        design_image,
+      </if>
+      <if test="designJpgImage != null" >
+        design_jpg_image,
+      </if>
+      <if test="designDiagramImage != null" >
+        design_diagram_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="designId != null" >
+        #{designId,jdbcType=CHAR},
+      </if>
+      <if test="designTyep != null" >
+        #{designTyep,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="designImage != null" >
+        #{designImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="designJpgImage != null" >
+        #{designJpgImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="designDiagramImage != null" >
+        #{designDiagramImage,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDesignImageWithBLOBs" >
+    update est_design_image
+    <set >
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="designImage != null" >
+        design_image = #{designImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="designJpgImage != null" >
+        design_jpg_image = #{designJpgImage,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="designDiagramImage != null" >
+        design_diagram_image = #{designDiagramImage,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=CHAR}
+      and design_id = #{designId,jdbcType=CHAR}
+      and design_tyep = #{designTyep,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adtec.jfBuilder.entity.EstDesignImageWithBLOBs" >
+    update est_design_image
+    set crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      design_image = #{designImage,jdbcType=LONGVARBINARY},
+      design_jpg_image = #{designJpgImage,jdbcType=LONGVARBINARY},
+      design_diagram_image = #{designDiagramImage,jdbcType=LONGVARBINARY}
+    where project_id = #{projectId,jdbcType=CHAR}
+      and design_id = #{designId,jdbcType=CHAR}
+      and design_tyep = #{designTyep,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignImage" >
+    update est_design_image
+    set crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where project_id = #{projectId,jdbcType=CHAR}
+      and design_id = #{designId,jdbcType=CHAR}
+      and design_tyep = #{designTyep,jdbcType=CHAR}
+  </update>
+</mapper>

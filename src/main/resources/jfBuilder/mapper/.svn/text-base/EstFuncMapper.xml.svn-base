@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFuncMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstFunc" >
+    <id column="func_id" property="funcId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <result column="func_name" property="funcName" jdbcType="CHAR" />
+    <result column="func_desc" property="funcDesc" jdbcType="VARCHAR" />
+    <result column="func_type" property="funcType" jdbcType="CHAR" />
+    <result column="retval_type" property="retvalType" jdbcType="CHAR" />
+    <result column="nochkret" property="nochkret" jdbcType="SMALLINT" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    func_id, relation_id, dta_id, func_name, func_desc, func_type, retval_type, nochkret, 
+    resource_id, grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_func
+    where func_id = #{funcId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_func
+    where func_id = #{funcId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstFunc" >
+    insert into est_func (func_id, relation_id, dta_id, 
+      func_name, func_desc, func_type, 
+      retval_type, nochkret, resource_id, 
+      grp_id, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time)
+    values (#{funcId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, #{dtaId,jdbcType=CHAR}, 
+      #{funcName,jdbcType=CHAR}, #{funcDesc,jdbcType=VARCHAR}, #{funcType,jdbcType=CHAR}, 
+      #{retvalType,jdbcType=CHAR}, #{nochkret,jdbcType=SMALLINT}, #{resourceId,jdbcType=CHAR}, 
+      #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstFunc" >
+    insert into est_func
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="funcId != null" >
+        func_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="funcName != null" >
+        func_name,
+      </if>
+      <if test="funcDesc != null" >
+        func_desc,
+      </if>
+      <if test="funcType != null" >
+        func_type,
+      </if>
+      <if test="retvalType != null" >
+        retval_type,
+      </if>
+      <if test="nochkret != null" >
+        nochkret,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="funcId != null" >
+        #{funcId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="funcName != null" >
+        #{funcName,jdbcType=CHAR},
+      </if>
+      <if test="funcDesc != null" >
+        #{funcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="funcType != null" >
+        #{funcType,jdbcType=CHAR},
+      </if>
+      <if test="retvalType != null" >
+        #{retvalType,jdbcType=CHAR},
+      </if>
+      <if test="nochkret != null" >
+        #{nochkret,jdbcType=SMALLINT},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstFunc" >
+    update est_func
+    <set >
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        dta_id = #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="funcName != null" >
+        func_name = #{funcName,jdbcType=CHAR},
+      </if>
+      <if test="funcDesc != null" >
+        func_desc = #{funcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="funcType != null" >
+        func_type = #{funcType,jdbcType=CHAR},
+      </if>
+      <if test="retvalType != null" >
+        retval_type = #{retvalType,jdbcType=CHAR},
+      </if>
+      <if test="nochkret != null" >
+        nochkret = #{nochkret,jdbcType=SMALLINT},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where func_id = #{funcId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstFunc" >
+    update est_func
+    set relation_id = #{relationId,jdbcType=CHAR},
+      dta_id = #{dtaId,jdbcType=CHAR},
+      func_name = #{funcName,jdbcType=CHAR},
+      func_desc = #{funcDesc,jdbcType=VARCHAR},
+      func_type = #{funcType,jdbcType=CHAR},
+      retval_type = #{retvalType,jdbcType=CHAR},
+      nochkret = #{nochkret,jdbcType=SMALLINT},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where func_id = #{funcId,jdbcType=CHAR}
+  </update>
+</mapper>

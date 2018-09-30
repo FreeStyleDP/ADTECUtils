@@ -1,0 +1,1158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDtaMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDta" >
+    <id column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="dta_name" property="dtaName" jdbcType="CHAR" />
+    <result column="dta_desc" property="dtaDesc" jdbcType="VARCHAR" />
+    <result column="cons_type" property="consType" jdbcType="CHAR" />
+    <result column="protocol_type" property="protocolType" jdbcType="CHAR" />
+    <result column="request_elem_id" property="requestElemId" jdbcType="CHAR" />
+    <result column="response_elem_id" property="responseElemId" jdbcType="CHAR" />
+    <result column="failed_elem_id" property="failedElemId" jdbcType="CHAR" />
+    <result column="evt_svc_code" property="evtSvcCode" jdbcType="CHAR" />
+    <result column="role_type" property="roleType" jdbcType="CHAR" />
+    <result column="db_open" property="dbOpen" jdbcType="CHAR" />
+    <result column="cnct_type" property="cnctType" jdbcType="CHAR" />
+    <result column="time_out" property="timeOut" jdbcType="INTEGER" />
+    <result column="err_fmt" property="errFmt" jdbcType="CHAR" />
+    <result column="i_prtc_fmt" property="iPrtcFmt" jdbcType="CHAR" />
+    <result column="o_prtc_fmt" property="oPrtcFmt" jdbcType="CHAR" />
+    <result column="err_opn" property="errOpn" jdbcType="CHAR" />
+    <result column="i_fmt" property="iFmt" jdbcType="CHAR" />
+    <result column="o_fmt" property="oFmt" jdbcType="CHAR" />
+    <result column="session" property="session" jdbcType="CHAR" />
+    <result column="revs_init" property="revsInit" jdbcType="CHAR" />
+    <result column="revs_succ" property="revsSucc" jdbcType="CHAR" />
+    <result column="revs_fail" property="revsFail" jdbcType="CHAR" />
+    <result column="revs_cond" property="revsCond" jdbcType="CHAR" />
+    <result column="max_revs_num" property="maxRevsNum" jdbcType="SMALLINT" />
+    <result column="comps_init" property="compsInit" jdbcType="CHAR" />
+    <result column="comps_succ" property="compsSucc" jdbcType="CHAR" />
+    <result column="comps_fail" property="compsFail" jdbcType="CHAR" />
+    <result column="comps_cond" property="compsCond" jdbcType="CHAR" />
+    <result column="max_comps_num" property="maxCompsNum" jdbcType="SMALLINT" />
+    <result column="evt_init_end" property="evtInitEnd" jdbcType="CHAR" />
+    <result column="evt_term_begin" property="evtTermBegin" jdbcType="CHAR" />
+    <result column="evt_iprtcfmt_begin" property="evtIprtcfmtBegin" jdbcType="CHAR" />
+    <result column="evt_iprtcfmt_end" property="evtIprtcfmtEnd" jdbcType="CHAR" />
+    <result column="evt_oprtcfmt_begin" property="evtOprtcfmtBegin" jdbcType="CHAR" />
+    <result column="evt_oprtcfmt_end" property="evtOprtcfmtEnd" jdbcType="CHAR" />
+    <result column="evt_ifmt_begin" property="evtIfmtBegin" jdbcType="CHAR" />
+    <result column="evt_ifmt_end" property="evtIfmtEnd" jdbcType="CHAR" />
+    <result column="evt_ofmt_begin" property="evtOfmtBegin" jdbcType="CHAR" />
+    <result column="evt_ofmt_term" property="evtOfmtTerm" jdbcType="CHAR" />
+    <result column="evt_acall_begin" property="evtAcallBegin" jdbcType="CHAR" />
+    <result column="evt_acall_end" property="evtAcallEnd" jdbcType="CHAR" />
+    <result column="evt_return_begin" property="evtReturnBegin" jdbcType="CHAR" />
+    <result column="evt_return_end" property="evtReturnEnd" jdbcType="CHAR" />
+    <result column="evt_convsvc_begin" property="evtConvsvcBegin" jdbcType="CHAR" />
+    <result column="evt_convsvc_end" property="evtConvsvcEnd" jdbcType="CHAR" />
+    <result column="evt_pfile_begin" property="evtPfileBegin" jdbcType="CHAR" />
+    <result column="evt_pfile_end" property="evtPfileEnd" jdbcType="CHAR" />
+    <result column="evt_bfile_begin" property="evtBfileBegin" jdbcType="CHAR" />
+    <result column="evt_bfile_end" property="evtBfileEnd" jdbcType="CHAR" />
+    <result column="evt_sfile_begin" property="evtSfileBegin" jdbcType="CHAR" />
+    <result column="evt_sfile_end" property="evtSfileEnd" jdbcType="CHAR" />
+    <result column="evt_rfile_begin" property="evtRfileBegin" jdbcType="CHAR" />
+    <result column="evt_rfile_end" property="evtRfileEnd" jdbcType="CHAR" />
+    <result column="com_type" property="comType" jdbcType="CHAR" />
+    <result column="dta_factory" property="dtaFactory" jdbcType="VARCHAR" />
+    <result column="dta_flow" property="dtaFlow" jdbcType="VARCHAR" />
+    <result column="com_factory_conf" property="comFactoryConf" jdbcType="CHAR" />
+    <result column="fmt_factory_conf" property="fmtFactoryConf" jdbcType="CHAR" />
+    <result column="xml_factory_conf" property="xmlFactoryConf" jdbcType="CHAR" />
+    <result column="json_factory_conf" property="jsonFactoryConf" jdbcType="CHAR" />
+    <result column="soap_factory_conf" property="soapFactoryConf" jdbcType="CHAR" />
+    <result column="sign_8583_factory_conf" property="sign8583FactoryConf" jdbcType="CHAR" />
+    <result column="sign_fml_factory_conf" property="signFmlFactoryConf" jdbcType="CHAR" />
+    <result column="sign_http_factory_conf" property="signHttpFactoryConf" jdbcType="CHAR" />
+    <result column="sign_http_servlet_factory_conf" property="signHttpServletFactoryConf" jdbcType="CHAR" />
+    <result column="syserr_ok" property="syserrOk" jdbcType="CHAR" />
+    <result column="syserr_app" property="syserrApp" jdbcType="CHAR" />
+    <result column="syserr_req" property="syserrReq" jdbcType="CHAR" />
+    <result column="syserr_ack" property="syserrAck" jdbcType="CHAR" />
+    <result column="syserr_busy" property="syserrBusy" jdbcType="CHAR" />
+    <result column="belong_dta" property="belongDta" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="pricalc_expr" property="pricalcExpr" jdbcType="CHAR" />
+    <result column="serv_expr" property="servExpr" jdbcType="CHAR" />
+    <result column="cust_expr" property="custExpr" jdbcType="CHAR" />
+    <result column="send_hb_fmt" property="sendHbFmt" jdbcType="CHAR" />
+    <result column="recv_hb_fmt" property="recvHbFmt" jdbcType="CHAR" />
+    <result column="request_hb_fmt" property="requestHbFmt" jdbcType="CHAR" />
+    <result column="response_hb_fmt" property="responseHbFmt" jdbcType="CHAR" />
+    <result column="hbfmt_time" property="hbfmtTime" jdbcType="INTEGER" />
+    <result column="hbfmt_expr" property="hbfmtExpr" jdbcType="CHAR" />
+    <result column="wsdl_name_space" property="wsdlNameSpace" jdbcType="CHAR" />
+    <result column="wsdl_ns" property="wsdlNs" jdbcType="CHAR" />
+    <result column="fmt_send_begin" property="fmtSendBegin" jdbcType="CHAR" />
+    <result column="fmt_recv_begin" property="fmtRecvBegin" jdbcType="CHAR" />
+    <result column="soap_binding" property="soapBinding" jdbcType="CHAR" />
+    <result column="is_have_prefix" property="isHavePrefix" jdbcType="CHAR" />
+    <result column="encode" property="encode" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dta_id, project_id, relation_id, dta_name, dta_desc, cons_type, protocol_type, request_elem_id, 
+    response_elem_id, failed_elem_id, evt_svc_code, role_type, db_open, cnct_type, time_out, 
+    err_fmt, i_prtc_fmt, o_prtc_fmt, err_opn, i_fmt, o_fmt, session, revs_init, revs_succ, 
+    revs_fail, revs_cond, max_revs_num, comps_init, comps_succ, comps_fail, comps_cond, 
+    max_comps_num, evt_init_end, evt_term_begin, evt_iprtcfmt_begin, evt_iprtcfmt_end, 
+    evt_oprtcfmt_begin, evt_oprtcfmt_end, evt_ifmt_begin, evt_ifmt_end, evt_ofmt_begin, 
+    evt_ofmt_term, evt_acall_begin, evt_acall_end, evt_return_begin, evt_return_end, 
+    evt_convsvc_begin, evt_convsvc_end, evt_pfile_begin, evt_pfile_end, evt_bfile_begin, 
+    evt_bfile_end, evt_sfile_begin, evt_sfile_end, evt_rfile_begin, evt_rfile_end, com_type, 
+    dta_factory, dta_flow, com_factory_conf, fmt_factory_conf, xml_factory_conf, json_factory_conf, 
+    soap_factory_conf, sign_8583_factory_conf, sign_fml_factory_conf, sign_http_factory_conf, 
+    sign_http_servlet_factory_conf, syserr_ok, syserr_app, syserr_req, syserr_ack, syserr_busy, 
+    belong_dta, grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time, pricalc_expr, 
+    serv_expr, cust_expr, send_hb_fmt, recv_hb_fmt, request_hb_fmt, response_hb_fmt, 
+    hbfmt_time, hbfmt_expr, wsdl_name_space, wsdl_ns, fmt_send_begin, fmt_recv_begin, 
+    soap_binding, is_have_prefix, encode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_dta
+    where dta_id = #{dtaId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_dta
+    where dta_id = #{dtaId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDta" >
+    insert into est_dta (dta_id, project_id, relation_id, 
+      dta_name, dta_desc, cons_type, 
+      protocol_type, request_elem_id, response_elem_id, 
+      failed_elem_id, evt_svc_code, role_type, 
+      db_open, cnct_type, time_out, 
+      err_fmt, i_prtc_fmt, o_prtc_fmt, 
+      err_opn, i_fmt, o_fmt, session, 
+      revs_init, revs_succ, revs_fail, 
+      revs_cond, max_revs_num, comps_init, 
+      comps_succ, comps_fail, comps_cond, 
+      max_comps_num, evt_init_end, evt_term_begin, 
+      evt_iprtcfmt_begin, evt_iprtcfmt_end, evt_oprtcfmt_begin, 
+      evt_oprtcfmt_end, evt_ifmt_begin, evt_ifmt_end, 
+      evt_ofmt_begin, evt_ofmt_term, evt_acall_begin, 
+      evt_acall_end, evt_return_begin, evt_return_end, 
+      evt_convsvc_begin, evt_convsvc_end, evt_pfile_begin, 
+      evt_pfile_end, evt_bfile_begin, evt_bfile_end, 
+      evt_sfile_begin, evt_sfile_end, evt_rfile_begin, 
+      evt_rfile_end, com_type, dta_factory, 
+      dta_flow, com_factory_conf, fmt_factory_conf, 
+      xml_factory_conf, json_factory_conf, soap_factory_conf, 
+      sign_8583_factory_conf, sign_fml_factory_conf, sign_http_factory_conf, 
+      sign_http_servlet_factory_conf, syserr_ok, syserr_app, 
+      syserr_req, syserr_ack, syserr_busy, 
+      belong_dta, grp_id, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, pricalc_expr, 
+      serv_expr, cust_expr, send_hb_fmt, 
+      recv_hb_fmt, request_hb_fmt, response_hb_fmt, 
+      hbfmt_time, hbfmt_expr, wsdl_name_space, 
+      wsdl_ns, fmt_send_begin, fmt_recv_begin, 
+      soap_binding, is_have_prefix, encode
+      )
+    values (#{dtaId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{dtaName,jdbcType=CHAR}, #{dtaDesc,jdbcType=VARCHAR}, #{consType,jdbcType=CHAR}, 
+      #{protocolType,jdbcType=CHAR}, #{requestElemId,jdbcType=CHAR}, #{responseElemId,jdbcType=CHAR}, 
+      #{failedElemId,jdbcType=CHAR}, #{evtSvcCode,jdbcType=CHAR}, #{roleType,jdbcType=CHAR}, 
+      #{dbOpen,jdbcType=CHAR}, #{cnctType,jdbcType=CHAR}, #{timeOut,jdbcType=INTEGER}, 
+      #{errFmt,jdbcType=CHAR}, #{iPrtcFmt,jdbcType=CHAR}, #{oPrtcFmt,jdbcType=CHAR}, 
+      #{errOpn,jdbcType=CHAR}, #{iFmt,jdbcType=CHAR}, #{oFmt,jdbcType=CHAR}, #{session,jdbcType=CHAR}, 
+      #{revsInit,jdbcType=CHAR}, #{revsSucc,jdbcType=CHAR}, #{revsFail,jdbcType=CHAR}, 
+      #{revsCond,jdbcType=CHAR}, #{maxRevsNum,jdbcType=SMALLINT}, #{compsInit,jdbcType=CHAR}, 
+      #{compsSucc,jdbcType=CHAR}, #{compsFail,jdbcType=CHAR}, #{compsCond,jdbcType=CHAR}, 
+      #{maxCompsNum,jdbcType=SMALLINT}, #{evtInitEnd,jdbcType=CHAR}, #{evtTermBegin,jdbcType=CHAR}, 
+      #{evtIprtcfmtBegin,jdbcType=CHAR}, #{evtIprtcfmtEnd,jdbcType=CHAR}, #{evtOprtcfmtBegin,jdbcType=CHAR}, 
+      #{evtOprtcfmtEnd,jdbcType=CHAR}, #{evtIfmtBegin,jdbcType=CHAR}, #{evtIfmtEnd,jdbcType=CHAR}, 
+      #{evtOfmtBegin,jdbcType=CHAR}, #{evtOfmtTerm,jdbcType=CHAR}, #{evtAcallBegin,jdbcType=CHAR}, 
+      #{evtAcallEnd,jdbcType=CHAR}, #{evtReturnBegin,jdbcType=CHAR}, #{evtReturnEnd,jdbcType=CHAR}, 
+      #{evtConvsvcBegin,jdbcType=CHAR}, #{evtConvsvcEnd,jdbcType=CHAR}, #{evtPfileBegin,jdbcType=CHAR}, 
+      #{evtPfileEnd,jdbcType=CHAR}, #{evtBfileBegin,jdbcType=CHAR}, #{evtBfileEnd,jdbcType=CHAR}, 
+      #{evtSfileBegin,jdbcType=CHAR}, #{evtSfileEnd,jdbcType=CHAR}, #{evtRfileBegin,jdbcType=CHAR}, 
+      #{evtRfileEnd,jdbcType=CHAR}, #{comType,jdbcType=CHAR}, #{dtaFactory,jdbcType=VARCHAR}, 
+      #{dtaFlow,jdbcType=VARCHAR}, #{comFactoryConf,jdbcType=CHAR}, #{fmtFactoryConf,jdbcType=CHAR}, 
+      #{xmlFactoryConf,jdbcType=CHAR}, #{jsonFactoryConf,jdbcType=CHAR}, #{soapFactoryConf,jdbcType=CHAR}, 
+      #{sign8583FactoryConf,jdbcType=CHAR}, #{signFmlFactoryConf,jdbcType=CHAR}, #{signHttpFactoryConf,jdbcType=CHAR}, 
+      #{signHttpServletFactoryConf,jdbcType=CHAR}, #{syserrOk,jdbcType=CHAR}, #{syserrApp,jdbcType=CHAR}, 
+      #{syserrReq,jdbcType=CHAR}, #{syserrAck,jdbcType=CHAR}, #{syserrBusy,jdbcType=CHAR}, 
+      #{belongDta,jdbcType=CHAR}, #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{pricalcExpr,jdbcType=CHAR}, 
+      #{servExpr,jdbcType=CHAR}, #{custExpr,jdbcType=CHAR}, #{sendHbFmt,jdbcType=CHAR}, 
+      #{recvHbFmt,jdbcType=CHAR}, #{requestHbFmt,jdbcType=CHAR}, #{responseHbFmt,jdbcType=CHAR}, 
+      #{hbfmtTime,jdbcType=INTEGER}, #{hbfmtExpr,jdbcType=CHAR}, #{wsdlNameSpace,jdbcType=CHAR}, 
+      #{wsdlNs,jdbcType=CHAR}, #{fmtSendBegin,jdbcType=CHAR}, #{fmtRecvBegin,jdbcType=CHAR}, 
+      #{soapBinding,jdbcType=CHAR}, #{isHavePrefix,jdbcType=CHAR}, #{encode,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDta" >
+    insert into est_dta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="dtaName != null" >
+        dta_name,
+      </if>
+      <if test="dtaDesc != null" >
+        dta_desc,
+      </if>
+      <if test="consType != null" >
+        cons_type,
+      </if>
+      <if test="protocolType != null" >
+        protocol_type,
+      </if>
+      <if test="requestElemId != null" >
+        request_elem_id,
+      </if>
+      <if test="responseElemId != null" >
+        response_elem_id,
+      </if>
+      <if test="failedElemId != null" >
+        failed_elem_id,
+      </if>
+      <if test="evtSvcCode != null" >
+        evt_svc_code,
+      </if>
+      <if test="roleType != null" >
+        role_type,
+      </if>
+      <if test="dbOpen != null" >
+        db_open,
+      </if>
+      <if test="cnctType != null" >
+        cnct_type,
+      </if>
+      <if test="timeOut != null" >
+        time_out,
+      </if>
+      <if test="errFmt != null" >
+        err_fmt,
+      </if>
+      <if test="iPrtcFmt != null" >
+        i_prtc_fmt,
+      </if>
+      <if test="oPrtcFmt != null" >
+        o_prtc_fmt,
+      </if>
+      <if test="errOpn != null" >
+        err_opn,
+      </if>
+      <if test="iFmt != null" >
+        i_fmt,
+      </if>
+      <if test="oFmt != null" >
+        o_fmt,
+      </if>
+      <if test="session != null" >
+        session,
+      </if>
+      <if test="revsInit != null" >
+        revs_init,
+      </if>
+      <if test="revsSucc != null" >
+        revs_succ,
+      </if>
+      <if test="revsFail != null" >
+        revs_fail,
+      </if>
+      <if test="revsCond != null" >
+        revs_cond,
+      </if>
+      <if test="maxRevsNum != null" >
+        max_revs_num,
+      </if>
+      <if test="compsInit != null" >
+        comps_init,
+      </if>
+      <if test="compsSucc != null" >
+        comps_succ,
+      </if>
+      <if test="compsFail != null" >
+        comps_fail,
+      </if>
+      <if test="compsCond != null" >
+        comps_cond,
+      </if>
+      <if test="maxCompsNum != null" >
+        max_comps_num,
+      </if>
+      <if test="evtInitEnd != null" >
+        evt_init_end,
+      </if>
+      <if test="evtTermBegin != null" >
+        evt_term_begin,
+      </if>
+      <if test="evtIprtcfmtBegin != null" >
+        evt_iprtcfmt_begin,
+      </if>
+      <if test="evtIprtcfmtEnd != null" >
+        evt_iprtcfmt_end,
+      </if>
+      <if test="evtOprtcfmtBegin != null" >
+        evt_oprtcfmt_begin,
+      </if>
+      <if test="evtOprtcfmtEnd != null" >
+        evt_oprtcfmt_end,
+      </if>
+      <if test="evtIfmtBegin != null" >
+        evt_ifmt_begin,
+      </if>
+      <if test="evtIfmtEnd != null" >
+        evt_ifmt_end,
+      </if>
+      <if test="evtOfmtBegin != null" >
+        evt_ofmt_begin,
+      </if>
+      <if test="evtOfmtTerm != null" >
+        evt_ofmt_term,
+      </if>
+      <if test="evtAcallBegin != null" >
+        evt_acall_begin,
+      </if>
+      <if test="evtAcallEnd != null" >
+        evt_acall_end,
+      </if>
+      <if test="evtReturnBegin != null" >
+        evt_return_begin,
+      </if>
+      <if test="evtReturnEnd != null" >
+        evt_return_end,
+      </if>
+      <if test="evtConvsvcBegin != null" >
+        evt_convsvc_begin,
+      </if>
+      <if test="evtConvsvcEnd != null" >
+        evt_convsvc_end,
+      </if>
+      <if test="evtPfileBegin != null" >
+        evt_pfile_begin,
+      </if>
+      <if test="evtPfileEnd != null" >
+        evt_pfile_end,
+      </if>
+      <if test="evtBfileBegin != null" >
+        evt_bfile_begin,
+      </if>
+      <if test="evtBfileEnd != null" >
+        evt_bfile_end,
+      </if>
+      <if test="evtSfileBegin != null" >
+        evt_sfile_begin,
+      </if>
+      <if test="evtSfileEnd != null" >
+        evt_sfile_end,
+      </if>
+      <if test="evtRfileBegin != null" >
+        evt_rfile_begin,
+      </if>
+      <if test="evtRfileEnd != null" >
+        evt_rfile_end,
+      </if>
+      <if test="comType != null" >
+        com_type,
+      </if>
+      <if test="dtaFactory != null" >
+        dta_factory,
+      </if>
+      <if test="dtaFlow != null" >
+        dta_flow,
+      </if>
+      <if test="comFactoryConf != null" >
+        com_factory_conf,
+      </if>
+      <if test="fmtFactoryConf != null" >
+        fmt_factory_conf,
+      </if>
+      <if test="xmlFactoryConf != null" >
+        xml_factory_conf,
+      </if>
+      <if test="jsonFactoryConf != null" >
+        json_factory_conf,
+      </if>
+      <if test="soapFactoryConf != null" >
+        soap_factory_conf,
+      </if>
+      <if test="sign8583FactoryConf != null" >
+        sign_8583_factory_conf,
+      </if>
+      <if test="signFmlFactoryConf != null" >
+        sign_fml_factory_conf,
+      </if>
+      <if test="signHttpFactoryConf != null" >
+        sign_http_factory_conf,
+      </if>
+      <if test="signHttpServletFactoryConf != null" >
+        sign_http_servlet_factory_conf,
+      </if>
+      <if test="syserrOk != null" >
+        syserr_ok,
+      </if>
+      <if test="syserrApp != null" >
+        syserr_app,
+      </if>
+      <if test="syserrReq != null" >
+        syserr_req,
+      </if>
+      <if test="syserrAck != null" >
+        syserr_ack,
+      </if>
+      <if test="syserrBusy != null" >
+        syserr_busy,
+      </if>
+      <if test="belongDta != null" >
+        belong_dta,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="pricalcExpr != null" >
+        pricalc_expr,
+      </if>
+      <if test="servExpr != null" >
+        serv_expr,
+      </if>
+      <if test="custExpr != null" >
+        cust_expr,
+      </if>
+      <if test="sendHbFmt != null" >
+        send_hb_fmt,
+      </if>
+      <if test="recvHbFmt != null" >
+        recv_hb_fmt,
+      </if>
+      <if test="requestHbFmt != null" >
+        request_hb_fmt,
+      </if>
+      <if test="responseHbFmt != null" >
+        response_hb_fmt,
+      </if>
+      <if test="hbfmtTime != null" >
+        hbfmt_time,
+      </if>
+      <if test="hbfmtExpr != null" >
+        hbfmt_expr,
+      </if>
+      <if test="wsdlNameSpace != null" >
+        wsdl_name_space,
+      </if>
+      <if test="wsdlNs != null" >
+        wsdl_ns,
+      </if>
+      <if test="fmtSendBegin != null" >
+        fmt_send_begin,
+      </if>
+      <if test="fmtRecvBegin != null" >
+        fmt_recv_begin,
+      </if>
+      <if test="soapBinding != null" >
+        soap_binding,
+      </if>
+      <if test="isHavePrefix != null" >
+        is_have_prefix,
+      </if>
+      <if test="encode != null" >
+        encode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dtaName != null" >
+        #{dtaName,jdbcType=CHAR},
+      </if>
+      <if test="dtaDesc != null" >
+        #{dtaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="consType != null" >
+        #{consType,jdbcType=CHAR},
+      </if>
+      <if test="protocolType != null" >
+        #{protocolType,jdbcType=CHAR},
+      </if>
+      <if test="requestElemId != null" >
+        #{requestElemId,jdbcType=CHAR},
+      </if>
+      <if test="responseElemId != null" >
+        #{responseElemId,jdbcType=CHAR},
+      </if>
+      <if test="failedElemId != null" >
+        #{failedElemId,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcCode != null" >
+        #{evtSvcCode,jdbcType=CHAR},
+      </if>
+      <if test="roleType != null" >
+        #{roleType,jdbcType=CHAR},
+      </if>
+      <if test="dbOpen != null" >
+        #{dbOpen,jdbcType=CHAR},
+      </if>
+      <if test="cnctType != null" >
+        #{cnctType,jdbcType=CHAR},
+      </if>
+      <if test="timeOut != null" >
+        #{timeOut,jdbcType=INTEGER},
+      </if>
+      <if test="errFmt != null" >
+        #{errFmt,jdbcType=CHAR},
+      </if>
+      <if test="iPrtcFmt != null" >
+        #{iPrtcFmt,jdbcType=CHAR},
+      </if>
+      <if test="oPrtcFmt != null" >
+        #{oPrtcFmt,jdbcType=CHAR},
+      </if>
+      <if test="errOpn != null" >
+        #{errOpn,jdbcType=CHAR},
+      </if>
+      <if test="iFmt != null" >
+        #{iFmt,jdbcType=CHAR},
+      </if>
+      <if test="oFmt != null" >
+        #{oFmt,jdbcType=CHAR},
+      </if>
+      <if test="session != null" >
+        #{session,jdbcType=CHAR},
+      </if>
+      <if test="revsInit != null" >
+        #{revsInit,jdbcType=CHAR},
+      </if>
+      <if test="revsSucc != null" >
+        #{revsSucc,jdbcType=CHAR},
+      </if>
+      <if test="revsFail != null" >
+        #{revsFail,jdbcType=CHAR},
+      </if>
+      <if test="revsCond != null" >
+        #{revsCond,jdbcType=CHAR},
+      </if>
+      <if test="maxRevsNum != null" >
+        #{maxRevsNum,jdbcType=SMALLINT},
+      </if>
+      <if test="compsInit != null" >
+        #{compsInit,jdbcType=CHAR},
+      </if>
+      <if test="compsSucc != null" >
+        #{compsSucc,jdbcType=CHAR},
+      </if>
+      <if test="compsFail != null" >
+        #{compsFail,jdbcType=CHAR},
+      </if>
+      <if test="compsCond != null" >
+        #{compsCond,jdbcType=CHAR},
+      </if>
+      <if test="maxCompsNum != null" >
+        #{maxCompsNum,jdbcType=SMALLINT},
+      </if>
+      <if test="evtInitEnd != null" >
+        #{evtInitEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtTermBegin != null" >
+        #{evtTermBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIprtcfmtBegin != null" >
+        #{evtIprtcfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIprtcfmtEnd != null" >
+        #{evtIprtcfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtOprtcfmtBegin != null" >
+        #{evtOprtcfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtOprtcfmtEnd != null" >
+        #{evtOprtcfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtIfmtBegin != null" >
+        #{evtIfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIfmtEnd != null" >
+        #{evtIfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtOfmtBegin != null" >
+        #{evtOfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtOfmtTerm != null" >
+        #{evtOfmtTerm,jdbcType=CHAR},
+      </if>
+      <if test="evtAcallBegin != null" >
+        #{evtAcallBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtAcallEnd != null" >
+        #{evtAcallEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtReturnBegin != null" >
+        #{evtReturnBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtReturnEnd != null" >
+        #{evtReturnEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtConvsvcBegin != null" >
+        #{evtConvsvcBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtConvsvcEnd != null" >
+        #{evtConvsvcEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtPfileBegin != null" >
+        #{evtPfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtPfileEnd != null" >
+        #{evtPfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtBfileBegin != null" >
+        #{evtBfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtBfileEnd != null" >
+        #{evtBfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtSfileBegin != null" >
+        #{evtSfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtSfileEnd != null" >
+        #{evtSfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtRfileBegin != null" >
+        #{evtRfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtRfileEnd != null" >
+        #{evtRfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="comType != null" >
+        #{comType,jdbcType=CHAR},
+      </if>
+      <if test="dtaFactory != null" >
+        #{dtaFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="dtaFlow != null" >
+        #{dtaFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="comFactoryConf != null" >
+        #{comFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="fmtFactoryConf != null" >
+        #{fmtFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="xmlFactoryConf != null" >
+        #{xmlFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="jsonFactoryConf != null" >
+        #{jsonFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="soapFactoryConf != null" >
+        #{soapFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="sign8583FactoryConf != null" >
+        #{sign8583FactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signFmlFactoryConf != null" >
+        #{signFmlFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signHttpFactoryConf != null" >
+        #{signHttpFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signHttpServletFactoryConf != null" >
+        #{signHttpServletFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="syserrOk != null" >
+        #{syserrOk,jdbcType=CHAR},
+      </if>
+      <if test="syserrApp != null" >
+        #{syserrApp,jdbcType=CHAR},
+      </if>
+      <if test="syserrReq != null" >
+        #{syserrReq,jdbcType=CHAR},
+      </if>
+      <if test="syserrAck != null" >
+        #{syserrAck,jdbcType=CHAR},
+      </if>
+      <if test="syserrBusy != null" >
+        #{syserrBusy,jdbcType=CHAR},
+      </if>
+      <if test="belongDta != null" >
+        #{belongDta,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="pricalcExpr != null" >
+        #{pricalcExpr,jdbcType=CHAR},
+      </if>
+      <if test="servExpr != null" >
+        #{servExpr,jdbcType=CHAR},
+      </if>
+      <if test="custExpr != null" >
+        #{custExpr,jdbcType=CHAR},
+      </if>
+      <if test="sendHbFmt != null" >
+        #{sendHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="recvHbFmt != null" >
+        #{recvHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="requestHbFmt != null" >
+        #{requestHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="responseHbFmt != null" >
+        #{responseHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="hbfmtTime != null" >
+        #{hbfmtTime,jdbcType=INTEGER},
+      </if>
+      <if test="hbfmtExpr != null" >
+        #{hbfmtExpr,jdbcType=CHAR},
+      </if>
+      <if test="wsdlNameSpace != null" >
+        #{wsdlNameSpace,jdbcType=CHAR},
+      </if>
+      <if test="wsdlNs != null" >
+        #{wsdlNs,jdbcType=CHAR},
+      </if>
+      <if test="fmtSendBegin != null" >
+        #{fmtSendBegin,jdbcType=CHAR},
+      </if>
+      <if test="fmtRecvBegin != null" >
+        #{fmtRecvBegin,jdbcType=CHAR},
+      </if>
+      <if test="soapBinding != null" >
+        #{soapBinding,jdbcType=CHAR},
+      </if>
+      <if test="isHavePrefix != null" >
+        #{isHavePrefix,jdbcType=CHAR},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDta" >
+    update est_dta
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="dtaName != null" >
+        dta_name = #{dtaName,jdbcType=CHAR},
+      </if>
+      <if test="dtaDesc != null" >
+        dta_desc = #{dtaDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="consType != null" >
+        cons_type = #{consType,jdbcType=CHAR},
+      </if>
+      <if test="protocolType != null" >
+        protocol_type = #{protocolType,jdbcType=CHAR},
+      </if>
+      <if test="requestElemId != null" >
+        request_elem_id = #{requestElemId,jdbcType=CHAR},
+      </if>
+      <if test="responseElemId != null" >
+        response_elem_id = #{responseElemId,jdbcType=CHAR},
+      </if>
+      <if test="failedElemId != null" >
+        failed_elem_id = #{failedElemId,jdbcType=CHAR},
+      </if>
+      <if test="evtSvcCode != null" >
+        evt_svc_code = #{evtSvcCode,jdbcType=CHAR},
+      </if>
+      <if test="roleType != null" >
+        role_type = #{roleType,jdbcType=CHAR},
+      </if>
+      <if test="dbOpen != null" >
+        db_open = #{dbOpen,jdbcType=CHAR},
+      </if>
+      <if test="cnctType != null" >
+        cnct_type = #{cnctType,jdbcType=CHAR},
+      </if>
+      <if test="timeOut != null" >
+        time_out = #{timeOut,jdbcType=INTEGER},
+      </if>
+      <if test="errFmt != null" >
+        err_fmt = #{errFmt,jdbcType=CHAR},
+      </if>
+      <if test="iPrtcFmt != null" >
+        i_prtc_fmt = #{iPrtcFmt,jdbcType=CHAR},
+      </if>
+      <if test="oPrtcFmt != null" >
+        o_prtc_fmt = #{oPrtcFmt,jdbcType=CHAR},
+      </if>
+      <if test="errOpn != null" >
+        err_opn = #{errOpn,jdbcType=CHAR},
+      </if>
+      <if test="iFmt != null" >
+        i_fmt = #{iFmt,jdbcType=CHAR},
+      </if>
+      <if test="oFmt != null" >
+        o_fmt = #{oFmt,jdbcType=CHAR},
+      </if>
+      <if test="session != null" >
+        session = #{session,jdbcType=CHAR},
+      </if>
+      <if test="revsInit != null" >
+        revs_init = #{revsInit,jdbcType=CHAR},
+      </if>
+      <if test="revsSucc != null" >
+        revs_succ = #{revsSucc,jdbcType=CHAR},
+      </if>
+      <if test="revsFail != null" >
+        revs_fail = #{revsFail,jdbcType=CHAR},
+      </if>
+      <if test="revsCond != null" >
+        revs_cond = #{revsCond,jdbcType=CHAR},
+      </if>
+      <if test="maxRevsNum != null" >
+        max_revs_num = #{maxRevsNum,jdbcType=SMALLINT},
+      </if>
+      <if test="compsInit != null" >
+        comps_init = #{compsInit,jdbcType=CHAR},
+      </if>
+      <if test="compsSucc != null" >
+        comps_succ = #{compsSucc,jdbcType=CHAR},
+      </if>
+      <if test="compsFail != null" >
+        comps_fail = #{compsFail,jdbcType=CHAR},
+      </if>
+      <if test="compsCond != null" >
+        comps_cond = #{compsCond,jdbcType=CHAR},
+      </if>
+      <if test="maxCompsNum != null" >
+        max_comps_num = #{maxCompsNum,jdbcType=SMALLINT},
+      </if>
+      <if test="evtInitEnd != null" >
+        evt_init_end = #{evtInitEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtTermBegin != null" >
+        evt_term_begin = #{evtTermBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIprtcfmtBegin != null" >
+        evt_iprtcfmt_begin = #{evtIprtcfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIprtcfmtEnd != null" >
+        evt_iprtcfmt_end = #{evtIprtcfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtOprtcfmtBegin != null" >
+        evt_oprtcfmt_begin = #{evtOprtcfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtOprtcfmtEnd != null" >
+        evt_oprtcfmt_end = #{evtOprtcfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtIfmtBegin != null" >
+        evt_ifmt_begin = #{evtIfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtIfmtEnd != null" >
+        evt_ifmt_end = #{evtIfmtEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtOfmtBegin != null" >
+        evt_ofmt_begin = #{evtOfmtBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtOfmtTerm != null" >
+        evt_ofmt_term = #{evtOfmtTerm,jdbcType=CHAR},
+      </if>
+      <if test="evtAcallBegin != null" >
+        evt_acall_begin = #{evtAcallBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtAcallEnd != null" >
+        evt_acall_end = #{evtAcallEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtReturnBegin != null" >
+        evt_return_begin = #{evtReturnBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtReturnEnd != null" >
+        evt_return_end = #{evtReturnEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtConvsvcBegin != null" >
+        evt_convsvc_begin = #{evtConvsvcBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtConvsvcEnd != null" >
+        evt_convsvc_end = #{evtConvsvcEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtPfileBegin != null" >
+        evt_pfile_begin = #{evtPfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtPfileEnd != null" >
+        evt_pfile_end = #{evtPfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtBfileBegin != null" >
+        evt_bfile_begin = #{evtBfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtBfileEnd != null" >
+        evt_bfile_end = #{evtBfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtSfileBegin != null" >
+        evt_sfile_begin = #{evtSfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtSfileEnd != null" >
+        evt_sfile_end = #{evtSfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="evtRfileBegin != null" >
+        evt_rfile_begin = #{evtRfileBegin,jdbcType=CHAR},
+      </if>
+      <if test="evtRfileEnd != null" >
+        evt_rfile_end = #{evtRfileEnd,jdbcType=CHAR},
+      </if>
+      <if test="comType != null" >
+        com_type = #{comType,jdbcType=CHAR},
+      </if>
+      <if test="dtaFactory != null" >
+        dta_factory = #{dtaFactory,jdbcType=VARCHAR},
+      </if>
+      <if test="dtaFlow != null" >
+        dta_flow = #{dtaFlow,jdbcType=VARCHAR},
+      </if>
+      <if test="comFactoryConf != null" >
+        com_factory_conf = #{comFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="fmtFactoryConf != null" >
+        fmt_factory_conf = #{fmtFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="xmlFactoryConf != null" >
+        xml_factory_conf = #{xmlFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="jsonFactoryConf != null" >
+        json_factory_conf = #{jsonFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="soapFactoryConf != null" >
+        soap_factory_conf = #{soapFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="sign8583FactoryConf != null" >
+        sign_8583_factory_conf = #{sign8583FactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signFmlFactoryConf != null" >
+        sign_fml_factory_conf = #{signFmlFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signHttpFactoryConf != null" >
+        sign_http_factory_conf = #{signHttpFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="signHttpServletFactoryConf != null" >
+        sign_http_servlet_factory_conf = #{signHttpServletFactoryConf,jdbcType=CHAR},
+      </if>
+      <if test="syserrOk != null" >
+        syserr_ok = #{syserrOk,jdbcType=CHAR},
+      </if>
+      <if test="syserrApp != null" >
+        syserr_app = #{syserrApp,jdbcType=CHAR},
+      </if>
+      <if test="syserrReq != null" >
+        syserr_req = #{syserrReq,jdbcType=CHAR},
+      </if>
+      <if test="syserrAck != null" >
+        syserr_ack = #{syserrAck,jdbcType=CHAR},
+      </if>
+      <if test="syserrBusy != null" >
+        syserr_busy = #{syserrBusy,jdbcType=CHAR},
+      </if>
+      <if test="belongDta != null" >
+        belong_dta = #{belongDta,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="pricalcExpr != null" >
+        pricalc_expr = #{pricalcExpr,jdbcType=CHAR},
+      </if>
+      <if test="servExpr != null" >
+        serv_expr = #{servExpr,jdbcType=CHAR},
+      </if>
+      <if test="custExpr != null" >
+        cust_expr = #{custExpr,jdbcType=CHAR},
+      </if>
+      <if test="sendHbFmt != null" >
+        send_hb_fmt = #{sendHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="recvHbFmt != null" >
+        recv_hb_fmt = #{recvHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="requestHbFmt != null" >
+        request_hb_fmt = #{requestHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="responseHbFmt != null" >
+        response_hb_fmt = #{responseHbFmt,jdbcType=CHAR},
+      </if>
+      <if test="hbfmtTime != null" >
+        hbfmt_time = #{hbfmtTime,jdbcType=INTEGER},
+      </if>
+      <if test="hbfmtExpr != null" >
+        hbfmt_expr = #{hbfmtExpr,jdbcType=CHAR},
+      </if>
+      <if test="wsdlNameSpace != null" >
+        wsdl_name_space = #{wsdlNameSpace,jdbcType=CHAR},
+      </if>
+      <if test="wsdlNs != null" >
+        wsdl_ns = #{wsdlNs,jdbcType=CHAR},
+      </if>
+      <if test="fmtSendBegin != null" >
+        fmt_send_begin = #{fmtSendBegin,jdbcType=CHAR},
+      </if>
+      <if test="fmtRecvBegin != null" >
+        fmt_recv_begin = #{fmtRecvBegin,jdbcType=CHAR},
+      </if>
+      <if test="soapBinding != null" >
+        soap_binding = #{soapBinding,jdbcType=CHAR},
+      </if>
+      <if test="isHavePrefix != null" >
+        is_have_prefix = #{isHavePrefix,jdbcType=CHAR},
+      </if>
+      <if test="encode != null" >
+        encode = #{encode,jdbcType=CHAR},
+      </if>
+    </set>
+    where dta_id = #{dtaId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDta" >
+    update est_dta
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      dta_name = #{dtaName,jdbcType=CHAR},
+      dta_desc = #{dtaDesc,jdbcType=VARCHAR},
+      cons_type = #{consType,jdbcType=CHAR},
+      protocol_type = #{protocolType,jdbcType=CHAR},
+      request_elem_id = #{requestElemId,jdbcType=CHAR},
+      response_elem_id = #{responseElemId,jdbcType=CHAR},
+      failed_elem_id = #{failedElemId,jdbcType=CHAR},
+      evt_svc_code = #{evtSvcCode,jdbcType=CHAR},
+      role_type = #{roleType,jdbcType=CHAR},
+      db_open = #{dbOpen,jdbcType=CHAR},
+      cnct_type = #{cnctType,jdbcType=CHAR},
+      time_out = #{timeOut,jdbcType=INTEGER},
+      err_fmt = #{errFmt,jdbcType=CHAR},
+      i_prtc_fmt = #{iPrtcFmt,jdbcType=CHAR},
+      o_prtc_fmt = #{oPrtcFmt,jdbcType=CHAR},
+      err_opn = #{errOpn,jdbcType=CHAR},
+      i_fmt = #{iFmt,jdbcType=CHAR},
+      o_fmt = #{oFmt,jdbcType=CHAR},
+      session = #{session,jdbcType=CHAR},
+      revs_init = #{revsInit,jdbcType=CHAR},
+      revs_succ = #{revsSucc,jdbcType=CHAR},
+      revs_fail = #{revsFail,jdbcType=CHAR},
+      revs_cond = #{revsCond,jdbcType=CHAR},
+      max_revs_num = #{maxRevsNum,jdbcType=SMALLINT},
+      comps_init = #{compsInit,jdbcType=CHAR},
+      comps_succ = #{compsSucc,jdbcType=CHAR},
+      comps_fail = #{compsFail,jdbcType=CHAR},
+      comps_cond = #{compsCond,jdbcType=CHAR},
+      max_comps_num = #{maxCompsNum,jdbcType=SMALLINT},
+      evt_init_end = #{evtInitEnd,jdbcType=CHAR},
+      evt_term_begin = #{evtTermBegin,jdbcType=CHAR},
+      evt_iprtcfmt_begin = #{evtIprtcfmtBegin,jdbcType=CHAR},
+      evt_iprtcfmt_end = #{evtIprtcfmtEnd,jdbcType=CHAR},
+      evt_oprtcfmt_begin = #{evtOprtcfmtBegin,jdbcType=CHAR},
+      evt_oprtcfmt_end = #{evtOprtcfmtEnd,jdbcType=CHAR},
+      evt_ifmt_begin = #{evtIfmtBegin,jdbcType=CHAR},
+      evt_ifmt_end = #{evtIfmtEnd,jdbcType=CHAR},
+      evt_ofmt_begin = #{evtOfmtBegin,jdbcType=CHAR},
+      evt_ofmt_term = #{evtOfmtTerm,jdbcType=CHAR},
+      evt_acall_begin = #{evtAcallBegin,jdbcType=CHAR},
+      evt_acall_end = #{evtAcallEnd,jdbcType=CHAR},
+      evt_return_begin = #{evtReturnBegin,jdbcType=CHAR},
+      evt_return_end = #{evtReturnEnd,jdbcType=CHAR},
+      evt_convsvc_begin = #{evtConvsvcBegin,jdbcType=CHAR},
+      evt_convsvc_end = #{evtConvsvcEnd,jdbcType=CHAR},
+      evt_pfile_begin = #{evtPfileBegin,jdbcType=CHAR},
+      evt_pfile_end = #{evtPfileEnd,jdbcType=CHAR},
+      evt_bfile_begin = #{evtBfileBegin,jdbcType=CHAR},
+      evt_bfile_end = #{evtBfileEnd,jdbcType=CHAR},
+      evt_sfile_begin = #{evtSfileBegin,jdbcType=CHAR},
+      evt_sfile_end = #{evtSfileEnd,jdbcType=CHAR},
+      evt_rfile_begin = #{evtRfileBegin,jdbcType=CHAR},
+      evt_rfile_end = #{evtRfileEnd,jdbcType=CHAR},
+      com_type = #{comType,jdbcType=CHAR},
+      dta_factory = #{dtaFactory,jdbcType=VARCHAR},
+      dta_flow = #{dtaFlow,jdbcType=VARCHAR},
+      com_factory_conf = #{comFactoryConf,jdbcType=CHAR},
+      fmt_factory_conf = #{fmtFactoryConf,jdbcType=CHAR},
+      xml_factory_conf = #{xmlFactoryConf,jdbcType=CHAR},
+      json_factory_conf = #{jsonFactoryConf,jdbcType=CHAR},
+      soap_factory_conf = #{soapFactoryConf,jdbcType=CHAR},
+      sign_8583_factory_conf = #{sign8583FactoryConf,jdbcType=CHAR},
+      sign_fml_factory_conf = #{signFmlFactoryConf,jdbcType=CHAR},
+      sign_http_factory_conf = #{signHttpFactoryConf,jdbcType=CHAR},
+      sign_http_servlet_factory_conf = #{signHttpServletFactoryConf,jdbcType=CHAR},
+      syserr_ok = #{syserrOk,jdbcType=CHAR},
+      syserr_app = #{syserrApp,jdbcType=CHAR},
+      syserr_req = #{syserrReq,jdbcType=CHAR},
+      syserr_ack = #{syserrAck,jdbcType=CHAR},
+      syserr_busy = #{syserrBusy,jdbcType=CHAR},
+      belong_dta = #{belongDta,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      pricalc_expr = #{pricalcExpr,jdbcType=CHAR},
+      serv_expr = #{servExpr,jdbcType=CHAR},
+      cust_expr = #{custExpr,jdbcType=CHAR},
+      send_hb_fmt = #{sendHbFmt,jdbcType=CHAR},
+      recv_hb_fmt = #{recvHbFmt,jdbcType=CHAR},
+      request_hb_fmt = #{requestHbFmt,jdbcType=CHAR},
+      response_hb_fmt = #{responseHbFmt,jdbcType=CHAR},
+      hbfmt_time = #{hbfmtTime,jdbcType=INTEGER},
+      hbfmt_expr = #{hbfmtExpr,jdbcType=CHAR},
+      wsdl_name_space = #{wsdlNameSpace,jdbcType=CHAR},
+      wsdl_ns = #{wsdlNs,jdbcType=CHAR},
+      fmt_send_begin = #{fmtSendBegin,jdbcType=CHAR},
+      fmt_recv_begin = #{fmtRecvBegin,jdbcType=CHAR},
+      soap_binding = #{soapBinding,jdbcType=CHAR},
+      is_have_prefix = #{isHavePrefix,jdbcType=CHAR},
+      encode = #{encode,jdbcType=CHAR}
+    where dta_id = #{dtaId,jdbcType=CHAR}
+  </update>
+</mapper>

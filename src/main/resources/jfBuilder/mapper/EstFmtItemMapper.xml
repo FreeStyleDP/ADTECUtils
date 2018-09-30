@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFmtItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstFmtItem" >
+    <result column="fmt_id" property="fmtId" jdbcType="CHAR" />
+    <result column="item_idx" property="itemIdx" jdbcType="INTEGER" />
+    <result column="item_type" property="itemType" jdbcType="CHAR" />
+    <result column="item_ignr" property="itemIgnr" jdbcType="CHAR" />
+    <result column="item_desc" property="itemDesc" jdbcType="VARCHAR" />
+    <result column="elem_id" property="elemId" jdbcType="CHAR" />
+    <result column="sub_elem_id" property="subElemId" jdbcType="CHAR" />
+    <result column="const_data" property="constData" jdbcType="CHAR" />
+    <result column="item_parse_expr" property="itemParseExpr" jdbcType="CHAR" />
+    <result column="item_build_expr" property="itemBuildExpr" jdbcType="CHAR" />
+    <result column="item_dlmt" property="itemDlmt" jdbcType="CHAR" />
+    <result column="ascii_flag" property="asciiFlag" jdbcType="CHAR" />
+    <result column="dec_locale" property="decLocale" jdbcType="INTEGER" />
+    <result column="fix_flag" property="fixFlag" jdbcType="CHAR" />
+    <result column="length" property="length" jdbcType="CHAR" />
+    <result column="item_fill" property="itemFill" jdbcType="CHAR" />
+    <result column="item_adj" property="itemAdj" jdbcType="CHAR" />
+    <result column="lendata_flag" property="lendataFlag" jdbcType="CHAR" />
+    <result column="lendata_bytes" property="lendataBytes" jdbcType="INTEGER" />
+    <result column="lendata_parse_expr" property="lendataParseExpr" jdbcType="CHAR" />
+    <result column="lendata_build_expr" property="lendataBuildExpr" jdbcType="CHAR" />
+    <result column="xml_type" property="xmlType" jdbcType="CHAR" />
+    <result column="xml_name" property="xmlName" jdbcType="CHAR" />
+    <result column="sub_name" property="subName" jdbcType="CHAR" />
+    <result column="sub_expr" property="subExpr" jdbcType="CHAR" />
+    <result column="rec_num" property="recNum" jdbcType="CHAR" />
+    <result column="begin_tag" property="beginTag" jdbcType="CHAR" />
+    <result column="end_tag" property="endTag" jdbcType="CHAR" />
+    <result column="item_sign_name" property="itemSignName" jdbcType="CHAR" />
+    <result column="struct_type" property="structType" jdbcType="CHAR" />
+    <result column="encode" property="encode" jdbcType="CHAR" />
+    <result column="CDATA_flag" property="cdataFlag" jdbcType="CHAR" />
+    <result column="not_null" property="notNull" jdbcType="CHAR" />
+    <result column="mapping" property="mapping" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.entity.EstFmtItem" >
+    insert into est_fmt_item (fmt_id, item_idx, item_type, 
+      item_ignr, item_desc, elem_id, 
+      sub_elem_id, const_data, item_parse_expr, 
+      item_build_expr, item_dlmt, ascii_flag, 
+      dec_locale, fix_flag, length, 
+      item_fill, item_adj, lendata_flag, 
+      lendata_bytes, lendata_parse_expr, lendata_build_expr, 
+      xml_type, xml_name, sub_name, sub_expr, 
+      rec_num, begin_tag, end_tag, item_sign_name, 
+      struct_type, encode, CDATA_flag, 
+      not_null, mapping)
+    values (#{fmtId,jdbcType=CHAR}, #{itemIdx,jdbcType=INTEGER}, #{itemType,jdbcType=CHAR}, 
+      #{itemIgnr,jdbcType=CHAR}, #{itemDesc,jdbcType=VARCHAR}, #{elemId,jdbcType=CHAR}, 
+      #{subElemId,jdbcType=CHAR}, #{constData,jdbcType=CHAR}, #{itemParseExpr,jdbcType=CHAR}, 
+      #{itemBuildExpr,jdbcType=CHAR}, #{itemDlmt,jdbcType=CHAR}, #{asciiFlag,jdbcType=CHAR}, 
+      #{decLocale,jdbcType=INTEGER}, #{fixFlag,jdbcType=CHAR}, #{length,jdbcType=CHAR}, 
+      #{itemFill,jdbcType=CHAR}, #{itemAdj,jdbcType=CHAR}, #{lendataFlag,jdbcType=CHAR}, 
+      #{lendataBytes,jdbcType=INTEGER}, #{lendataParseExpr,jdbcType=CHAR}, #{lendataBuildExpr,jdbcType=CHAR}, 
+      #{xmlType,jdbcType=CHAR}, #{xmlName,jdbcType=CHAR}, #{subName,jdbcType=CHAR}, #{subExpr,jdbcType=CHAR}, 
+      #{recNum,jdbcType=CHAR}, #{beginTag,jdbcType=CHAR}, #{endTag,jdbcType=CHAR}, #{itemSignName,jdbcType=CHAR}, 
+      #{structType,jdbcType=CHAR}, #{encode,jdbcType=CHAR}, #{cdataFlag,jdbcType=CHAR}, 
+      #{notNull,jdbcType=CHAR}, #{mapping,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstFmtItem" >
+    insert into est_fmt_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fmtId != null" >
+        fmt_id,
+      </if>
+      <if test="itemIdx != null" >
+        item_idx,
+      </if>
+      <if test="itemType != null" >
+        item_type,
+      </if>
+      <if test="itemIgnr != null" >
+        item_ignr,
+      </if>
+      <if test="itemDesc != null" >
+        item_desc,
+      </if>
+      <if test="elemId != null" >
+        elem_id,
+      </if>
+      <if test="subElemId != null" >
+        sub_elem_id,
+      </if>
+      <if test="constData != null" >
+        const_data,
+      </if>
+      <if test="itemParseExpr != null" >
+        item_parse_expr,
+      </if>
+      <if test="itemBuildExpr != null" >
+        item_build_expr,
+      </if>
+      <if test="itemDlmt != null" >
+        item_dlmt,
+      </if>
+      <if test="asciiFlag != null" >
+        ascii_flag,
+      </if>
+      <if test="decLocale != null" >
+        dec_locale,
+      </if>
+      <if test="fixFlag != null" >
+        fix_flag,
+      </if>
+      <if test="length != null" >
+        length,
+      </if>
+      <if test="itemFill != null" >
+        item_fill,
+      </if>
+      <if test="itemAdj != null" >
+        item_adj,
+      </if>
+      <if test="lendataFlag != null" >
+        lendata_flag,
+      </if>
+      <if test="lendataBytes != null" >
+        lendata_bytes,
+      </if>
+      <if test="lendataParseExpr != null" >
+        lendata_parse_expr,
+      </if>
+      <if test="lendataBuildExpr != null" >
+        lendata_build_expr,
+      </if>
+      <if test="xmlType != null" >
+        xml_type,
+      </if>
+      <if test="xmlName != null" >
+        xml_name,
+      </if>
+      <if test="subName != null" >
+        sub_name,
+      </if>
+      <if test="subExpr != null" >
+        sub_expr,
+      </if>
+      <if test="recNum != null" >
+        rec_num,
+      </if>
+      <if test="beginTag != null" >
+        begin_tag,
+      </if>
+      <if test="endTag != null" >
+        end_tag,
+      </if>
+      <if test="itemSignName != null" >
+        item_sign_name,
+      </if>
+      <if test="structType != null" >
+        struct_type,
+      </if>
+      <if test="encode != null" >
+        encode,
+      </if>
+      <if test="cdataFlag != null" >
+        CDATA_flag,
+      </if>
+      <if test="notNull != null" >
+        not_null,
+      </if>
+      <if test="mapping != null" >
+        mapping,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fmtId != null" >
+        #{fmtId,jdbcType=CHAR},
+      </if>
+      <if test="itemIdx != null" >
+        #{itemIdx,jdbcType=INTEGER},
+      </if>
+      <if test="itemType != null" >
+        #{itemType,jdbcType=CHAR},
+      </if>
+      <if test="itemIgnr != null" >
+        #{itemIgnr,jdbcType=CHAR},
+      </if>
+      <if test="itemDesc != null" >
+        #{itemDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="elemId != null" >
+        #{elemId,jdbcType=CHAR},
+      </if>
+      <if test="subElemId != null" >
+        #{subElemId,jdbcType=CHAR},
+      </if>
+      <if test="constData != null" >
+        #{constData,jdbcType=CHAR},
+      </if>
+      <if test="itemParseExpr != null" >
+        #{itemParseExpr,jdbcType=CHAR},
+      </if>
+      <if test="itemBuildExpr != null" >
+        #{itemBuildExpr,jdbcType=CHAR},
+      </if>
+      <if test="itemDlmt != null" >
+        #{itemDlmt,jdbcType=CHAR},
+      </if>
+      <if test="asciiFlag != null" >
+        #{asciiFlag,jdbcType=CHAR},
+      </if>
+      <if test="decLocale != null" >
+        #{decLocale,jdbcType=INTEGER},
+      </if>
+      <if test="fixFlag != null" >
+        #{fixFlag,jdbcType=CHAR},
+      </if>
+      <if test="length != null" >
+        #{length,jdbcType=CHAR},
+      </if>
+      <if test="itemFill != null" >
+        #{itemFill,jdbcType=CHAR},
+      </if>
+      <if test="itemAdj != null" >
+        #{itemAdj,jdbcType=CHAR},
+      </if>
+      <if test="lendataFlag != null" >
+        #{lendataFlag,jdbcType=CHAR},
+      </if>
+      <if test="lendataBytes != null" >
+        #{lendataBytes,jdbcType=INTEGER},
+      </if>
+      <if test="lendataParseExpr != null" >
+        #{lendataParseExpr,jdbcType=CHAR},
+      </if>
+      <if test="lendataBuildExpr != null" >
+        #{lendataBuildExpr,jdbcType=CHAR},
+      </if>
+      <if test="xmlType != null" >
+        #{xmlType,jdbcType=CHAR},
+      </if>
+      <if test="xmlName != null" >
+        #{xmlName,jdbcType=CHAR},
+      </if>
+      <if test="subName != null" >
+        #{subName,jdbcType=CHAR},
+      </if>
+      <if test="subExpr != null" >
+        #{subExpr,jdbcType=CHAR},
+      </if>
+      <if test="recNum != null" >
+        #{recNum,jdbcType=CHAR},
+      </if>
+      <if test="beginTag != null" >
+        #{beginTag,jdbcType=CHAR},
+      </if>
+      <if test="endTag != null" >
+        #{endTag,jdbcType=CHAR},
+      </if>
+      <if test="itemSignName != null" >
+        #{itemSignName,jdbcType=CHAR},
+      </if>
+      <if test="structType != null" >
+        #{structType,jdbcType=CHAR},
+      </if>
+      <if test="encode != null" >
+        #{encode,jdbcType=CHAR},
+      </if>
+      <if test="cdataFlag != null" >
+        #{cdataFlag,jdbcType=CHAR},
+      </if>
+      <if test="notNull != null" >
+        #{notNull,jdbcType=CHAR},
+      </if>
+      <if test="mapping != null" >
+        #{mapping,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

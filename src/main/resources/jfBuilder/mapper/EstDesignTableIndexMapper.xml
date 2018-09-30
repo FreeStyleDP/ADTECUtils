@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignTableIndexMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignTableIndex" >
+    <id column="index_id" property="indexId" jdbcType="CHAR" />
+    <result column="table_id" property="tableId" jdbcType="CHAR" />
+    <result column="index_name" property="indexName" jdbcType="VARCHAR" />
+    <result column="index_desc" property="indexDesc" jdbcType="VARCHAR" />
+    <result column="unique_flag" property="uniqueFlag" jdbcType="CHAR" />
+    <result column="clustered_flag" property="clusteredFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    index_id, table_id, index_name, index_desc, unique_flag, clustered_flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_table_index
+    where index_id = #{indexId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_table_index
+    where index_id = #{indexId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignTableIndex" >
+    insert into est_design_table_index (index_id, table_id, index_name, 
+      index_desc, unique_flag, clustered_flag
+      )
+    values (#{indexId,jdbcType=CHAR}, #{tableId,jdbcType=CHAR}, #{indexName,jdbcType=VARCHAR}, 
+      #{indexDesc,jdbcType=VARCHAR}, #{uniqueFlag,jdbcType=CHAR}, #{clusteredFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignTableIndex" >
+    insert into est_design_table_index
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indexId != null" >
+        index_id,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+      <if test="indexName != null" >
+        index_name,
+      </if>
+      <if test="indexDesc != null" >
+        index_desc,
+      </if>
+      <if test="uniqueFlag != null" >
+        unique_flag,
+      </if>
+      <if test="clusteredFlag != null" >
+        clustered_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indexId != null" >
+        #{indexId,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="indexName != null" >
+        #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="indexDesc != null" >
+        #{indexDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueFlag != null" >
+        #{uniqueFlag,jdbcType=CHAR},
+      </if>
+      <if test="clusteredFlag != null" >
+        #{clusteredFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignTableIndex" >
+    update est_design_table_index
+    <set >
+      <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="indexName != null" >
+        index_name = #{indexName,jdbcType=VARCHAR},
+      </if>
+      <if test="indexDesc != null" >
+        index_desc = #{indexDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="uniqueFlag != null" >
+        unique_flag = #{uniqueFlag,jdbcType=CHAR},
+      </if>
+      <if test="clusteredFlag != null" >
+        clustered_flag = #{clusteredFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where index_id = #{indexId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignTableIndex" >
+    update est_design_table_index
+    set table_id = #{tableId,jdbcType=CHAR},
+      index_name = #{indexName,jdbcType=VARCHAR},
+      index_desc = #{indexDesc,jdbcType=VARCHAR},
+      unique_flag = #{uniqueFlag,jdbcType=CHAR},
+      clustered_flag = #{clusteredFlag,jdbcType=CHAR}
+    where index_id = #{indexId,jdbcType=CHAR}
+  </update>
+</mapper>

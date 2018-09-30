@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstTaskidMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstTaskidMng" >
+    <id column="taskid_id" property="taskidId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="taskid_name" property="taskidName" jdbcType="CHAR" />
+    <result column="taskid_desc" property="taskidDesc" jdbcType="VARCHAR" />
+    <result column="taskid_stat" property="taskidStat" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    taskid_id, project_id, taskid_name, taskid_desc, taskid_stat, crt_user, crt_date_time, 
+    lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_taskid_mng
+    where taskid_id = #{taskidId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_taskid_mng
+    where taskid_id = #{taskidId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstTaskidMng" >
+    insert into est_taskid_mng (taskid_id, project_id, taskid_name, 
+      taskid_desc, taskid_stat, crt_user, 
+      crt_date_time, lst_mod_user, lst_mod_date_time
+      )
+    values (#{taskidId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{taskidName,jdbcType=CHAR}, 
+      #{taskidDesc,jdbcType=VARCHAR}, #{taskidStat,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, 
+      #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstTaskidMng" >
+    insert into est_taskid_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskidId != null" >
+        taskid_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="taskidName != null" >
+        taskid_name,
+      </if>
+      <if test="taskidDesc != null" >
+        taskid_desc,
+      </if>
+      <if test="taskidStat != null" >
+        taskid_stat,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskidId != null" >
+        #{taskidId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="taskidName != null" >
+        #{taskidName,jdbcType=CHAR},
+      </if>
+      <if test="taskidDesc != null" >
+        #{taskidDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskidStat != null" >
+        #{taskidStat,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstTaskidMng" >
+    update est_taskid_mng
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="taskidName != null" >
+        taskid_name = #{taskidName,jdbcType=CHAR},
+      </if>
+      <if test="taskidDesc != null" >
+        taskid_desc = #{taskidDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="taskidStat != null" >
+        taskid_stat = #{taskidStat,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where taskid_id = #{taskidId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstTaskidMng" >
+    update est_taskid_mng
+    set project_id = #{projectId,jdbcType=CHAR},
+      taskid_name = #{taskidName,jdbcType=CHAR},
+      taskid_desc = #{taskidDesc,jdbcType=VARCHAR},
+      taskid_stat = #{taskidStat,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where taskid_id = #{taskidId,jdbcType=CHAR}
+  </update>
+</mapper>

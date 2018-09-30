@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstElmapElementMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstElmapElement" >
+    <result column="elmap_id" property="elmapId" jdbcType="CHAR" />
+    <result column="item_id" property="itemId" jdbcType="SMALLINT" />
+    <result column="source_type" property="sourceType" jdbcType="CHAR" />
+    <result column="source_path" property="sourcePath" jdbcType="VARCHAR" />
+    <result column="dest_type" property="destType" jdbcType="CHAR" />
+    <result column="dest_path" property="destPath" jdbcType="VARCHAR" />
+    <result column="io_type" property="ioType" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstElmapElement" >
+    insert into est_elmap_element (elmap_id, item_id, source_type, 
+      source_path, dest_type, dest_path, 
+      io_type)
+    values (#{elmapId,jdbcType=CHAR}, #{itemId,jdbcType=SMALLINT}, #{sourceType,jdbcType=CHAR}, 
+      #{sourcePath,jdbcType=VARCHAR}, #{destType,jdbcType=CHAR}, #{destPath,jdbcType=VARCHAR}, 
+      #{ioType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstElmapElement" >
+    insert into est_elmap_element
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="elmapId != null" >
+        elmap_id,
+      </if>
+      <if test="itemId != null" >
+        item_id,
+      </if>
+      <if test="sourceType != null" >
+        source_type,
+      </if>
+      <if test="sourcePath != null" >
+        source_path,
+      </if>
+      <if test="destType != null" >
+        dest_type,
+      </if>
+      <if test="destPath != null" >
+        dest_path,
+      </if>
+      <if test="ioType != null" >
+        io_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="elmapId != null" >
+        #{elmapId,jdbcType=CHAR},
+      </if>
+      <if test="itemId != null" >
+        #{itemId,jdbcType=SMALLINT},
+      </if>
+      <if test="sourceType != null" >
+        #{sourceType,jdbcType=CHAR},
+      </if>
+      <if test="sourcePath != null" >
+        #{sourcePath,jdbcType=VARCHAR},
+      </if>
+      <if test="destType != null" >
+        #{destType,jdbcType=CHAR},
+      </if>
+      <if test="destPath != null" >
+        #{destPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ioType != null" >
+        #{ioType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

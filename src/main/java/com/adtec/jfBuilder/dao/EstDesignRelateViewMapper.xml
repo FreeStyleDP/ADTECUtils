@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignRelateViewMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignRelateView" >
+    <id column="view_id" property="viewId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="relate_name" property="relateName" jdbcType="VARCHAR" />
+    <result column="relate_desc" property="relateDesc" jdbcType="VARCHAR" />
+    <result column="relate_type" property="relateType" jdbcType="CHAR" />
+    <result column="relationship" property="relationship" jdbcType="CHAR" />
+    <result column="name_space" property="nameSpace" jdbcType="VARCHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    view_id, project_id, relation_id, relate_name, relate_desc, relate_type, relationship, 
+    name_space, grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_relate_view
+    where view_id = #{viewId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_relate_view
+    where view_id = #{viewId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignRelateView" >
+    insert into est_design_relate_view (view_id, project_id, relation_id, 
+      relate_name, relate_desc, relate_type, 
+      relationship, name_space, grp_id, 
+      crt_user, crt_date_time, lst_mod_user, 
+      lst_mod_date_time)
+    values (#{viewId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{relateName,jdbcType=VARCHAR}, #{relateDesc,jdbcType=VARCHAR}, #{relateType,jdbcType=CHAR}, 
+      #{relationship,jdbcType=CHAR}, #{nameSpace,jdbcType=VARCHAR}, #{grpId,jdbcType=CHAR}, 
+      #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, 
+      #{lstModDateTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignRelateView" >
+    insert into est_design_relate_view
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        view_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="relateName != null" >
+        relate_name,
+      </if>
+      <if test="relateDesc != null" >
+        relate_desc,
+      </if>
+      <if test="relateType != null" >
+        relate_type,
+      </if>
+      <if test="relationship != null" >
+        relationship,
+      </if>
+      <if test="nameSpace != null" >
+        name_space,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        #{viewId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="relateName != null" >
+        #{relateName,jdbcType=VARCHAR},
+      </if>
+      <if test="relateDesc != null" >
+        #{relateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="relateType != null" >
+        #{relateType,jdbcType=CHAR},
+      </if>
+      <if test="relationship != null" >
+        #{relationship,jdbcType=CHAR},
+      </if>
+      <if test="nameSpace != null" >
+        #{nameSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDesignRelateView" >
+    update est_design_relate_view
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="relateName != null" >
+        relate_name = #{relateName,jdbcType=VARCHAR},
+      </if>
+      <if test="relateDesc != null" >
+        relate_desc = #{relateDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="relateType != null" >
+        relate_type = #{relateType,jdbcType=CHAR},
+      </if>
+      <if test="relationship != null" >
+        relationship = #{relationship,jdbcType=CHAR},
+      </if>
+      <if test="nameSpace != null" >
+        name_space = #{nameSpace,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where view_id = #{viewId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignRelateView" >
+    update est_design_relate_view
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      relate_name = #{relateName,jdbcType=VARCHAR},
+      relate_desc = #{relateDesc,jdbcType=VARCHAR},
+      relate_type = #{relateType,jdbcType=CHAR},
+      relationship = #{relationship,jdbcType=CHAR},
+      name_space = #{nameSpace,jdbcType=VARCHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where view_id = #{viewId,jdbcType=CHAR}
+  </update>
+</mapper>

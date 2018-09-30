@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDtaMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDtaMng" >
+    <id column="obj_id" property="objId" jdbcType="CHAR" />
+    <id column="obj_type" property="objType" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="start_mode" property="startMode" jdbcType="CHAR" />
+    <result column="log_level" property="logLevel" jdbcType="CHAR" />
+    <result column="log_dir" property="logDir" jdbcType="VARCHAR" />
+    <result column="log_size" property="logSize" jdbcType="SMALLINT" />
+    <result column="log_grade" property="logGrade" jdbcType="CHAR" />
+    <result column="auto_del" property="autoDel" jdbcType="CHAR" />
+    <result column="ext_com_log" property="extComLog" jdbcType="CHAR" />
+    <result column="fmt_log" property="fmtLog" jdbcType="CHAR" />
+    <result column="expr_log" property="exprLog" jdbcType="CHAR" />
+    <result column="rut_log" property="rutLog" jdbcType="CHAR" />
+    <result column="flw_log" property="flwLog" jdbcType="CHAR" />
+    <result column="revs_log" property="revsLog" jdbcType="CHAR" />
+    <result column="db_log" property="dbLog" jdbcType="CHAR" />
+    <result column="cf_log" property="cfLog" jdbcType="CHAR" />
+    <result column="epx_log" property="epxLog" jdbcType="CHAR" />
+    <result column="file_log" property="fileLog" jdbcType="CHAR" />
+    <result column="locale" property="locale" jdbcType="CHAR" />
+    <result column="reglvl" property="reglvl" jdbcType="INTEGER" />
+    <result column="oper_db" property="operDb" jdbcType="CHAR" />
+    <result column="trans_flag" property="transFlag" jdbcType="CHAR" />
+    <result column="trans_num" property="transNum" jdbcType="INTEGER" />
+    <result column="time_flag" property="timeFlag" jdbcType="CHAR" />
+    <result column="run_time" property="runTime" jdbcType="INTEGER" />
+    <result column="mem_flag" property="memFlag" jdbcType="CHAR" />
+    <result column="mem_size" property="memSize" jdbcType="INTEGER" />
+    <result column="asyn_dwork" property="asynDwork" jdbcType="INTEGER" />
+    <result column="send_inst" property="sendInst" jdbcType="INTEGER" />
+    <result column="subsys_rut" property="subsysRut" jdbcType="INTEGER" />
+    <result column="max_conn_num" property="maxConnNum" jdbcType="INTEGER" />
+    <result column="addr_check" property="addrCheck" jdbcType="CHAR" />
+    <result column="addr_clean" property="addrClean" jdbcType="CHAR" />
+    <result column="tran_log" property="tranLog" jdbcType="CHAR" />
+    <result column="rolling_log" property="rollingLog" jdbcType="INTEGER" />
+    <result column="catch_flag" property="catchFlag" jdbcType="CHAR" />
+    <result column="url_type" property="urlType" jdbcType="CHAR" />
+    <result column="url_str" property="urlStr" jdbcType="VARCHAR" />
+    <result column="getsvr_flag" property="getsvrFlag" jdbcType="CHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="regsvr_flag" property="regsvrFlag" jdbcType="CHAR" />
+    <result column="getsvr_expr" property="getsvrExpr" jdbcType="CHAR" />
+    <result column="regsvr_expr" property="regsvrExpr" jdbcType="CHAR" />
+    <result column="addsvc_flag" property="addsvcFlag" jdbcType="CHAR" />
+    <result column="getsvr_type" property="getsvrType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    obj_id, obj_type, project_id, env_id, cloud_project_id, start_mode, log_level, log_dir, 
+    log_size, log_grade, auto_del, ext_com_log, fmt_log, expr_log, rut_log, flw_log, 
+    revs_log, db_log, cf_log, epx_log, file_log, locale, reglvl, oper_db, trans_flag, 
+    trans_num, time_flag, run_time, mem_flag, mem_size, asyn_dwork, send_inst, subsys_rut, 
+    max_conn_num, addr_check, addr_clean, tran_log, rolling_log, catch_flag, url_type, 
+    url_str, getsvr_flag, version, regsvr_flag, getsvr_expr, regsvr_expr, addsvc_flag, 
+    getsvr_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDtaMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_dta_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDtaMngKey" >
+    delete from est_dta_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDtaMng" >
+    insert into est_dta_mng (obj_id, obj_type, project_id, 
+      env_id, cloud_project_id, start_mode, 
+      log_level, log_dir, log_size, 
+      log_grade, auto_del, ext_com_log, 
+      fmt_log, expr_log, rut_log, flw_log, 
+      revs_log, db_log, cf_log, epx_log, 
+      file_log, locale, reglvl, 
+      oper_db, trans_flag, trans_num, 
+      time_flag, run_time, mem_flag, 
+      mem_size, asyn_dwork, send_inst, 
+      subsys_rut, max_conn_num, addr_check, 
+      addr_clean, tran_log, rolling_log, 
+      catch_flag, url_type, url_str, 
+      getsvr_flag, version, regsvr_flag, 
+      getsvr_expr, regsvr_expr, addsvc_flag, 
+      getsvr_type)
+    values (#{objId,jdbcType=CHAR}, #{objType,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, #{startMode,jdbcType=CHAR}, 
+      #{logLevel,jdbcType=CHAR}, #{logDir,jdbcType=VARCHAR}, #{logSize,jdbcType=SMALLINT}, 
+      #{logGrade,jdbcType=CHAR}, #{autoDel,jdbcType=CHAR}, #{extComLog,jdbcType=CHAR}, 
+      #{fmtLog,jdbcType=CHAR}, #{exprLog,jdbcType=CHAR}, #{rutLog,jdbcType=CHAR}, #{flwLog,jdbcType=CHAR}, 
+      #{revsLog,jdbcType=CHAR}, #{dbLog,jdbcType=CHAR}, #{cfLog,jdbcType=CHAR}, #{epxLog,jdbcType=CHAR}, 
+      #{fileLog,jdbcType=CHAR}, #{locale,jdbcType=CHAR}, #{reglvl,jdbcType=INTEGER}, 
+      #{operDb,jdbcType=CHAR}, #{transFlag,jdbcType=CHAR}, #{transNum,jdbcType=INTEGER}, 
+      #{timeFlag,jdbcType=CHAR}, #{runTime,jdbcType=INTEGER}, #{memFlag,jdbcType=CHAR}, 
+      #{memSize,jdbcType=INTEGER}, #{asynDwork,jdbcType=INTEGER}, #{sendInst,jdbcType=INTEGER}, 
+      #{subsysRut,jdbcType=INTEGER}, #{maxConnNum,jdbcType=INTEGER}, #{addrCheck,jdbcType=CHAR}, 
+      #{addrClean,jdbcType=CHAR}, #{tranLog,jdbcType=CHAR}, #{rollingLog,jdbcType=INTEGER}, 
+      #{catchFlag,jdbcType=CHAR}, #{urlType,jdbcType=CHAR}, #{urlStr,jdbcType=VARCHAR}, 
+      #{getsvrFlag,jdbcType=CHAR}, #{version,jdbcType=VARCHAR}, #{regsvrFlag,jdbcType=CHAR}, 
+      #{getsvrExpr,jdbcType=CHAR}, #{regsvrExpr,jdbcType=CHAR}, #{addsvcFlag,jdbcType=CHAR}, 
+      #{getsvrType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDtaMng" >
+    insert into est_dta_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="objType != null" >
+        obj_type,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="startMode != null" >
+        start_mode,
+      </if>
+      <if test="logLevel != null" >
+        log_level,
+      </if>
+      <if test="logDir != null" >
+        log_dir,
+      </if>
+      <if test="logSize != null" >
+        log_size,
+      </if>
+      <if test="logGrade != null" >
+        log_grade,
+      </if>
+      <if test="autoDel != null" >
+        auto_del,
+      </if>
+      <if test="extComLog != null" >
+        ext_com_log,
+      </if>
+      <if test="fmtLog != null" >
+        fmt_log,
+      </if>
+      <if test="exprLog != null" >
+        expr_log,
+      </if>
+      <if test="rutLog != null" >
+        rut_log,
+      </if>
+      <if test="flwLog != null" >
+        flw_log,
+      </if>
+      <if test="revsLog != null" >
+        revs_log,
+      </if>
+      <if test="dbLog != null" >
+        db_log,
+      </if>
+      <if test="cfLog != null" >
+        cf_log,
+      </if>
+      <if test="epxLog != null" >
+        epx_log,
+      </if>
+      <if test="fileLog != null" >
+        file_log,
+      </if>
+      <if test="locale != null" >
+        locale,
+      </if>
+      <if test="reglvl != null" >
+        reglvl,
+      </if>
+      <if test="operDb != null" >
+        oper_db,
+      </if>
+      <if test="transFlag != null" >
+        trans_flag,
+      </if>
+      <if test="transNum != null" >
+        trans_num,
+      </if>
+      <if test="timeFlag != null" >
+        time_flag,
+      </if>
+      <if test="runTime != null" >
+        run_time,
+      </if>
+      <if test="memFlag != null" >
+        mem_flag,
+      </if>
+      <if test="memSize != null" >
+        mem_size,
+      </if>
+      <if test="asynDwork != null" >
+        asyn_dwork,
+      </if>
+      <if test="sendInst != null" >
+        send_inst,
+      </if>
+      <if test="subsysRut != null" >
+        subsys_rut,
+      </if>
+      <if test="maxConnNum != null" >
+        max_conn_num,
+      </if>
+      <if test="addrCheck != null" >
+        addr_check,
+      </if>
+      <if test="addrClean != null" >
+        addr_clean,
+      </if>
+      <if test="tranLog != null" >
+        tran_log,
+      </if>
+      <if test="rollingLog != null" >
+        rolling_log,
+      </if>
+      <if test="catchFlag != null" >
+        catch_flag,
+      </if>
+      <if test="urlType != null" >
+        url_type,
+      </if>
+      <if test="urlStr != null" >
+        url_str,
+      </if>
+      <if test="getsvrFlag != null" >
+        getsvr_flag,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="regsvrFlag != null" >
+        regsvr_flag,
+      </if>
+      <if test="getsvrExpr != null" >
+        getsvr_expr,
+      </if>
+      <if test="regsvrExpr != null" >
+        regsvr_expr,
+      </if>
+      <if test="addsvcFlag != null" >
+        addsvc_flag,
+      </if>
+      <if test="getsvrType != null" >
+        getsvr_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="objType != null" >
+        #{objType,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="startMode != null" >
+        #{startMode,jdbcType=CHAR},
+      </if>
+      <if test="logLevel != null" >
+        #{logLevel,jdbcType=CHAR},
+      </if>
+      <if test="logDir != null" >
+        #{logDir,jdbcType=VARCHAR},
+      </if>
+      <if test="logSize != null" >
+        #{logSize,jdbcType=SMALLINT},
+      </if>
+      <if test="logGrade != null" >
+        #{logGrade,jdbcType=CHAR},
+      </if>
+      <if test="autoDel != null" >
+        #{autoDel,jdbcType=CHAR},
+      </if>
+      <if test="extComLog != null" >
+        #{extComLog,jdbcType=CHAR},
+      </if>
+      <if test="fmtLog != null" >
+        #{fmtLog,jdbcType=CHAR},
+      </if>
+      <if test="exprLog != null" >
+        #{exprLog,jdbcType=CHAR},
+      </if>
+      <if test="rutLog != null" >
+        #{rutLog,jdbcType=CHAR},
+      </if>
+      <if test="flwLog != null" >
+        #{flwLog,jdbcType=CHAR},
+      </if>
+      <if test="revsLog != null" >
+        #{revsLog,jdbcType=CHAR},
+      </if>
+      <if test="dbLog != null" >
+        #{dbLog,jdbcType=CHAR},
+      </if>
+      <if test="cfLog != null" >
+        #{cfLog,jdbcType=CHAR},
+      </if>
+      <if test="epxLog != null" >
+        #{epxLog,jdbcType=CHAR},
+      </if>
+      <if test="fileLog != null" >
+        #{fileLog,jdbcType=CHAR},
+      </if>
+      <if test="locale != null" >
+        #{locale,jdbcType=CHAR},
+      </if>
+      <if test="reglvl != null" >
+        #{reglvl,jdbcType=INTEGER},
+      </if>
+      <if test="operDb != null" >
+        #{operDb,jdbcType=CHAR},
+      </if>
+      <if test="transFlag != null" >
+        #{transFlag,jdbcType=CHAR},
+      </if>
+      <if test="transNum != null" >
+        #{transNum,jdbcType=INTEGER},
+      </if>
+      <if test="timeFlag != null" >
+        #{timeFlag,jdbcType=CHAR},
+      </if>
+      <if test="runTime != null" >
+        #{runTime,jdbcType=INTEGER},
+      </if>
+      <if test="memFlag != null" >
+        #{memFlag,jdbcType=CHAR},
+      </if>
+      <if test="memSize != null" >
+        #{memSize,jdbcType=INTEGER},
+      </if>
+      <if test="asynDwork != null" >
+        #{asynDwork,jdbcType=INTEGER},
+      </if>
+      <if test="sendInst != null" >
+        #{sendInst,jdbcType=INTEGER},
+      </if>
+      <if test="subsysRut != null" >
+        #{subsysRut,jdbcType=INTEGER},
+      </if>
+      <if test="maxConnNum != null" >
+        #{maxConnNum,jdbcType=INTEGER},
+      </if>
+      <if test="addrCheck != null" >
+        #{addrCheck,jdbcType=CHAR},
+      </if>
+      <if test="addrClean != null" >
+        #{addrClean,jdbcType=CHAR},
+      </if>
+      <if test="tranLog != null" >
+        #{tranLog,jdbcType=CHAR},
+      </if>
+      <if test="rollingLog != null" >
+        #{rollingLog,jdbcType=INTEGER},
+      </if>
+      <if test="catchFlag != null" >
+        #{catchFlag,jdbcType=CHAR},
+      </if>
+      <if test="urlType != null" >
+        #{urlType,jdbcType=CHAR},
+      </if>
+      <if test="urlStr != null" >
+        #{urlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="getsvrFlag != null" >
+        #{getsvrFlag,jdbcType=CHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="regsvrFlag != null" >
+        #{regsvrFlag,jdbcType=CHAR},
+      </if>
+      <if test="getsvrExpr != null" >
+        #{getsvrExpr,jdbcType=CHAR},
+      </if>
+      <if test="regsvrExpr != null" >
+        #{regsvrExpr,jdbcType=CHAR},
+      </if>
+      <if test="addsvcFlag != null" >
+        #{addsvcFlag,jdbcType=CHAR},
+      </if>
+      <if test="getsvrType != null" >
+        #{getsvrType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDtaMng" >
+    update est_dta_mng
+    <set >
+      <if test="startMode != null" >
+        start_mode = #{startMode,jdbcType=CHAR},
+      </if>
+      <if test="logLevel != null" >
+        log_level = #{logLevel,jdbcType=CHAR},
+      </if>
+      <if test="logDir != null" >
+        log_dir = #{logDir,jdbcType=VARCHAR},
+      </if>
+      <if test="logSize != null" >
+        log_size = #{logSize,jdbcType=SMALLINT},
+      </if>
+      <if test="logGrade != null" >
+        log_grade = #{logGrade,jdbcType=CHAR},
+      </if>
+      <if test="autoDel != null" >
+        auto_del = #{autoDel,jdbcType=CHAR},
+      </if>
+      <if test="extComLog != null" >
+        ext_com_log = #{extComLog,jdbcType=CHAR},
+      </if>
+      <if test="fmtLog != null" >
+        fmt_log = #{fmtLog,jdbcType=CHAR},
+      </if>
+      <if test="exprLog != null" >
+        expr_log = #{exprLog,jdbcType=CHAR},
+      </if>
+      <if test="rutLog != null" >
+        rut_log = #{rutLog,jdbcType=CHAR},
+      </if>
+      <if test="flwLog != null" >
+        flw_log = #{flwLog,jdbcType=CHAR},
+      </if>
+      <if test="revsLog != null" >
+        revs_log = #{revsLog,jdbcType=CHAR},
+      </if>
+      <if test="dbLog != null" >
+        db_log = #{dbLog,jdbcType=CHAR},
+      </if>
+      <if test="cfLog != null" >
+        cf_log = #{cfLog,jdbcType=CHAR},
+      </if>
+      <if test="epxLog != null" >
+        epx_log = #{epxLog,jdbcType=CHAR},
+      </if>
+      <if test="fileLog != null" >
+        file_log = #{fileLog,jdbcType=CHAR},
+      </if>
+      <if test="locale != null" >
+        locale = #{locale,jdbcType=CHAR},
+      </if>
+      <if test="reglvl != null" >
+        reglvl = #{reglvl,jdbcType=INTEGER},
+      </if>
+      <if test="operDb != null" >
+        oper_db = #{operDb,jdbcType=CHAR},
+      </if>
+      <if test="transFlag != null" >
+        trans_flag = #{transFlag,jdbcType=CHAR},
+      </if>
+      <if test="transNum != null" >
+        trans_num = #{transNum,jdbcType=INTEGER},
+      </if>
+      <if test="timeFlag != null" >
+        time_flag = #{timeFlag,jdbcType=CHAR},
+      </if>
+      <if test="runTime != null" >
+        run_time = #{runTime,jdbcType=INTEGER},
+      </if>
+      <if test="memFlag != null" >
+        mem_flag = #{memFlag,jdbcType=CHAR},
+      </if>
+      <if test="memSize != null" >
+        mem_size = #{memSize,jdbcType=INTEGER},
+      </if>
+      <if test="asynDwork != null" >
+        asyn_dwork = #{asynDwork,jdbcType=INTEGER},
+      </if>
+      <if test="sendInst != null" >
+        send_inst = #{sendInst,jdbcType=INTEGER},
+      </if>
+      <if test="subsysRut != null" >
+        subsys_rut = #{subsysRut,jdbcType=INTEGER},
+      </if>
+      <if test="maxConnNum != null" >
+        max_conn_num = #{maxConnNum,jdbcType=INTEGER},
+      </if>
+      <if test="addrCheck != null" >
+        addr_check = #{addrCheck,jdbcType=CHAR},
+      </if>
+      <if test="addrClean != null" >
+        addr_clean = #{addrClean,jdbcType=CHAR},
+      </if>
+      <if test="tranLog != null" >
+        tran_log = #{tranLog,jdbcType=CHAR},
+      </if>
+      <if test="rollingLog != null" >
+        rolling_log = #{rollingLog,jdbcType=INTEGER},
+      </if>
+      <if test="catchFlag != null" >
+        catch_flag = #{catchFlag,jdbcType=CHAR},
+      </if>
+      <if test="urlType != null" >
+        url_type = #{urlType,jdbcType=CHAR},
+      </if>
+      <if test="urlStr != null" >
+        url_str = #{urlStr,jdbcType=VARCHAR},
+      </if>
+      <if test="getsvrFlag != null" >
+        getsvr_flag = #{getsvrFlag,jdbcType=CHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="regsvrFlag != null" >
+        regsvr_flag = #{regsvrFlag,jdbcType=CHAR},
+      </if>
+      <if test="getsvrExpr != null" >
+        getsvr_expr = #{getsvrExpr,jdbcType=CHAR},
+      </if>
+      <if test="regsvrExpr != null" >
+        regsvr_expr = #{regsvrExpr,jdbcType=CHAR},
+      </if>
+      <if test="addsvcFlag != null" >
+        addsvc_flag = #{addsvcFlag,jdbcType=CHAR},
+      </if>
+      <if test="getsvrType != null" >
+        getsvr_type = #{getsvrType,jdbcType=CHAR},
+      </if>
+    </set>
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDtaMng" >
+    update est_dta_mng
+    set start_mode = #{startMode,jdbcType=CHAR},
+      log_level = #{logLevel,jdbcType=CHAR},
+      log_dir = #{logDir,jdbcType=VARCHAR},
+      log_size = #{logSize,jdbcType=SMALLINT},
+      log_grade = #{logGrade,jdbcType=CHAR},
+      auto_del = #{autoDel,jdbcType=CHAR},
+      ext_com_log = #{extComLog,jdbcType=CHAR},
+      fmt_log = #{fmtLog,jdbcType=CHAR},
+      expr_log = #{exprLog,jdbcType=CHAR},
+      rut_log = #{rutLog,jdbcType=CHAR},
+      flw_log = #{flwLog,jdbcType=CHAR},
+      revs_log = #{revsLog,jdbcType=CHAR},
+      db_log = #{dbLog,jdbcType=CHAR},
+      cf_log = #{cfLog,jdbcType=CHAR},
+      epx_log = #{epxLog,jdbcType=CHAR},
+      file_log = #{fileLog,jdbcType=CHAR},
+      locale = #{locale,jdbcType=CHAR},
+      reglvl = #{reglvl,jdbcType=INTEGER},
+      oper_db = #{operDb,jdbcType=CHAR},
+      trans_flag = #{transFlag,jdbcType=CHAR},
+      trans_num = #{transNum,jdbcType=INTEGER},
+      time_flag = #{timeFlag,jdbcType=CHAR},
+      run_time = #{runTime,jdbcType=INTEGER},
+      mem_flag = #{memFlag,jdbcType=CHAR},
+      mem_size = #{memSize,jdbcType=INTEGER},
+      asyn_dwork = #{asynDwork,jdbcType=INTEGER},
+      send_inst = #{sendInst,jdbcType=INTEGER},
+      subsys_rut = #{subsysRut,jdbcType=INTEGER},
+      max_conn_num = #{maxConnNum,jdbcType=INTEGER},
+      addr_check = #{addrCheck,jdbcType=CHAR},
+      addr_clean = #{addrClean,jdbcType=CHAR},
+      tran_log = #{tranLog,jdbcType=CHAR},
+      rolling_log = #{rollingLog,jdbcType=INTEGER},
+      catch_flag = #{catchFlag,jdbcType=CHAR},
+      url_type = #{urlType,jdbcType=CHAR},
+      url_str = #{urlStr,jdbcType=VARCHAR},
+      getsvr_flag = #{getsvrFlag,jdbcType=CHAR},
+      version = #{version,jdbcType=VARCHAR},
+      regsvr_flag = #{regsvrFlag,jdbcType=CHAR},
+      getsvr_expr = #{getsvrExpr,jdbcType=CHAR},
+      regsvr_expr = #{regsvrExpr,jdbcType=CHAR},
+      addsvc_flag = #{addsvcFlag,jdbcType=CHAR},
+      getsvr_type = #{getsvrType,jdbcType=CHAR}
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

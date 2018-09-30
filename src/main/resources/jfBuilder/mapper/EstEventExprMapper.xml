@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstEventExprMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstEventExpr" >
+    <id column="event_expr_id" property="eventExprId" jdbcType="CHAR" />
+    <id column="serial_no" property="serialNo" jdbcType="SMALLINT" />
+    <result column="event_expr_type" property="eventExprType" jdbcType="SMALLINT" />
+    <result column="event_expr_proc" property="eventExprProc" jdbcType="VARCHAR" />
+    <result column="event_expr_desc" property="eventExprDesc" jdbcType="CHAR" />
+    <result column="comp_id" property="compId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    event_expr_id, serial_no, event_expr_type, event_expr_proc, event_expr_desc, comp_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstEventExprKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_event_expr
+    where event_expr_id = #{eventExprId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstEventExprKey" >
+    delete from est_event_expr
+    where event_expr_id = #{eventExprId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstEventExpr" >
+    insert into est_event_expr (event_expr_id, serial_no, event_expr_type, 
+      event_expr_proc, event_expr_desc, comp_id
+      )
+    values (#{eventExprId,jdbcType=CHAR}, #{serialNo,jdbcType=SMALLINT}, #{eventExprType,jdbcType=SMALLINT}, 
+      #{eventExprProc,jdbcType=VARCHAR}, #{eventExprDesc,jdbcType=CHAR}, #{compId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstEventExpr" >
+    insert into est_event_expr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eventExprId != null" >
+        event_expr_id,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="eventExprType != null" >
+        event_expr_type,
+      </if>
+      <if test="eventExprProc != null" >
+        event_expr_proc,
+      </if>
+      <if test="eventExprDesc != null" >
+        event_expr_desc,
+      </if>
+      <if test="compId != null" >
+        comp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eventExprId != null" >
+        #{eventExprId,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=SMALLINT},
+      </if>
+      <if test="eventExprType != null" >
+        #{eventExprType,jdbcType=SMALLINT},
+      </if>
+      <if test="eventExprProc != null" >
+        #{eventExprProc,jdbcType=VARCHAR},
+      </if>
+      <if test="eventExprDesc != null" >
+        #{eventExprDesc,jdbcType=CHAR},
+      </if>
+      <if test="compId != null" >
+        #{compId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstEventExpr" >
+    update est_event_expr
+    <set >
+      <if test="eventExprType != null" >
+        event_expr_type = #{eventExprType,jdbcType=SMALLINT},
+      </if>
+      <if test="eventExprProc != null" >
+        event_expr_proc = #{eventExprProc,jdbcType=VARCHAR},
+      </if>
+      <if test="eventExprDesc != null" >
+        event_expr_desc = #{eventExprDesc,jdbcType=CHAR},
+      </if>
+      <if test="compId != null" >
+        comp_id = #{compId,jdbcType=CHAR},
+      </if>
+    </set>
+    where event_expr_id = #{eventExprId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstEventExpr" >
+    update est_event_expr
+    set event_expr_type = #{eventExprType,jdbcType=SMALLINT},
+      event_expr_proc = #{eventExprProc,jdbcType=VARCHAR},
+      event_expr_desc = #{eventExprDesc,jdbcType=CHAR},
+      comp_id = #{compId,jdbcType=CHAR}
+    where event_expr_id = #{eventExprId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+</mapper>

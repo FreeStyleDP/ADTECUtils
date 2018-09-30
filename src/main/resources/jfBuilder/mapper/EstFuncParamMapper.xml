@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFuncParamMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstFuncParam" >
+    <id column="func_id" property="funcId" jdbcType="CHAR" />
+    <id column="serial_no" property="serialNo" jdbcType="SMALLINT" />
+    <result column="param_name" property="paramName" jdbcType="CHAR" />
+    <result column="param_type" property="paramType" jdbcType="CHAR" />
+    <result column="param_desc" property="paramDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    func_id, serial_no, param_name, param_type, param_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstFuncParamKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_func_param
+    where func_id = #{funcId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstFuncParamKey" >
+    delete from est_func_param
+    where func_id = #{funcId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstFuncParam" >
+    insert into est_func_param (func_id, serial_no, param_name, 
+      param_type, param_desc)
+    values (#{funcId,jdbcType=CHAR}, #{serialNo,jdbcType=SMALLINT}, #{paramName,jdbcType=CHAR}, 
+      #{paramType,jdbcType=CHAR}, #{paramDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstFuncParam" >
+    insert into est_func_param
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="funcId != null" >
+        func_id,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="paramName != null" >
+        param_name,
+      </if>
+      <if test="paramType != null" >
+        param_type,
+      </if>
+      <if test="paramDesc != null" >
+        param_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="funcId != null" >
+        #{funcId,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=SMALLINT},
+      </if>
+      <if test="paramName != null" >
+        #{paramName,jdbcType=CHAR},
+      </if>
+      <if test="paramType != null" >
+        #{paramType,jdbcType=CHAR},
+      </if>
+      <if test="paramDesc != null" >
+        #{paramDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstFuncParam" >
+    update est_func_param
+    <set >
+      <if test="paramName != null" >
+        param_name = #{paramName,jdbcType=CHAR},
+      </if>
+      <if test="paramType != null" >
+        param_type = #{paramType,jdbcType=CHAR},
+      </if>
+      <if test="paramDesc != null" >
+        param_desc = #{paramDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where func_id = #{funcId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstFuncParam" >
+    update est_func_param
+    set param_name = #{paramName,jdbcType=CHAR},
+      param_type = #{paramType,jdbcType=CHAR},
+      param_desc = #{paramDesc,jdbcType=VARCHAR}
+    where func_id = #{funcId,jdbcType=CHAR}
+      and serial_no = #{serialNo,jdbcType=SMALLINT}
+  </update>
+</mapper>

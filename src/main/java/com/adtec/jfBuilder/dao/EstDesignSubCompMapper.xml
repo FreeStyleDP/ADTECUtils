@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignSubCompMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignSubComp" >
+    <id column="sub_bus_id" property="subBusId" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="bus_id" property="busId" jdbcType="CHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="sub_bus_name" property="subBusName" jdbcType="CHAR" />
+    <result column="sub_bus_desc" property="subBusDesc" jdbcType="VARCHAR" />
+    <result column="design_comment" property="designComment" jdbcType="VARCHAR" />
+    <result column="relate_bus_id" property="relateBusId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sub_bus_id, project_id, bus_id, seq_no, sub_bus_name, sub_bus_desc, design_comment, 
+    relate_bus_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDesignSubCompKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_sub_comp
+    where sub_bus_id = #{subBusId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignSubCompKey" >
+    delete from est_design_sub_comp
+    where sub_bus_id = #{subBusId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignSubComp" >
+    insert into est_design_sub_comp (sub_bus_id, project_id, bus_id, 
+      seq_no, sub_bus_name, sub_bus_desc, 
+      design_comment, relate_bus_id)
+    values (#{subBusId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{busId,jdbcType=CHAR}, 
+      #{seqNo,jdbcType=INTEGER}, #{subBusName,jdbcType=CHAR}, #{subBusDesc,jdbcType=VARCHAR}, 
+      #{designComment,jdbcType=VARCHAR}, #{relateBusId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignSubComp" >
+    insert into est_design_sub_comp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="subBusId != null" >
+        sub_bus_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="busId != null" >
+        bus_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="subBusName != null" >
+        sub_bus_name,
+      </if>
+      <if test="subBusDesc != null" >
+        sub_bus_desc,
+      </if>
+      <if test="designComment != null" >
+        design_comment,
+      </if>
+      <if test="relateBusId != null" >
+        relate_bus_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="subBusId != null" >
+        #{subBusId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="busId != null" >
+        #{busId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="subBusName != null" >
+        #{subBusName,jdbcType=CHAR},
+      </if>
+      <if test="subBusDesc != null" >
+        #{subBusDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="designComment != null" >
+        #{designComment,jdbcType=VARCHAR},
+      </if>
+      <if test="relateBusId != null" >
+        #{relateBusId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDesignSubComp" >
+    update est_design_sub_comp
+    <set >
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="subBusName != null" >
+        sub_bus_name = #{subBusName,jdbcType=CHAR},
+      </if>
+      <if test="subBusDesc != null" >
+        sub_bus_desc = #{subBusDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="designComment != null" >
+        design_comment = #{designComment,jdbcType=VARCHAR},
+      </if>
+      <if test="relateBusId != null" >
+        relate_bus_id = #{relateBusId,jdbcType=CHAR},
+      </if>
+    </set>
+    where sub_bus_id = #{subBusId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignSubComp" >
+    update est_design_sub_comp
+    set seq_no = #{seqNo,jdbcType=INTEGER},
+      sub_bus_name = #{subBusName,jdbcType=CHAR},
+      sub_bus_desc = #{subBusDesc,jdbcType=VARCHAR},
+      design_comment = #{designComment,jdbcType=VARCHAR},
+      relate_bus_id = #{relateBusId,jdbcType=CHAR}
+    where sub_bus_id = #{subBusId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+  </update>
+</mapper>

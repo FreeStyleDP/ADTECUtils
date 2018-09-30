@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDtaPrioMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDtaPrioMng" >
+    <id column="obj_id" property="objId" jdbcType="CHAR" />
+    <id column="obj_type" property="objType" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="mchn_id" property="mchnId" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="mostlow_num" property="mostlowNum" jdbcType="INTEGER" />
+    <result column="low_num" property="lowNum" jdbcType="INTEGER" />
+    <result column="mid_num" property="midNum" jdbcType="INTEGER" />
+    <result column="high_num" property="highNum" jdbcType="INTEGER" />
+    <result column="mosthigh_num" property="mosthighNum" jdbcType="INTEGER" />
+    <result column="sum_num" property="sumNum" jdbcType="INTEGER" />
+    <result column="mostlow_tran" property="mostlowTran" jdbcType="INTEGER" />
+    <result column="low_tran" property="lowTran" jdbcType="INTEGER" />
+    <result column="mid_tran" property="midTran" jdbcType="INTEGER" />
+    <result column="high_tran" property="highTran" jdbcType="INTEGER" />
+    <result column="mosthigh_tran" property="mosthighTran" jdbcType="INTEGER" />
+    <result column="mostlow_inst" property="mostlowInst" jdbcType="CHAR" />
+    <result column="low_inst" property="lowInst" jdbcType="CHAR" />
+    <result column="mid_inst" property="midInst" jdbcType="CHAR" />
+    <result column="high_inst" property="highInst" jdbcType="CHAR" />
+    <result column="mosthigh_inst" property="mosthighInst" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    obj_id, obj_type, project_id, env_id, mchn_id, cloud_project_id, mostlow_num, low_num, 
+    mid_num, high_num, mosthigh_num, sum_num, mostlow_tran, low_tran, mid_tran, high_tran, 
+    mosthigh_tran, mostlow_inst, low_inst, mid_inst, high_inst, mosthigh_inst
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDtaPrioMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_dta_prio_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDtaPrioMngKey" >
+    delete from est_dta_prio_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDtaPrioMng" >
+    insert into est_dta_prio_mng (obj_id, obj_type, project_id, 
+      env_id, mchn_id, cloud_project_id, 
+      mostlow_num, low_num, mid_num, 
+      high_num, mosthigh_num, sum_num, 
+      mostlow_tran, low_tran, mid_tran, 
+      high_tran, mosthigh_tran, mostlow_inst, 
+      low_inst, mid_inst, high_inst, 
+      mosthigh_inst)
+    values (#{objId,jdbcType=CHAR}, #{objType,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{mchnId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, 
+      #{mostlowNum,jdbcType=INTEGER}, #{lowNum,jdbcType=INTEGER}, #{midNum,jdbcType=INTEGER}, 
+      #{highNum,jdbcType=INTEGER}, #{mosthighNum,jdbcType=INTEGER}, #{sumNum,jdbcType=INTEGER}, 
+      #{mostlowTran,jdbcType=INTEGER}, #{lowTran,jdbcType=INTEGER}, #{midTran,jdbcType=INTEGER}, 
+      #{highTran,jdbcType=INTEGER}, #{mosthighTran,jdbcType=INTEGER}, #{mostlowInst,jdbcType=CHAR}, 
+      #{lowInst,jdbcType=CHAR}, #{midInst,jdbcType=CHAR}, #{highInst,jdbcType=CHAR}, 
+      #{mosthighInst,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDtaPrioMng" >
+    insert into est_dta_prio_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="objType != null" >
+        obj_type,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="mchnId != null" >
+        mchn_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="mostlowNum != null" >
+        mostlow_num,
+      </if>
+      <if test="lowNum != null" >
+        low_num,
+      </if>
+      <if test="midNum != null" >
+        mid_num,
+      </if>
+      <if test="highNum != null" >
+        high_num,
+      </if>
+      <if test="mosthighNum != null" >
+        mosthigh_num,
+      </if>
+      <if test="sumNum != null" >
+        sum_num,
+      </if>
+      <if test="mostlowTran != null" >
+        mostlow_tran,
+      </if>
+      <if test="lowTran != null" >
+        low_tran,
+      </if>
+      <if test="midTran != null" >
+        mid_tran,
+      </if>
+      <if test="highTran != null" >
+        high_tran,
+      </if>
+      <if test="mosthighTran != null" >
+        mosthigh_tran,
+      </if>
+      <if test="mostlowInst != null" >
+        mostlow_inst,
+      </if>
+      <if test="lowInst != null" >
+        low_inst,
+      </if>
+      <if test="midInst != null" >
+        mid_inst,
+      </if>
+      <if test="highInst != null" >
+        high_inst,
+      </if>
+      <if test="mosthighInst != null" >
+        mosthigh_inst,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="objType != null" >
+        #{objType,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="mchnId != null" >
+        #{mchnId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="mostlowNum != null" >
+        #{mostlowNum,jdbcType=INTEGER},
+      </if>
+      <if test="lowNum != null" >
+        #{lowNum,jdbcType=INTEGER},
+      </if>
+      <if test="midNum != null" >
+        #{midNum,jdbcType=INTEGER},
+      </if>
+      <if test="highNum != null" >
+        #{highNum,jdbcType=INTEGER},
+      </if>
+      <if test="mosthighNum != null" >
+        #{mosthighNum,jdbcType=INTEGER},
+      </if>
+      <if test="sumNum != null" >
+        #{sumNum,jdbcType=INTEGER},
+      </if>
+      <if test="mostlowTran != null" >
+        #{mostlowTran,jdbcType=INTEGER},
+      </if>
+      <if test="lowTran != null" >
+        #{lowTran,jdbcType=INTEGER},
+      </if>
+      <if test="midTran != null" >
+        #{midTran,jdbcType=INTEGER},
+      </if>
+      <if test="highTran != null" >
+        #{highTran,jdbcType=INTEGER},
+      </if>
+      <if test="mosthighTran != null" >
+        #{mosthighTran,jdbcType=INTEGER},
+      </if>
+      <if test="mostlowInst != null" >
+        #{mostlowInst,jdbcType=CHAR},
+      </if>
+      <if test="lowInst != null" >
+        #{lowInst,jdbcType=CHAR},
+      </if>
+      <if test="midInst != null" >
+        #{midInst,jdbcType=CHAR},
+      </if>
+      <if test="highInst != null" >
+        #{highInst,jdbcType=CHAR},
+      </if>
+      <if test="mosthighInst != null" >
+        #{mosthighInst,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDtaPrioMng" >
+    update est_dta_prio_mng
+    <set >
+      <if test="mostlowNum != null" >
+        mostlow_num = #{mostlowNum,jdbcType=INTEGER},
+      </if>
+      <if test="lowNum != null" >
+        low_num = #{lowNum,jdbcType=INTEGER},
+      </if>
+      <if test="midNum != null" >
+        mid_num = #{midNum,jdbcType=INTEGER},
+      </if>
+      <if test="highNum != null" >
+        high_num = #{highNum,jdbcType=INTEGER},
+      </if>
+      <if test="mosthighNum != null" >
+        mosthigh_num = #{mosthighNum,jdbcType=INTEGER},
+      </if>
+      <if test="sumNum != null" >
+        sum_num = #{sumNum,jdbcType=INTEGER},
+      </if>
+      <if test="mostlowTran != null" >
+        mostlow_tran = #{mostlowTran,jdbcType=INTEGER},
+      </if>
+      <if test="lowTran != null" >
+        low_tran = #{lowTran,jdbcType=INTEGER},
+      </if>
+      <if test="midTran != null" >
+        mid_tran = #{midTran,jdbcType=INTEGER},
+      </if>
+      <if test="highTran != null" >
+        high_tran = #{highTran,jdbcType=INTEGER},
+      </if>
+      <if test="mosthighTran != null" >
+        mosthigh_tran = #{mosthighTran,jdbcType=INTEGER},
+      </if>
+      <if test="mostlowInst != null" >
+        mostlow_inst = #{mostlowInst,jdbcType=CHAR},
+      </if>
+      <if test="lowInst != null" >
+        low_inst = #{lowInst,jdbcType=CHAR},
+      </if>
+      <if test="midInst != null" >
+        mid_inst = #{midInst,jdbcType=CHAR},
+      </if>
+      <if test="highInst != null" >
+        high_inst = #{highInst,jdbcType=CHAR},
+      </if>
+      <if test="mosthighInst != null" >
+        mosthigh_inst = #{mosthighInst,jdbcType=CHAR},
+      </if>
+    </set>
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDtaPrioMng" >
+    update est_dta_prio_mng
+    set mostlow_num = #{mostlowNum,jdbcType=INTEGER},
+      low_num = #{lowNum,jdbcType=INTEGER},
+      mid_num = #{midNum,jdbcType=INTEGER},
+      high_num = #{highNum,jdbcType=INTEGER},
+      mosthigh_num = #{mosthighNum,jdbcType=INTEGER},
+      sum_num = #{sumNum,jdbcType=INTEGER},
+      mostlow_tran = #{mostlowTran,jdbcType=INTEGER},
+      low_tran = #{lowTran,jdbcType=INTEGER},
+      mid_tran = #{midTran,jdbcType=INTEGER},
+      high_tran = #{highTran,jdbcType=INTEGER},
+      mosthigh_tran = #{mosthighTran,jdbcType=INTEGER},
+      mostlow_inst = #{mostlowInst,jdbcType=CHAR},
+      low_inst = #{lowInst,jdbcType=CHAR},
+      mid_inst = #{midInst,jdbcType=CHAR},
+      high_inst = #{highInst,jdbcType=CHAR},
+      mosthigh_inst = #{mosthighInst,jdbcType=CHAR}
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

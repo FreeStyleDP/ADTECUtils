@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstSysinfoMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstSysinfoMng" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="mast_mchn" property="mastMchn" jdbcType="CHAR" />
+    <result column="scan_time" property="scanTime" jdbcType="SMALLINT" />
+    <result column="max_news" property="maxNews" jdbcType="SMALLINT" />
+    <result column="max_ver" property="maxVer" jdbcType="INTEGER" />
+    <result column="rcy_time" property="rcyTime" jdbcType="INTEGER" />
+    <result column="full_act" property="fullAct" jdbcType="CHAR" />
+    <result column="is_pwd_enc" property="isPwdEnc" jdbcType="CHAR" />
+    <result column="is_start_scan" property="isStartScan" jdbcType="CHAR" />
+    <result column="load_smps" property="loadSmps" jdbcType="CHAR" />
+    <result column="trade_concrt_num" property="tradeConcrtNum" jdbcType="INTEGER" />
+    <result column="datasrc" property="datasrc" jdbcType="CHAR" />
+    <result column="ala_run_num" property="alaRunNum" jdbcType="INTEGER" />
+    <result column="ala_max_num" property="alaMaxNum" jdbcType="INTEGER" />
+    <result column="ala_max_length" property="alaMaxLength" jdbcType="INTEGER" />
+    <result column="ala_refresh_time" property="alaRefreshTime" jdbcType="INTEGER" />
+    <result column="console_ip" property="consoleIp" jdbcType="CHAR" />
+    <result column="console_port" property="consolePort" jdbcType="CHAR" />
+    <result column="is_microsvcframe" property="isMicrosvcframe" jdbcType="CHAR" />
+    <result column="is_mons" property="isMons" jdbcType="CHAR" />
+    <result column="log_mode" property="logMode" jdbcType="CHAR" />
+    <result column="is_msfnode" property="isMsfnode" jdbcType="CHAR" />
+    <result column="node_len" property="nodeLen" jdbcType="INTEGER" />
+    <result column="is_desensitization" property="isDesensitization" jdbcType="CHAR" />
+    <result column="asy_run_num" property="asyRunNum" jdbcType="INTEGER" />
+    <result column="asy_max_num" property="asyMaxNum" jdbcType="INTEGER" />
+    <result column="asy_max_length" property="asyMaxLength" jdbcType="INTEGER" />
+    <result column="asy_refresh_time" property="asyRefreshTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    project_id, env_id, cloud_project_id, mast_mchn, scan_time, max_news, max_ver, rcy_time, 
+    full_act, is_pwd_enc, is_start_scan, load_smps, trade_concrt_num, datasrc, ala_run_num, 
+    ala_max_num, ala_max_length, ala_refresh_time, console_ip, console_port, is_microsvcframe, 
+    is_mons, log_mode, is_msfnode, node_len, is_desensitization, asy_run_num, asy_max_num, 
+    asy_max_length, asy_refresh_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstSysinfoMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_sysinfo_mng
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstSysinfoMngKey" >
+    delete from est_sysinfo_mng
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstSysinfoMng" >
+    insert into est_sysinfo_mng (project_id, env_id, cloud_project_id, 
+      mast_mchn, scan_time, max_news, 
+      max_ver, rcy_time, full_act, 
+      is_pwd_enc, is_start_scan, load_smps, 
+      trade_concrt_num, datasrc, ala_run_num, 
+      ala_max_num, ala_max_length, ala_refresh_time, 
+      console_ip, console_port, is_microsvcframe, 
+      is_mons, log_mode, is_msfnode, 
+      node_len, is_desensitization, asy_run_num, 
+      asy_max_num, asy_max_length, asy_refresh_time
+      )
+    values (#{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, 
+      #{mastMchn,jdbcType=CHAR}, #{scanTime,jdbcType=SMALLINT}, #{maxNews,jdbcType=SMALLINT}, 
+      #{maxVer,jdbcType=INTEGER}, #{rcyTime,jdbcType=INTEGER}, #{fullAct,jdbcType=CHAR}, 
+      #{isPwdEnc,jdbcType=CHAR}, #{isStartScan,jdbcType=CHAR}, #{loadSmps,jdbcType=CHAR}, 
+      #{tradeConcrtNum,jdbcType=INTEGER}, #{datasrc,jdbcType=CHAR}, #{alaRunNum,jdbcType=INTEGER}, 
+      #{alaMaxNum,jdbcType=INTEGER}, #{alaMaxLength,jdbcType=INTEGER}, #{alaRefreshTime,jdbcType=INTEGER}, 
+      #{consoleIp,jdbcType=CHAR}, #{consolePort,jdbcType=CHAR}, #{isMicrosvcframe,jdbcType=CHAR}, 
+      #{isMons,jdbcType=CHAR}, #{logMode,jdbcType=CHAR}, #{isMsfnode,jdbcType=CHAR}, 
+      #{nodeLen,jdbcType=INTEGER}, #{isDesensitization,jdbcType=CHAR}, #{asyRunNum,jdbcType=INTEGER}, 
+      #{asyMaxNum,jdbcType=INTEGER}, #{asyMaxLength,jdbcType=INTEGER}, #{asyRefreshTime,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstSysinfoMng" >
+    insert into est_sysinfo_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="mastMchn != null" >
+        mast_mchn,
+      </if>
+      <if test="scanTime != null" >
+        scan_time,
+      </if>
+      <if test="maxNews != null" >
+        max_news,
+      </if>
+      <if test="maxVer != null" >
+        max_ver,
+      </if>
+      <if test="rcyTime != null" >
+        rcy_time,
+      </if>
+      <if test="fullAct != null" >
+        full_act,
+      </if>
+      <if test="isPwdEnc != null" >
+        is_pwd_enc,
+      </if>
+      <if test="isStartScan != null" >
+        is_start_scan,
+      </if>
+      <if test="loadSmps != null" >
+        load_smps,
+      </if>
+      <if test="tradeConcrtNum != null" >
+        trade_concrt_num,
+      </if>
+      <if test="datasrc != null" >
+        datasrc,
+      </if>
+      <if test="alaRunNum != null" >
+        ala_run_num,
+      </if>
+      <if test="alaMaxNum != null" >
+        ala_max_num,
+      </if>
+      <if test="alaMaxLength != null" >
+        ala_max_length,
+      </if>
+      <if test="alaRefreshTime != null" >
+        ala_refresh_time,
+      </if>
+      <if test="consoleIp != null" >
+        console_ip,
+      </if>
+      <if test="consolePort != null" >
+        console_port,
+      </if>
+      <if test="isMicrosvcframe != null" >
+        is_microsvcframe,
+      </if>
+      <if test="isMons != null" >
+        is_mons,
+      </if>
+      <if test="logMode != null" >
+        log_mode,
+      </if>
+      <if test="isMsfnode != null" >
+        is_msfnode,
+      </if>
+      <if test="nodeLen != null" >
+        node_len,
+      </if>
+      <if test="isDesensitization != null" >
+        is_desensitization,
+      </if>
+      <if test="asyRunNum != null" >
+        asy_run_num,
+      </if>
+      <if test="asyMaxNum != null" >
+        asy_max_num,
+      </if>
+      <if test="asyMaxLength != null" >
+        asy_max_length,
+      </if>
+      <if test="asyRefreshTime != null" >
+        asy_refresh_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="mastMchn != null" >
+        #{mastMchn,jdbcType=CHAR},
+      </if>
+      <if test="scanTime != null" >
+        #{scanTime,jdbcType=SMALLINT},
+      </if>
+      <if test="maxNews != null" >
+        #{maxNews,jdbcType=SMALLINT},
+      </if>
+      <if test="maxVer != null" >
+        #{maxVer,jdbcType=INTEGER},
+      </if>
+      <if test="rcyTime != null" >
+        #{rcyTime,jdbcType=INTEGER},
+      </if>
+      <if test="fullAct != null" >
+        #{fullAct,jdbcType=CHAR},
+      </if>
+      <if test="isPwdEnc != null" >
+        #{isPwdEnc,jdbcType=CHAR},
+      </if>
+      <if test="isStartScan != null" >
+        #{isStartScan,jdbcType=CHAR},
+      </if>
+      <if test="loadSmps != null" >
+        #{loadSmps,jdbcType=CHAR},
+      </if>
+      <if test="tradeConcrtNum != null" >
+        #{tradeConcrtNum,jdbcType=INTEGER},
+      </if>
+      <if test="datasrc != null" >
+        #{datasrc,jdbcType=CHAR},
+      </if>
+      <if test="alaRunNum != null" >
+        #{alaRunNum,jdbcType=INTEGER},
+      </if>
+      <if test="alaMaxNum != null" >
+        #{alaMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="alaMaxLength != null" >
+        #{alaMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="alaRefreshTime != null" >
+        #{alaRefreshTime,jdbcType=INTEGER},
+      </if>
+      <if test="consoleIp != null" >
+        #{consoleIp,jdbcType=CHAR},
+      </if>
+      <if test="consolePort != null" >
+        #{consolePort,jdbcType=CHAR},
+      </if>
+      <if test="isMicrosvcframe != null" >
+        #{isMicrosvcframe,jdbcType=CHAR},
+      </if>
+      <if test="isMons != null" >
+        #{isMons,jdbcType=CHAR},
+      </if>
+      <if test="logMode != null" >
+        #{logMode,jdbcType=CHAR},
+      </if>
+      <if test="isMsfnode != null" >
+        #{isMsfnode,jdbcType=CHAR},
+      </if>
+      <if test="nodeLen != null" >
+        #{nodeLen,jdbcType=INTEGER},
+      </if>
+      <if test="isDesensitization != null" >
+        #{isDesensitization,jdbcType=CHAR},
+      </if>
+      <if test="asyRunNum != null" >
+        #{asyRunNum,jdbcType=INTEGER},
+      </if>
+      <if test="asyMaxNum != null" >
+        #{asyMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="asyMaxLength != null" >
+        #{asyMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="asyRefreshTime != null" >
+        #{asyRefreshTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstSysinfoMng" >
+    update est_sysinfo_mng
+    <set >
+      <if test="mastMchn != null" >
+        mast_mchn = #{mastMchn,jdbcType=CHAR},
+      </if>
+      <if test="scanTime != null" >
+        scan_time = #{scanTime,jdbcType=SMALLINT},
+      </if>
+      <if test="maxNews != null" >
+        max_news = #{maxNews,jdbcType=SMALLINT},
+      </if>
+      <if test="maxVer != null" >
+        max_ver = #{maxVer,jdbcType=INTEGER},
+      </if>
+      <if test="rcyTime != null" >
+        rcy_time = #{rcyTime,jdbcType=INTEGER},
+      </if>
+      <if test="fullAct != null" >
+        full_act = #{fullAct,jdbcType=CHAR},
+      </if>
+      <if test="isPwdEnc != null" >
+        is_pwd_enc = #{isPwdEnc,jdbcType=CHAR},
+      </if>
+      <if test="isStartScan != null" >
+        is_start_scan = #{isStartScan,jdbcType=CHAR},
+      </if>
+      <if test="loadSmps != null" >
+        load_smps = #{loadSmps,jdbcType=CHAR},
+      </if>
+      <if test="tradeConcrtNum != null" >
+        trade_concrt_num = #{tradeConcrtNum,jdbcType=INTEGER},
+      </if>
+      <if test="datasrc != null" >
+        datasrc = #{datasrc,jdbcType=CHAR},
+      </if>
+      <if test="alaRunNum != null" >
+        ala_run_num = #{alaRunNum,jdbcType=INTEGER},
+      </if>
+      <if test="alaMaxNum != null" >
+        ala_max_num = #{alaMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="alaMaxLength != null" >
+        ala_max_length = #{alaMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="alaRefreshTime != null" >
+        ala_refresh_time = #{alaRefreshTime,jdbcType=INTEGER},
+      </if>
+      <if test="consoleIp != null" >
+        console_ip = #{consoleIp,jdbcType=CHAR},
+      </if>
+      <if test="consolePort != null" >
+        console_port = #{consolePort,jdbcType=CHAR},
+      </if>
+      <if test="isMicrosvcframe != null" >
+        is_microsvcframe = #{isMicrosvcframe,jdbcType=CHAR},
+      </if>
+      <if test="isMons != null" >
+        is_mons = #{isMons,jdbcType=CHAR},
+      </if>
+      <if test="logMode != null" >
+        log_mode = #{logMode,jdbcType=CHAR},
+      </if>
+      <if test="isMsfnode != null" >
+        is_msfnode = #{isMsfnode,jdbcType=CHAR},
+      </if>
+      <if test="nodeLen != null" >
+        node_len = #{nodeLen,jdbcType=INTEGER},
+      </if>
+      <if test="isDesensitization != null" >
+        is_desensitization = #{isDesensitization,jdbcType=CHAR},
+      </if>
+      <if test="asyRunNum != null" >
+        asy_run_num = #{asyRunNum,jdbcType=INTEGER},
+      </if>
+      <if test="asyMaxNum != null" >
+        asy_max_num = #{asyMaxNum,jdbcType=INTEGER},
+      </if>
+      <if test="asyMaxLength != null" >
+        asy_max_length = #{asyMaxLength,jdbcType=INTEGER},
+      </if>
+      <if test="asyRefreshTime != null" >
+        asy_refresh_time = #{asyRefreshTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstSysinfoMng" >
+    update est_sysinfo_mng
+    set mast_mchn = #{mastMchn,jdbcType=CHAR},
+      scan_time = #{scanTime,jdbcType=SMALLINT},
+      max_news = #{maxNews,jdbcType=SMALLINT},
+      max_ver = #{maxVer,jdbcType=INTEGER},
+      rcy_time = #{rcyTime,jdbcType=INTEGER},
+      full_act = #{fullAct,jdbcType=CHAR},
+      is_pwd_enc = #{isPwdEnc,jdbcType=CHAR},
+      is_start_scan = #{isStartScan,jdbcType=CHAR},
+      load_smps = #{loadSmps,jdbcType=CHAR},
+      trade_concrt_num = #{tradeConcrtNum,jdbcType=INTEGER},
+      datasrc = #{datasrc,jdbcType=CHAR},
+      ala_run_num = #{alaRunNum,jdbcType=INTEGER},
+      ala_max_num = #{alaMaxNum,jdbcType=INTEGER},
+      ala_max_length = #{alaMaxLength,jdbcType=INTEGER},
+      ala_refresh_time = #{alaRefreshTime,jdbcType=INTEGER},
+      console_ip = #{consoleIp,jdbcType=CHAR},
+      console_port = #{consolePort,jdbcType=CHAR},
+      is_microsvcframe = #{isMicrosvcframe,jdbcType=CHAR},
+      is_mons = #{isMons,jdbcType=CHAR},
+      log_mode = #{logMode,jdbcType=CHAR},
+      is_msfnode = #{isMsfnode,jdbcType=CHAR},
+      node_len = #{nodeLen,jdbcType=INTEGER},
+      is_desensitization = #{isDesensitization,jdbcType=CHAR},
+      asy_run_num = #{asyRunNum,jdbcType=INTEGER},
+      asy_max_num = #{asyMaxNum,jdbcType=INTEGER},
+      asy_max_length = #{asyMaxLength,jdbcType=INTEGER},
+      asy_refresh_time = #{asyRefreshTime,jdbcType=INTEGER}
+    where project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

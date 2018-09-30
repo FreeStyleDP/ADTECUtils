@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstExceptionCodeMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstExceptionCode" >
+    <id column="exception_code_id" property="exceptionCodeId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="exception_name" property="exceptionName" jdbcType="CHAR" />
+    <result column="exception_desc" property="exceptionDesc" jdbcType="VARCHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    exception_code_id, project_id, exception_name, exception_desc, grp_id, resource_id, 
+    crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_exception_code
+    where exception_code_id = #{exceptionCodeId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_exception_code
+    where exception_code_id = #{exceptionCodeId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstExceptionCode" >
+    insert into est_exception_code (exception_code_id, project_id, exception_name, 
+      exception_desc, grp_id, resource_id, 
+      crt_user, crt_date_time, lst_mod_user, 
+      lst_mod_date_time)
+    values (#{exceptionCodeId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{exceptionName,jdbcType=CHAR}, 
+      #{exceptionDesc,jdbcType=VARCHAR}, #{grpId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, 
+      #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, 
+      #{lstModDateTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstExceptionCode" >
+    insert into est_exception_code
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="exceptionCodeId != null" >
+        exception_code_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="exceptionName != null" >
+        exception_name,
+      </if>
+      <if test="exceptionDesc != null" >
+        exception_desc,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="exceptionCodeId != null" >
+        #{exceptionCodeId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="exceptionName != null" >
+        #{exceptionName,jdbcType=CHAR},
+      </if>
+      <if test="exceptionDesc != null" >
+        #{exceptionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstExceptionCode" >
+    update est_exception_code
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="exceptionName != null" >
+        exception_name = #{exceptionName,jdbcType=CHAR},
+      </if>
+      <if test="exceptionDesc != null" >
+        exception_desc = #{exceptionDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where exception_code_id = #{exceptionCodeId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstExceptionCode" >
+    update est_exception_code
+    set project_id = #{projectId,jdbcType=CHAR},
+      exception_name = #{exceptionName,jdbcType=CHAR},
+      exception_desc = #{exceptionDesc,jdbcType=VARCHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where exception_code_id = #{exceptionCodeId,jdbcType=CHAR}
+  </update>
+</mapper>

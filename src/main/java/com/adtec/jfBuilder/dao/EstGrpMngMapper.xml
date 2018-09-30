@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstGrpMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstGrpMng" >
+    <id column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="grp_name" property="grpName" jdbcType="CHAR" />
+    <result column="grp_desc" property="grpDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    grp_id, grp_name, grp_desc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_grp_mng
+    where grp_id = #{grpId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_grp_mng
+    where grp_id = #{grpId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstGrpMng" >
+    insert into est_grp_mng (grp_id, grp_name, grp_desc
+      )
+    values (#{grpId,jdbcType=CHAR}, #{grpName,jdbcType=CHAR}, #{grpDesc,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstGrpMng" >
+    insert into est_grp_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="grpName != null" >
+        grp_name,
+      </if>
+      <if test="grpDesc != null" >
+        grp_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="grpName != null" >
+        #{grpName,jdbcType=CHAR},
+      </if>
+      <if test="grpDesc != null" >
+        #{grpDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstGrpMng" >
+    update est_grp_mng
+    <set >
+      <if test="grpName != null" >
+        grp_name = #{grpName,jdbcType=CHAR},
+      </if>
+      <if test="grpDesc != null" >
+        grp_desc = #{grpDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where grp_id = #{grpId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstGrpMng" >
+    update est_grp_mng
+    set grp_name = #{grpName,jdbcType=CHAR},
+      grp_desc = #{grpDesc,jdbcType=VARCHAR}
+    where grp_id = #{grpId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstSvrDefMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstSvrDef" >
+    <id column="svr_id" property="svrId" jdbcType="CHAR" />
+    <result column="svr_name" property="svrName" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="svr_desc" property="svrDesc" jdbcType="VARCHAR" />
+    <result column="tran_num_ref" property="tranNumRef" jdbcType="INTEGER" />
+    <result column="tran_timeout_num" property="tranTimeoutNum" jdbcType="VARCHAR" />
+    <result column="timeout_ctrl_time" property="timeoutCtrlTime" jdbcType="INTEGER" />
+    <result column="flow_num" property="flowNum" jdbcType="VARCHAR" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    svr_id, svr_name, project_id, env_id, svr_desc, tran_num_ref, tran_timeout_num, timeout_ctrl_time, 
+    flow_num, cloud_project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_svr_def
+    where svr_id = #{svrId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_svr_def
+    where svr_id = #{svrId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstSvrDef" >
+    insert into est_svr_def (svr_id, svr_name, project_id, 
+      env_id, svr_desc, tran_num_ref, 
+      tran_timeout_num, timeout_ctrl_time, flow_num, 
+      cloud_project_id)
+    values (#{svrId,jdbcType=CHAR}, #{svrName,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{svrDesc,jdbcType=VARCHAR}, #{tranNumRef,jdbcType=INTEGER}, 
+      #{tranTimeoutNum,jdbcType=VARCHAR}, #{timeoutCtrlTime,jdbcType=INTEGER}, #{flowNum,jdbcType=VARCHAR}, 
+      #{cloudProjectId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstSvrDef" >
+    insert into est_svr_def
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svrId != null" >
+        svr_id,
+      </if>
+      <if test="svrName != null" >
+        svr_name,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="svrDesc != null" >
+        svr_desc,
+      </if>
+      <if test="tranNumRef != null" >
+        tran_num_ref,
+      </if>
+      <if test="tranTimeoutNum != null" >
+        tran_timeout_num,
+      </if>
+      <if test="timeoutCtrlTime != null" >
+        timeout_ctrl_time,
+      </if>
+      <if test="flowNum != null" >
+        flow_num,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svrId != null" >
+        #{svrId,jdbcType=CHAR},
+      </if>
+      <if test="svrName != null" >
+        #{svrName,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="svrDesc != null" >
+        #{svrDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tranNumRef != null" >
+        #{tranNumRef,jdbcType=INTEGER},
+      </if>
+      <if test="tranTimeoutNum != null" >
+        #{tranTimeoutNum,jdbcType=VARCHAR},
+      </if>
+      <if test="timeoutCtrlTime != null" >
+        #{timeoutCtrlTime,jdbcType=INTEGER},
+      </if>
+      <if test="flowNum != null" >
+        #{flowNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstSvrDef" >
+    update est_svr_def
+    <set >
+      <if test="svrName != null" >
+        svr_name = #{svrName,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="svrDesc != null" >
+        svr_desc = #{svrDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="tranNumRef != null" >
+        tran_num_ref = #{tranNumRef,jdbcType=INTEGER},
+      </if>
+      <if test="tranTimeoutNum != null" >
+        tran_timeout_num = #{tranTimeoutNum,jdbcType=VARCHAR},
+      </if>
+      <if test="timeoutCtrlTime != null" >
+        timeout_ctrl_time = #{timeoutCtrlTime,jdbcType=INTEGER},
+      </if>
+      <if test="flowNum != null" >
+        flow_num = #{flowNum,jdbcType=VARCHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </set>
+    where svr_id = #{svrId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstSvrDef" >
+    update est_svr_def
+    set svr_name = #{svrName,jdbcType=CHAR},
+      project_id = #{projectId,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      svr_desc = #{svrDesc,jdbcType=VARCHAR},
+      tran_num_ref = #{tranNumRef,jdbcType=INTEGER},
+      tran_timeout_num = #{tranTimeoutNum,jdbcType=VARCHAR},
+      timeout_ctrl_time = #{timeoutCtrlTime,jdbcType=INTEGER},
+      flow_num = #{flowNum,jdbcType=VARCHAR},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+    where svr_id = #{svrId,jdbcType=CHAR}
+  </update>
+</mapper>

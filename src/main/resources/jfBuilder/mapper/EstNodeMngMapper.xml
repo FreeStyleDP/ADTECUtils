@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstNodeMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstNodeMng" >
+    <id column="node_id" property="nodeId" jdbcType="CHAR" />
+    <id column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="node_ip" property="nodeIp" jdbcType="CHAR" />
+    <result column="node_port" property="nodePort" jdbcType="CHAR" />
+    <result column="max_conn" property="maxConn" jdbcType="SMALLINT" />
+    <result column="node_fsrv_ip" property="nodeFsrvIp" jdbcType="CHAR" />
+    <result column="node_fsrv_port" property="nodeFsrvPort" jdbcType="SMALLINT" />
+    <result column="node_fuser" property="nodeFuser" jdbcType="CHAR" />
+    <result column="node_fpass" property="nodeFpass" jdbcType="CHAR" />
+    <result column="url_type" property="urlType" jdbcType="CHAR" />
+    <result column="url_str" property="urlStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    node_id, dta_id, project_id, env_id, cloud_project_id, node_ip, node_port, max_conn, 
+    node_fsrv_ip, node_fsrv_port, node_fuser, node_fpass, url_type, url_str
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstNodeMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_node_mng
+    where node_id = #{nodeId,jdbcType=CHAR}
+      and dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstNodeMngKey" >
+    delete from est_node_mng
+    where node_id = #{nodeId,jdbcType=CHAR}
+      and dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstNodeMng" >
+    insert into est_node_mng (node_id, dta_id, project_id, 
+      env_id, cloud_project_id, node_ip, 
+      node_port, max_conn, node_fsrv_ip, 
+      node_fsrv_port, node_fuser, node_fpass, 
+      url_type, url_str)
+    values (#{nodeId,jdbcType=CHAR}, #{dtaId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, #{nodeIp,jdbcType=CHAR}, 
+      #{nodePort,jdbcType=CHAR}, #{maxConn,jdbcType=SMALLINT}, #{nodeFsrvIp,jdbcType=CHAR}, 
+      #{nodeFsrvPort,jdbcType=SMALLINT}, #{nodeFuser,jdbcType=CHAR}, #{nodeFpass,jdbcType=CHAR}, 
+      #{urlType,jdbcType=CHAR}, #{urlStr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstNodeMng" >
+    insert into est_node_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="nodeId != null" >
+        node_id,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="nodeIp != null" >
+        node_ip,
+      </if>
+      <if test="nodePort != null" >
+        node_port,
+      </if>
+      <if test="maxConn != null" >
+        max_conn,
+      </if>
+      <if test="nodeFsrvIp != null" >
+        node_fsrv_ip,
+      </if>
+      <if test="nodeFsrvPort != null" >
+        node_fsrv_port,
+      </if>
+      <if test="nodeFuser != null" >
+        node_fuser,
+      </if>
+      <if test="nodeFpass != null" >
+        node_fpass,
+      </if>
+      <if test="urlType != null" >
+        url_type,
+      </if>
+      <if test="urlStr != null" >
+        url_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="nodeId != null" >
+        #{nodeId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="nodeIp != null" >
+        #{nodeIp,jdbcType=CHAR},
+      </if>
+      <if test="nodePort != null" >
+        #{nodePort,jdbcType=CHAR},
+      </if>
+      <if test="maxConn != null" >
+        #{maxConn,jdbcType=SMALLINT},
+      </if>
+      <if test="nodeFsrvIp != null" >
+        #{nodeFsrvIp,jdbcType=CHAR},
+      </if>
+      <if test="nodeFsrvPort != null" >
+        #{nodeFsrvPort,jdbcType=SMALLINT},
+      </if>
+      <if test="nodeFuser != null" >
+        #{nodeFuser,jdbcType=CHAR},
+      </if>
+      <if test="nodeFpass != null" >
+        #{nodeFpass,jdbcType=CHAR},
+      </if>
+      <if test="urlType != null" >
+        #{urlType,jdbcType=CHAR},
+      </if>
+      <if test="urlStr != null" >
+        #{urlStr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstNodeMng" >
+    update est_node_mng
+    <set >
+      <if test="nodeIp != null" >
+        node_ip = #{nodeIp,jdbcType=CHAR},
+      </if>
+      <if test="nodePort != null" >
+        node_port = #{nodePort,jdbcType=CHAR},
+      </if>
+      <if test="maxConn != null" >
+        max_conn = #{maxConn,jdbcType=SMALLINT},
+      </if>
+      <if test="nodeFsrvIp != null" >
+        node_fsrv_ip = #{nodeFsrvIp,jdbcType=CHAR},
+      </if>
+      <if test="nodeFsrvPort != null" >
+        node_fsrv_port = #{nodeFsrvPort,jdbcType=SMALLINT},
+      </if>
+      <if test="nodeFuser != null" >
+        node_fuser = #{nodeFuser,jdbcType=CHAR},
+      </if>
+      <if test="nodeFpass != null" >
+        node_fpass = #{nodeFpass,jdbcType=CHAR},
+      </if>
+      <if test="urlType != null" >
+        url_type = #{urlType,jdbcType=CHAR},
+      </if>
+      <if test="urlStr != null" >
+        url_str = #{urlStr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where node_id = #{nodeId,jdbcType=CHAR}
+      and dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstNodeMng" >
+    update est_node_mng
+    set node_ip = #{nodeIp,jdbcType=CHAR},
+      node_port = #{nodePort,jdbcType=CHAR},
+      max_conn = #{maxConn,jdbcType=SMALLINT},
+      node_fsrv_ip = #{nodeFsrvIp,jdbcType=CHAR},
+      node_fsrv_port = #{nodeFsrvPort,jdbcType=SMALLINT},
+      node_fuser = #{nodeFuser,jdbcType=CHAR},
+      node_fpass = #{nodeFpass,jdbcType=CHAR},
+      url_type = #{urlType,jdbcType=CHAR},
+      url_str = #{urlStr,jdbcType=VARCHAR}
+    where node_id = #{nodeId,jdbcType=CHAR}
+      and dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

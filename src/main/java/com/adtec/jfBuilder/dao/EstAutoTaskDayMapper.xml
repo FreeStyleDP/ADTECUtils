@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstAutoTaskDayMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstAutoTaskDay" >
+    <id column="service_id" property="serviceId" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="CHAR" />
+    <result column="week_type" property="weekType" jdbcType="CHAR" />
+    <result column="last_week_day" property="lastWeekDay" jdbcType="CHAR" />
+    <result column="week_bitmap" property="weekBitmap" jdbcType="CHAR" />
+    <result column="month_bitmap" property="monthBitmap" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    service_id, type, week_type, last_week_day, week_bitmap, month_bitmap
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_auto_task_day
+    where service_id = #{serviceId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_auto_task_day
+    where service_id = #{serviceId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstAutoTaskDay" >
+    insert into est_auto_task_day (service_id, type, week_type, 
+      last_week_day, week_bitmap, month_bitmap
+      )
+    values (#{serviceId,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{weekType,jdbcType=CHAR}, 
+      #{lastWeekDay,jdbcType=CHAR}, #{weekBitmap,jdbcType=CHAR}, #{monthBitmap,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstAutoTaskDay" >
+    insert into est_auto_task_day
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        service_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="weekType != null" >
+        week_type,
+      </if>
+      <if test="lastWeekDay != null" >
+        last_week_day,
+      </if>
+      <if test="weekBitmap != null" >
+        week_bitmap,
+      </if>
+      <if test="monthBitmap != null" >
+        month_bitmap,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="serviceId != null" >
+        #{serviceId,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="weekType != null" >
+        #{weekType,jdbcType=CHAR},
+      </if>
+      <if test="lastWeekDay != null" >
+        #{lastWeekDay,jdbcType=CHAR},
+      </if>
+      <if test="weekBitmap != null" >
+        #{weekBitmap,jdbcType=CHAR},
+      </if>
+      <if test="monthBitmap != null" >
+        #{monthBitmap,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstAutoTaskDay" >
+    update est_auto_task_day
+    <set >
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="weekType != null" >
+        week_type = #{weekType,jdbcType=CHAR},
+      </if>
+      <if test="lastWeekDay != null" >
+        last_week_day = #{lastWeekDay,jdbcType=CHAR},
+      </if>
+      <if test="weekBitmap != null" >
+        week_bitmap = #{weekBitmap,jdbcType=CHAR},
+      </if>
+      <if test="monthBitmap != null" >
+        month_bitmap = #{monthBitmap,jdbcType=CHAR},
+      </if>
+    </set>
+    where service_id = #{serviceId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstAutoTaskDay" >
+    update est_auto_task_day
+    set type = #{type,jdbcType=CHAR},
+      week_type = #{weekType,jdbcType=CHAR},
+      last_week_day = #{lastWeekDay,jdbcType=CHAR},
+      week_bitmap = #{weekBitmap,jdbcType=CHAR},
+      month_bitmap = #{monthBitmap,jdbcType=CHAR}
+    where service_id = #{serviceId,jdbcType=CHAR}
+  </update>
+</mapper>

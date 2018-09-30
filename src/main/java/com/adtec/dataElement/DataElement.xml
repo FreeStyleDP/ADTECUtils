@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<DataElementTab RecNum="2">
+  <DataElement DataType="Struct"
+  		ElemName="OBJ_EBANK_SVR_GW2317_RES"
+  		ElemDesc="遂心存签约响应"
+  		NodeClassName="EBANK"
+  		NodeClassDesc="网银"
+  		XmlNodeName="response">
+    <ItemTab RecNum="7">
+      <Item ItemName="msgReturnFrom"
+      		ItemDesc="64位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_64bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="tx_code"
+      		ItemDesc="32位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_32bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="mac"
+      		ItemDesc="32位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_64bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="hostReturnCode"
+      		ItemDesc="10位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_10bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="hostErrorMessage"
+      		ItemDesc="200位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_200bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="uuid"
+      		ItemDesc="32位通用字符串"
+      		ItemType="DataDict"
+      		TypeName="str_64bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="cd"
+      		ItemDesc="遂心存签约响应"
+      		ItemType="DataElem"
+      		TypeName="OBJ_GW2317_RES"
+      		ItemDeft=""
+      		ElemType=""
+      		Array="No"
+      		NodeType="Node"
+      		Security=""
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+    </ItemTab>
+  </DataElement>
+  <DataElement DataType="Struct"
+  		ElemName="OBJ_GW2317_RES"
+  		ElemDesc="遂心存签约响应"
+  		NodeClassName="PUB"
+  		NodeClassDesc="公共数据对象"
+  		XmlNodeName="cd">
+    <ItemTab RecNum="1">
+      <Item ItemName="SettIntsum"
+      		ItemDesc="结息利息"
+      		ItemType="DataDict"
+      		TypeName="str_16bit"
+      		ItemDeft=""
+      		ElemType="No"
+      		NodeType="Node"
+      		Security="No"
+      		EnumName =""
+      		EnumKvp =""
+      		RelateItemName ="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+    </ItemTab>
+  </DataElement>
+</DataElementTab>

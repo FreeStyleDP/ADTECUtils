@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbSqlMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDbSql" >
+    <id column="tabid" property="tabid" jdbcType="INTEGER" />
+    <id column="sql_no" property="sqlNo" jdbcType="INTEGER" />
+    <result column="sql_statm" property="sqlStatm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tabid, sql_no, sql_statm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDbSqlKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_sql
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and sql_no = #{sqlNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbSqlKey" >
+    delete from est_db_sql
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and sql_no = #{sqlNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDbSql" >
+    insert into est_db_sql (tabid, sql_no, sql_statm
+      )
+    values (#{tabid,jdbcType=INTEGER}, #{sqlNo,jdbcType=INTEGER}, #{sqlStatm,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDbSql" >
+    insert into est_db_sql
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="sqlNo != null" >
+        sql_no,
+      </if>
+      <if test="sqlStatm != null" >
+        sql_statm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="sqlNo != null" >
+        #{sqlNo,jdbcType=INTEGER},
+      </if>
+      <if test="sqlStatm != null" >
+        #{sqlStatm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDbSql" >
+    update est_db_sql
+    <set >
+      <if test="sqlStatm != null" >
+        sql_statm = #{sqlStatm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and sql_no = #{sqlNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbSql" >
+    update est_db_sql
+    set sql_statm = #{sqlStatm,jdbcType=VARCHAR}
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and sql_no = #{sqlNo,jdbcType=INTEGER}
+  </update>
+</mapper>

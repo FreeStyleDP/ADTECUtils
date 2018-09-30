@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstFmtgrpMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstFmtgrp" >
+    <id column="svc_id" property="svcId" jdbcType="CHAR" />
+    <id column="idx" property="idx" jdbcType="INTEGER" />
+    <id column="grp_type" property="grpType" jdbcType="CHAR" />
+    <result column="mfmt" property="mfmt" jdbcType="CHAR" />
+    <result column="efmt" property="efmt" jdbcType="CHAR" />
+    <result column="ret_cycle" property="retCycle" jdbcType="VARCHAR" />
+    <result column="cycle" property="cycle" jdbcType="CHAR" />
+    <result column="cycle_cond" property="cycleCond" jdbcType="CHAR" />
+    <result column="efmt_cond" property="efmtCond" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    svc_id, idx, grp_type, mfmt, efmt, ret_cycle, cycle, cycle_cond, efmt_cond
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstFmtgrpKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_fmtgrp
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and idx = #{idx,jdbcType=INTEGER}
+      and grp_type = #{grpType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstFmtgrpKey" >
+    delete from est_fmtgrp
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and idx = #{idx,jdbcType=INTEGER}
+      and grp_type = #{grpType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstFmtgrp" >
+    insert into est_fmtgrp (svc_id, idx, grp_type, 
+      mfmt, efmt, ret_cycle, cycle, 
+      cycle_cond, efmt_cond)
+    values (#{svcId,jdbcType=CHAR}, #{idx,jdbcType=INTEGER}, #{grpType,jdbcType=CHAR}, 
+      #{mfmt,jdbcType=CHAR}, #{efmt,jdbcType=CHAR}, #{retCycle,jdbcType=VARCHAR}, #{cycle,jdbcType=CHAR}, 
+      #{cycleCond,jdbcType=CHAR}, #{efmtCond,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstFmtgrp" >
+    insert into est_fmtgrp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="idx != null" >
+        idx,
+      </if>
+      <if test="grpType != null" >
+        grp_type,
+      </if>
+      <if test="mfmt != null" >
+        mfmt,
+      </if>
+      <if test="efmt != null" >
+        efmt,
+      </if>
+      <if test="retCycle != null" >
+        ret_cycle,
+      </if>
+      <if test="cycle != null" >
+        cycle,
+      </if>
+      <if test="cycleCond != null" >
+        cycle_cond,
+      </if>
+      <if test="efmtCond != null" >
+        efmt_cond,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="idx != null" >
+        #{idx,jdbcType=INTEGER},
+      </if>
+      <if test="grpType != null" >
+        #{grpType,jdbcType=CHAR},
+      </if>
+      <if test="mfmt != null" >
+        #{mfmt,jdbcType=CHAR},
+      </if>
+      <if test="efmt != null" >
+        #{efmt,jdbcType=CHAR},
+      </if>
+      <if test="retCycle != null" >
+        #{retCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null" >
+        #{cycle,jdbcType=CHAR},
+      </if>
+      <if test="cycleCond != null" >
+        #{cycleCond,jdbcType=CHAR},
+      </if>
+      <if test="efmtCond != null" >
+        #{efmtCond,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstFmtgrp" >
+    update est_fmtgrp
+    <set >
+      <if test="mfmt != null" >
+        mfmt = #{mfmt,jdbcType=CHAR},
+      </if>
+      <if test="efmt != null" >
+        efmt = #{efmt,jdbcType=CHAR},
+      </if>
+      <if test="retCycle != null" >
+        ret_cycle = #{retCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="cycle != null" >
+        cycle = #{cycle,jdbcType=CHAR},
+      </if>
+      <if test="cycleCond != null" >
+        cycle_cond = #{cycleCond,jdbcType=CHAR},
+      </if>
+      <if test="efmtCond != null" >
+        efmt_cond = #{efmtCond,jdbcType=CHAR},
+      </if>
+    </set>
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and idx = #{idx,jdbcType=INTEGER}
+      and grp_type = #{grpType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstFmtgrp" >
+    update est_fmtgrp
+    set mfmt = #{mfmt,jdbcType=CHAR},
+      efmt = #{efmt,jdbcType=CHAR},
+      ret_cycle = #{retCycle,jdbcType=VARCHAR},
+      cycle = #{cycle,jdbcType=CHAR},
+      cycle_cond = #{cycleCond,jdbcType=CHAR},
+      efmt_cond = #{efmtCond,jdbcType=CHAR}
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and idx = #{idx,jdbcType=INTEGER}
+      and grp_type = #{grpType,jdbcType=CHAR}
+  </update>
+</mapper>

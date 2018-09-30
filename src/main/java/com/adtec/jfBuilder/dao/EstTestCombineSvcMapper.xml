@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstTestCombineSvcMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstTestCombineSvc" >
+    <id column="combine_svc_id" property="combineSvcId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="combine_svc_name" property="combineSvcName" jdbcType="CHAR" />
+    <result column="combine_svc_desc" property="combineSvcDesc" jdbcType="VARCHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="single_svc_type" property="singleSvcType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    combine_svc_id, project_id, combine_svc_name, combine_svc_desc, crt_user, crt_date_time, 
+    lst_mod_user, lst_mod_date_time, single_svc_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_test_combine_svc
+    where combine_svc_id = #{combineSvcId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_test_combine_svc
+    where combine_svc_id = #{combineSvcId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstTestCombineSvc" >
+    insert into est_test_combine_svc (combine_svc_id, project_id, combine_svc_name, 
+      combine_svc_desc, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, single_svc_type
+      )
+    values (#{combineSvcId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{combineSvcName,jdbcType=CHAR}, 
+      #{combineSvcDesc,jdbcType=VARCHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{singleSvcType,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstTestCombineSvc" >
+    insert into est_test_combine_svc
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="combineSvcId != null" >
+        combine_svc_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="combineSvcName != null" >
+        combine_svc_name,
+      </if>
+      <if test="combineSvcDesc != null" >
+        combine_svc_desc,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="singleSvcType != null" >
+        single_svc_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="combineSvcId != null" >
+        #{combineSvcId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="combineSvcName != null" >
+        #{combineSvcName,jdbcType=CHAR},
+      </if>
+      <if test="combineSvcDesc != null" >
+        #{combineSvcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="singleSvcType != null" >
+        #{singleSvcType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstTestCombineSvc" >
+    update est_test_combine_svc
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="combineSvcName != null" >
+        combine_svc_name = #{combineSvcName,jdbcType=CHAR},
+      </if>
+      <if test="combineSvcDesc != null" >
+        combine_svc_desc = #{combineSvcDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="singleSvcType != null" >
+        single_svc_type = #{singleSvcType,jdbcType=CHAR},
+      </if>
+    </set>
+    where combine_svc_id = #{combineSvcId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstTestCombineSvc" >
+    update est_test_combine_svc
+    set project_id = #{projectId,jdbcType=CHAR},
+      combine_svc_name = #{combineSvcName,jdbcType=CHAR},
+      combine_svc_desc = #{combineSvcDesc,jdbcType=VARCHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      single_svc_type = #{singleSvcType,jdbcType=CHAR}
+    where combine_svc_id = #{combineSvcId,jdbcType=CHAR}
+  </update>
+</mapper>

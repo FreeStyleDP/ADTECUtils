@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignTodoListMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignTodoList" >
+    <id column="todo_id" property="todoId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="resource_type" property="resourceType" jdbcType="CHAR" />
+    <result column="resource_name" property="resourceName" jdbcType="CHAR" />
+    <result column="resource_desc" property="resourceDesc" jdbcType="VARCHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="operate_user" property="operateUser" jdbcType="CHAR" />
+    <result column="record_time" property="recordTime" jdbcType="CHAR" />
+    <result column="process_user" property="processUser" jdbcType="CHAR" />
+    <result column="process_time" property="processTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    todo_id, project_id, relation_id, resource_id, resource_type, resource_name, resource_desc, 
+    grp_id, operate_user, record_time, process_user, process_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_todo_list
+    where todo_id = #{todoId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_todo_list
+    where todo_id = #{todoId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignTodoList" >
+    insert into est_design_todo_list (todo_id, project_id, relation_id, 
+      resource_id, resource_type, resource_name, 
+      resource_desc, grp_id, operate_user, 
+      record_time, process_user, process_time
+      )
+    values (#{todoId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{resourceId,jdbcType=CHAR}, #{resourceType,jdbcType=CHAR}, #{resourceName,jdbcType=CHAR}, 
+      #{resourceDesc,jdbcType=VARCHAR}, #{grpId,jdbcType=CHAR}, #{operateUser,jdbcType=CHAR}, 
+      #{recordTime,jdbcType=CHAR}, #{processUser,jdbcType=CHAR}, #{processTime,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignTodoList" >
+    insert into est_design_todo_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="todoId != null" >
+        todo_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="resourceName != null" >
+        resource_name,
+      </if>
+      <if test="resourceDesc != null" >
+        resource_desc,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="operateUser != null" >
+        operate_user,
+      </if>
+      <if test="recordTime != null" >
+        record_time,
+      </if>
+      <if test="processUser != null" >
+        process_user,
+      </if>
+      <if test="processTime != null" >
+        process_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="todoId != null" >
+        #{todoId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=CHAR},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=CHAR},
+      </if>
+      <if test="resourceDesc != null" >
+        #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="operateUser != null" >
+        #{operateUser,jdbcType=CHAR},
+      </if>
+      <if test="recordTime != null" >
+        #{recordTime,jdbcType=CHAR},
+      </if>
+      <if test="processUser != null" >
+        #{processUser,jdbcType=CHAR},
+      </if>
+      <if test="processTime != null" >
+        #{processTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignTodoList" >
+    update est_design_todo_list
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=CHAR},
+      </if>
+      <if test="resourceName != null" >
+        resource_name = #{resourceName,jdbcType=CHAR},
+      </if>
+      <if test="resourceDesc != null" >
+        resource_desc = #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="operateUser != null" >
+        operate_user = #{operateUser,jdbcType=CHAR},
+      </if>
+      <if test="recordTime != null" >
+        record_time = #{recordTime,jdbcType=CHAR},
+      </if>
+      <if test="processUser != null" >
+        process_user = #{processUser,jdbcType=CHAR},
+      </if>
+      <if test="processTime != null" >
+        process_time = #{processTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where todo_id = #{todoId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignTodoList" >
+    update est_design_todo_list
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      resource_type = #{resourceType,jdbcType=CHAR},
+      resource_name = #{resourceName,jdbcType=CHAR},
+      resource_desc = #{resourceDesc,jdbcType=VARCHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      operate_user = #{operateUser,jdbcType=CHAR},
+      record_time = #{recordTime,jdbcType=CHAR},
+      process_user = #{processUser,jdbcType=CHAR},
+      process_time = #{processTime,jdbcType=CHAR}
+    where todo_id = #{todoId,jdbcType=CHAR}
+  </update>
+</mapper>

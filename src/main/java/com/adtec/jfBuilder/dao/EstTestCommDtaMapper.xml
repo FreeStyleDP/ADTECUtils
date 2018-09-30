@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstTestCommDtaMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstTestCommDta" >
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <result column="time_out" property="timeOut" jdbcType="INTEGER" />
+    <result column="think_time" property="thinkTime" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="is_report" property="isReport" jdbcType="CHAR" />
+    <result column="reportFile" property="reportfile" jdbcType="VARCHAR" />
+    <result column="startSeq" property="startseq" jdbcType="INTEGER" />
+    <result column="is_long" property="isLong" jdbcType="CHAR" />
+    <result column="concrt_num" property="concrtNum" jdbcType="INTEGER" />
+    <result column="inst_num" property="instNum" jdbcType="INTEGER" />
+    <result column="check_class" property="checkClass" jdbcType="VARCHAR" />
+    <result column="comm_class" property="commClass" jdbcType="VARCHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="fmt_length" property="fmtLength" jdbcType="INTEGER" />
+    <result column="code_length" property="codeLength" jdbcType="INTEGER" />
+    <result column="is_req_conf_store" property="isReqConfStore" jdbcType="CHAR" />
+    <result column="key_store_path" property="keyStorePath" jdbcType="VARCHAR" />
+    <result column="key_pass" property="keyPass" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstTestCommDta" >
+    insert into est_test_comm_dta (project_id, dta_id, time_out, 
+      think_time, url, is_report, 
+      reportFile, startSeq, is_long, 
+      concrt_num, inst_num, check_class, 
+      comm_class, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, fmt_length, 
+      code_length, is_req_conf_store, key_store_path, 
+      key_pass)
+    values (#{projectId,jdbcType=CHAR}, #{dtaId,jdbcType=CHAR}, #{timeOut,jdbcType=INTEGER}, 
+      #{thinkTime,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{isReport,jdbcType=CHAR}, 
+      #{reportfile,jdbcType=VARCHAR}, #{startseq,jdbcType=INTEGER}, #{isLong,jdbcType=CHAR}, 
+      #{concrtNum,jdbcType=INTEGER}, #{instNum,jdbcType=INTEGER}, #{checkClass,jdbcType=VARCHAR}, 
+      #{commClass,jdbcType=VARCHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{fmtLength,jdbcType=INTEGER}, 
+      #{codeLength,jdbcType=INTEGER}, #{isReqConfStore,jdbcType=CHAR}, #{keyStorePath,jdbcType=VARCHAR}, 
+      #{keyPass,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstTestCommDta" >
+    insert into est_test_comm_dta
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="timeOut != null" >
+        time_out,
+      </if>
+      <if test="thinkTime != null" >
+        think_time,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="isReport != null" >
+        is_report,
+      </if>
+      <if test="reportfile != null" >
+        reportFile,
+      </if>
+      <if test="startseq != null" >
+        startSeq,
+      </if>
+      <if test="isLong != null" >
+        is_long,
+      </if>
+      <if test="concrtNum != null" >
+        concrt_num,
+      </if>
+      <if test="instNum != null" >
+        inst_num,
+      </if>
+      <if test="checkClass != null" >
+        check_class,
+      </if>
+      <if test="commClass != null" >
+        comm_class,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="fmtLength != null" >
+        fmt_length,
+      </if>
+      <if test="codeLength != null" >
+        code_length,
+      </if>
+      <if test="isReqConfStore != null" >
+        is_req_conf_store,
+      </if>
+      <if test="keyStorePath != null" >
+        key_store_path,
+      </if>
+      <if test="keyPass != null" >
+        key_pass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="timeOut != null" >
+        #{timeOut,jdbcType=INTEGER},
+      </if>
+      <if test="thinkTime != null" >
+        #{thinkTime,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="isReport != null" >
+        #{isReport,jdbcType=CHAR},
+      </if>
+      <if test="reportfile != null" >
+        #{reportfile,jdbcType=VARCHAR},
+      </if>
+      <if test="startseq != null" >
+        #{startseq,jdbcType=INTEGER},
+      </if>
+      <if test="isLong != null" >
+        #{isLong,jdbcType=CHAR},
+      </if>
+      <if test="concrtNum != null" >
+        #{concrtNum,jdbcType=INTEGER},
+      </if>
+      <if test="instNum != null" >
+        #{instNum,jdbcType=INTEGER},
+      </if>
+      <if test="checkClass != null" >
+        #{checkClass,jdbcType=VARCHAR},
+      </if>
+      <if test="commClass != null" >
+        #{commClass,jdbcType=VARCHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="fmtLength != null" >
+        #{fmtLength,jdbcType=INTEGER},
+      </if>
+      <if test="codeLength != null" >
+        #{codeLength,jdbcType=INTEGER},
+      </if>
+      <if test="isReqConfStore != null" >
+        #{isReqConfStore,jdbcType=CHAR},
+      </if>
+      <if test="keyStorePath != null" >
+        #{keyStorePath,jdbcType=VARCHAR},
+      </if>
+      <if test="keyPass != null" >
+        #{keyPass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

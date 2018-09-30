@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstEnumValueMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstEnumValue" >
+    <id column="enum_item_id" property="enumItemId" jdbcType="CHAR" />
+    <result column="enum_id" property="enumId" jdbcType="CHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="SMALLINT" />
+    <result column="enum_key" property="enumKey" jdbcType="VARCHAR" />
+    <result column="enum_val" property="enumVal" jdbcType="VARCHAR" />
+    <result column="def_val" property="defVal" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    enum_item_id, enum_id, seq_no, enum_key, enum_val, def_val
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_enum_value
+    where enum_item_id = #{enumItemId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_enum_value
+    where enum_item_id = #{enumItemId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstEnumValue" >
+    insert into est_enum_value (enum_item_id, enum_id, seq_no, 
+      enum_key, enum_val, def_val
+      )
+    values (#{enumItemId,jdbcType=CHAR}, #{enumId,jdbcType=CHAR}, #{seqNo,jdbcType=SMALLINT}, 
+      #{enumKey,jdbcType=VARCHAR}, #{enumVal,jdbcType=VARCHAR}, #{defVal,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstEnumValue" >
+    insert into est_enum_value
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="enumItemId != null" >
+        enum_item_id,
+      </if>
+      <if test="enumId != null" >
+        enum_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="enumKey != null" >
+        enum_key,
+      </if>
+      <if test="enumVal != null" >
+        enum_val,
+      </if>
+      <if test="defVal != null" >
+        def_val,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="enumItemId != null" >
+        #{enumItemId,jdbcType=CHAR},
+      </if>
+      <if test="enumId != null" >
+        #{enumId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=SMALLINT},
+      </if>
+      <if test="enumKey != null" >
+        #{enumKey,jdbcType=VARCHAR},
+      </if>
+      <if test="enumVal != null" >
+        #{enumVal,jdbcType=VARCHAR},
+      </if>
+      <if test="defVal != null" >
+        #{defVal,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstEnumValue" >
+    update est_enum_value
+    <set >
+      <if test="enumId != null" >
+        enum_id = #{enumId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=SMALLINT},
+      </if>
+      <if test="enumKey != null" >
+        enum_key = #{enumKey,jdbcType=VARCHAR},
+      </if>
+      <if test="enumVal != null" >
+        enum_val = #{enumVal,jdbcType=VARCHAR},
+      </if>
+      <if test="defVal != null" >
+        def_val = #{defVal,jdbcType=CHAR},
+      </if>
+    </set>
+    where enum_item_id = #{enumItemId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstEnumValue" >
+    update est_enum_value
+    set enum_id = #{enumId,jdbcType=CHAR},
+      seq_no = #{seqNo,jdbcType=SMALLINT},
+      enum_key = #{enumKey,jdbcType=VARCHAR},
+      enum_val = #{enumVal,jdbcType=VARCHAR},
+      def_val = #{defVal,jdbcType=CHAR}
+    where enum_item_id = #{enumItemId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignProcedureMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignProcedure" >
+    <id column="procedure_id" property="procedureId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="mapper_id" property="mapperId" jdbcType="VARCHAR" />
+    <result column="procedure_desc" property="procedureDesc" jdbcType="VARCHAR" />
+    <result column="parametermap_name" property="parametermapName" jdbcType="VARCHAR" />
+    <result column="map_elem_id" property="mapElemId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.adtec.jfBuilder.entity.EstDesignProcedureWithBLOBs" extends="BaseResultMap" >
+    <result column="code_str" property="codeStr" jdbcType="LONGVARCHAR" />
+    <result column="procedure_str" property="procedureStr" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    procedure_id, project_id, relation_id, mapper_id, procedure_desc, parametermap_name, 
+    map_elem_id, grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    code_str, procedure_str
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from est_design_procedure
+    where procedure_id = #{procedureId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_procedure
+    where procedure_id = #{procedureId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignProcedureWithBLOBs" >
+    insert into est_design_procedure (procedure_id, project_id, relation_id, 
+      mapper_id, procedure_desc, parametermap_name, 
+      map_elem_id, grp_id, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, code_str, 
+      procedure_str)
+    values (#{procedureId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{mapperId,jdbcType=VARCHAR}, #{procedureDesc,jdbcType=VARCHAR}, #{parametermapName,jdbcType=VARCHAR}, 
+      #{mapElemId,jdbcType=CHAR}, #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{codeStr,jdbcType=LONGVARCHAR}, 
+      #{procedureStr,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignProcedureWithBLOBs" >
+    insert into est_design_procedure
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="procedureId != null" >
+        procedure_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="mapperId != null" >
+        mapper_id,
+      </if>
+      <if test="procedureDesc != null" >
+        procedure_desc,
+      </if>
+      <if test="parametermapName != null" >
+        parametermap_name,
+      </if>
+      <if test="mapElemId != null" >
+        map_elem_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="codeStr != null" >
+        code_str,
+      </if>
+      <if test="procedureStr != null" >
+        procedure_str,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="procedureId != null" >
+        #{procedureId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="mapperId != null" >
+        #{mapperId,jdbcType=VARCHAR},
+      </if>
+      <if test="procedureDesc != null" >
+        #{procedureDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parametermapName != null" >
+        #{parametermapName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapElemId != null" >
+        #{mapElemId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="codeStr != null" >
+        #{codeStr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procedureStr != null" >
+        #{procedureStr,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDesignProcedureWithBLOBs" >
+    update est_design_procedure
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="mapperId != null" >
+        mapper_id = #{mapperId,jdbcType=VARCHAR},
+      </if>
+      <if test="procedureDesc != null" >
+        procedure_desc = #{procedureDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parametermapName != null" >
+        parametermap_name = #{parametermapName,jdbcType=VARCHAR},
+      </if>
+      <if test="mapElemId != null" >
+        map_elem_id = #{mapElemId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="codeStr != null" >
+        code_str = #{codeStr,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="procedureStr != null" >
+        procedure_str = #{procedureStr,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where procedure_id = #{procedureId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adtec.jfBuilder.entity.EstDesignProcedureWithBLOBs" >
+    update est_design_procedure
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      mapper_id = #{mapperId,jdbcType=VARCHAR},
+      procedure_desc = #{procedureDesc,jdbcType=VARCHAR},
+      parametermap_name = #{parametermapName,jdbcType=VARCHAR},
+      map_elem_id = #{mapElemId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      code_str = #{codeStr,jdbcType=LONGVARCHAR},
+      procedure_str = #{procedureStr,jdbcType=LONGVARCHAR}
+    where procedure_id = #{procedureId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignProcedure" >
+    update est_design_procedure
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      mapper_id = #{mapperId,jdbcType=VARCHAR},
+      procedure_desc = #{procedureDesc,jdbcType=VARCHAR},
+      parametermap_name = #{parametermapName,jdbcType=VARCHAR},
+      map_elem_id = #{mapElemId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where procedure_id = #{procedureId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstReportMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstReport" >
+    <id column="report_id" property="reportId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="report_name" property="reportName" jdbcType="CHAR" />
+    <result column="report_desc" property="reportDesc" jdbcType="VARCHAR" />
+    <result column="report_type" property="reportType" jdbcType="CHAR" />
+    <result column="print_type" property="printType" jdbcType="CHAR" />
+    <result column="report_ln_col" property="reportLnCol" jdbcType="INTEGER" />
+    <result column="report_pg_tab_num" property="reportPgTabNum" jdbcType="INTEGER" />
+    <result column="report_tb_line_num" property="reportTbLineNum" jdbcType="INTEGER" />
+    <result column="report_hx_flag" property="reportHxFlag" jdbcType="INTEGER" />
+    <result column="report_pg_space" property="reportPgSpace" jdbcType="INTEGER" />
+    <result column="pgform_id" property="pgformId" jdbcType="CHAR" />
+    <result column="dataform_id" property="dataformId" jdbcType="CHAR" />
+    <result column="report_input_proc" property="reportInputProc" jdbcType="VARCHAR" />
+    <result column="report_output_file" property="reportOutputFile" jdbcType="CHAR" />
+    <result column="report_data_file" property="reportDataFile" jdbcType="VARCHAR" />
+    <result column="report_page_file" property="reportPageFile" jdbcType="VARCHAR" />
+    <result column="report_fmt_data" property="reportFmtData" jdbcType="VARCHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.adtec.jfBuilder.entity.EstReport" extends="BaseResultMap" >
+    <result column="background_file" property="backgroundFile" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    report_id, project_id, relation_id, report_name, report_desc, report_type, print_type, 
+    report_ln_col, report_pg_tab_num, report_tb_line_num, report_hx_flag, report_pg_space, 
+    pgform_id, dataform_id, report_input_proc, report_output_file, report_data_file, 
+    report_page_file, report_fmt_data, resource_id, grp_id, crt_user, crt_date_time, 
+    lst_mod_user, lst_mod_date_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    background_file
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from est_report
+    where report_id = #{reportId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_report
+    where report_id = #{reportId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstReport" >
+    insert into est_report (report_id, project_id, relation_id, 
+      report_name, report_desc, report_type, 
+      print_type, report_ln_col, report_pg_tab_num, 
+      report_tb_line_num, report_hx_flag, report_pg_space, 
+      pgform_id, dataform_id, report_input_proc, 
+      report_output_file, report_data_file, report_page_file, 
+      report_fmt_data, resource_id, grp_id, 
+      crt_user, crt_date_time, lst_mod_user, 
+      lst_mod_date_time, background_file)
+    values (#{reportId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{relationId,jdbcType=CHAR}, 
+      #{reportName,jdbcType=CHAR}, #{reportDesc,jdbcType=VARCHAR}, #{reportType,jdbcType=CHAR}, 
+      #{printType,jdbcType=CHAR}, #{reportLnCol,jdbcType=INTEGER}, #{reportPgTabNum,jdbcType=INTEGER}, 
+      #{reportTbLineNum,jdbcType=INTEGER}, #{reportHxFlag,jdbcType=INTEGER}, #{reportPgSpace,jdbcType=INTEGER}, 
+      #{pgformId,jdbcType=CHAR}, #{dataformId,jdbcType=CHAR}, #{reportInputProc,jdbcType=VARCHAR}, 
+      #{reportOutputFile,jdbcType=CHAR}, #{reportDataFile,jdbcType=VARCHAR}, #{reportPageFile,jdbcType=VARCHAR}, 
+      #{reportFmtData,jdbcType=VARCHAR}, #{resourceId,jdbcType=CHAR}, #{grpId,jdbcType=CHAR}, 
+      #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, #{lstModUser,jdbcType=CHAR}, 
+      #{lstModDateTime,jdbcType=CHAR}, #{backgroundFile,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstReport" >
+    insert into est_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reportId != null" >
+        report_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="reportName != null" >
+        report_name,
+      </if>
+      <if test="reportDesc != null" >
+        report_desc,
+      </if>
+      <if test="reportType != null" >
+        report_type,
+      </if>
+      <if test="printType != null" >
+        print_type,
+      </if>
+      <if test="reportLnCol != null" >
+        report_ln_col,
+      </if>
+      <if test="reportPgTabNum != null" >
+        report_pg_tab_num,
+      </if>
+      <if test="reportTbLineNum != null" >
+        report_tb_line_num,
+      </if>
+      <if test="reportHxFlag != null" >
+        report_hx_flag,
+      </if>
+      <if test="reportPgSpace != null" >
+        report_pg_space,
+      </if>
+      <if test="pgformId != null" >
+        pgform_id,
+      </if>
+      <if test="dataformId != null" >
+        dataform_id,
+      </if>
+      <if test="reportInputProc != null" >
+        report_input_proc,
+      </if>
+      <if test="reportOutputFile != null" >
+        report_output_file,
+      </if>
+      <if test="reportDataFile != null" >
+        report_data_file,
+      </if>
+      <if test="reportPageFile != null" >
+        report_page_file,
+      </if>
+      <if test="reportFmtData != null" >
+        report_fmt_data,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="backgroundFile != null" >
+        background_file,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reportId != null" >
+        #{reportId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="reportName != null" >
+        #{reportName,jdbcType=CHAR},
+      </if>
+      <if test="reportDesc != null" >
+        #{reportDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="reportType != null" >
+        #{reportType,jdbcType=CHAR},
+      </if>
+      <if test="printType != null" >
+        #{printType,jdbcType=CHAR},
+      </if>
+      <if test="reportLnCol != null" >
+        #{reportLnCol,jdbcType=INTEGER},
+      </if>
+      <if test="reportPgTabNum != null" >
+        #{reportPgTabNum,jdbcType=INTEGER},
+      </if>
+      <if test="reportTbLineNum != null" >
+        #{reportTbLineNum,jdbcType=INTEGER},
+      </if>
+      <if test="reportHxFlag != null" >
+        #{reportHxFlag,jdbcType=INTEGER},
+      </if>
+      <if test="reportPgSpace != null" >
+        #{reportPgSpace,jdbcType=INTEGER},
+      </if>
+      <if test="pgformId != null" >
+        #{pgformId,jdbcType=CHAR},
+      </if>
+      <if test="dataformId != null" >
+        #{dataformId,jdbcType=CHAR},
+      </if>
+      <if test="reportInputProc != null" >
+        #{reportInputProc,jdbcType=VARCHAR},
+      </if>
+      <if test="reportOutputFile != null" >
+        #{reportOutputFile,jdbcType=CHAR},
+      </if>
+      <if test="reportDataFile != null" >
+        #{reportDataFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportPageFile != null" >
+        #{reportPageFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportFmtData != null" >
+        #{reportFmtData,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="backgroundFile != null" >
+        #{backgroundFile,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstReport" >
+    update est_report
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="reportName != null" >
+        report_name = #{reportName,jdbcType=CHAR},
+      </if>
+      <if test="reportDesc != null" >
+        report_desc = #{reportDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="reportType != null" >
+        report_type = #{reportType,jdbcType=CHAR},
+      </if>
+      <if test="printType != null" >
+        print_type = #{printType,jdbcType=CHAR},
+      </if>
+      <if test="reportLnCol != null" >
+        report_ln_col = #{reportLnCol,jdbcType=INTEGER},
+      </if>
+      <if test="reportPgTabNum != null" >
+        report_pg_tab_num = #{reportPgTabNum,jdbcType=INTEGER},
+      </if>
+      <if test="reportTbLineNum != null" >
+        report_tb_line_num = #{reportTbLineNum,jdbcType=INTEGER},
+      </if>
+      <if test="reportHxFlag != null" >
+        report_hx_flag = #{reportHxFlag,jdbcType=INTEGER},
+      </if>
+      <if test="reportPgSpace != null" >
+        report_pg_space = #{reportPgSpace,jdbcType=INTEGER},
+      </if>
+      <if test="pgformId != null" >
+        pgform_id = #{pgformId,jdbcType=CHAR},
+      </if>
+      <if test="dataformId != null" >
+        dataform_id = #{dataformId,jdbcType=CHAR},
+      </if>
+      <if test="reportInputProc != null" >
+        report_input_proc = #{reportInputProc,jdbcType=VARCHAR},
+      </if>
+      <if test="reportOutputFile != null" >
+        report_output_file = #{reportOutputFile,jdbcType=CHAR},
+      </if>
+      <if test="reportDataFile != null" >
+        report_data_file = #{reportDataFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportPageFile != null" >
+        report_page_file = #{reportPageFile,jdbcType=VARCHAR},
+      </if>
+      <if test="reportFmtData != null" >
+        report_fmt_data = #{reportFmtData,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="backgroundFile != null" >
+        background_file = #{backgroundFile,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where report_id = #{reportId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.adtec.jfBuilder.entity.EstReport" >
+    update est_report
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      report_name = #{reportName,jdbcType=CHAR},
+      report_desc = #{reportDesc,jdbcType=VARCHAR},
+      report_type = #{reportType,jdbcType=CHAR},
+      print_type = #{printType,jdbcType=CHAR},
+      report_ln_col = #{reportLnCol,jdbcType=INTEGER},
+      report_pg_tab_num = #{reportPgTabNum,jdbcType=INTEGER},
+      report_tb_line_num = #{reportTbLineNum,jdbcType=INTEGER},
+      report_hx_flag = #{reportHxFlag,jdbcType=INTEGER},
+      report_pg_space = #{reportPgSpace,jdbcType=INTEGER},
+      pgform_id = #{pgformId,jdbcType=CHAR},
+      dataform_id = #{dataformId,jdbcType=CHAR},
+      report_input_proc = #{reportInputProc,jdbcType=VARCHAR},
+      report_output_file = #{reportOutputFile,jdbcType=CHAR},
+      report_data_file = #{reportDataFile,jdbcType=VARCHAR},
+      report_page_file = #{reportPageFile,jdbcType=VARCHAR},
+      report_fmt_data = #{reportFmtData,jdbcType=VARCHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      background_file = #{backgroundFile,jdbcType=LONGVARBINARY}
+    where report_id = #{reportId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstReport" >
+    update est_report
+    set project_id = #{projectId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      report_name = #{reportName,jdbcType=CHAR},
+      report_desc = #{reportDesc,jdbcType=VARCHAR},
+      report_type = #{reportType,jdbcType=CHAR},
+      print_type = #{printType,jdbcType=CHAR},
+      report_ln_col = #{reportLnCol,jdbcType=INTEGER},
+      report_pg_tab_num = #{reportPgTabNum,jdbcType=INTEGER},
+      report_tb_line_num = #{reportTbLineNum,jdbcType=INTEGER},
+      report_hx_flag = #{reportHxFlag,jdbcType=INTEGER},
+      report_pg_space = #{reportPgSpace,jdbcType=INTEGER},
+      pgform_id = #{pgformId,jdbcType=CHAR},
+      dataform_id = #{dataformId,jdbcType=CHAR},
+      report_input_proc = #{reportInputProc,jdbcType=VARCHAR},
+      report_output_file = #{reportOutputFile,jdbcType=CHAR},
+      report_data_file = #{reportDataFile,jdbcType=VARCHAR},
+      report_page_file = #{reportPageFile,jdbcType=VARCHAR},
+      report_fmt_data = #{reportFmtData,jdbcType=VARCHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where report_id = #{reportId,jdbcType=CHAR}
+  </update>
+</mapper>

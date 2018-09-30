@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDataInheritMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDataInherit" >
+    <id column="obj_id" property="objId" jdbcType="CHAR" />
+    <id column="obj_type" property="objType" jdbcType="CHAR" />
+    <id column="inherit_obj_id" property="inheritObjId" jdbcType="CHAR" />
+    <id column="inherit_obj_type" property="inheritObjType" jdbcType="CHAR" />
+    <result column="inherit_relat_id" property="inheritRelatId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    obj_id, obj_type, inherit_obj_id, inherit_obj_type, inherit_relat_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDataInheritKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_data_inherit
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and inherit_obj_id = #{inheritObjId,jdbcType=CHAR}
+      and inherit_obj_type = #{inheritObjType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDataInheritKey" >
+    delete from est_data_inherit
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and inherit_obj_id = #{inheritObjId,jdbcType=CHAR}
+      and inherit_obj_type = #{inheritObjType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDataInherit" >
+    insert into est_data_inherit (obj_id, obj_type, inherit_obj_id, 
+      inherit_obj_type, inherit_relat_id)
+    values (#{objId,jdbcType=CHAR}, #{objType,jdbcType=CHAR}, #{inheritObjId,jdbcType=CHAR}, 
+      #{inheritObjType,jdbcType=CHAR}, #{inheritRelatId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDataInherit" >
+    insert into est_data_inherit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="objType != null" >
+        obj_type,
+      </if>
+      <if test="inheritObjId != null" >
+        inherit_obj_id,
+      </if>
+      <if test="inheritObjType != null" >
+        inherit_obj_type,
+      </if>
+      <if test="inheritRelatId != null" >
+        inherit_relat_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="objType != null" >
+        #{objType,jdbcType=CHAR},
+      </if>
+      <if test="inheritObjId != null" >
+        #{inheritObjId,jdbcType=CHAR},
+      </if>
+      <if test="inheritObjType != null" >
+        #{inheritObjType,jdbcType=CHAR},
+      </if>
+      <if test="inheritRelatId != null" >
+        #{inheritRelatId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDataInherit" >
+    update est_data_inherit
+    <set >
+      <if test="inheritRelatId != null" >
+        inherit_relat_id = #{inheritRelatId,jdbcType=CHAR},
+      </if>
+    </set>
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and inherit_obj_id = #{inheritObjId,jdbcType=CHAR}
+      and inherit_obj_type = #{inheritObjType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDataInherit" >
+    update est_data_inherit
+    set inherit_relat_id = #{inheritRelatId,jdbcType=CHAR}
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and inherit_obj_id = #{inheritObjId,jdbcType=CHAR}
+      and inherit_obj_type = #{inheritObjType,jdbcType=CHAR}
+  </update>
+</mapper>

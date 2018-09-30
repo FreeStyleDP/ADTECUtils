@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDataCacheMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDataCache" >
+    <id column="data_cache_id" property="dataCacheId" jdbcType="CHAR" />
+    <id column="data_cache_name" property="dataCacheName" jdbcType="CHAR" />
+    <id column="data_cache_desc" property="dataCacheDesc" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="load_cyc" property="loadCyc" jdbcType="CHAR" />
+    <result column="interval" property="interval" jdbcType="INTEGER" />
+    <result column="week_month" property="weekMonth" jdbcType="CHAR" />
+    <result column="first_last" property="firstLast" jdbcType="CHAR" />
+    <result column="begin_date" property="beginDate" jdbcType="CHAR" />
+    <result column="end_date" property="endDate" jdbcType="CHAR" />
+    <result column="serial" property="serial" jdbcType="CHAR" />
+    <result column="is_queue" property="isQueue" jdbcType="CHAR" />
+    <result column="cancel" property="cancel" jdbcType="CHAR" />
+    <result column="table_id" property="tableId" jdbcType="CHAR" />
+    <result column="sql_id" property="sqlId" jdbcType="CHAR" />
+    <result column="dataarea_id" property="dataareaId" jdbcType="CHAR" />
+    <result column="mast_flag" property="mastFlag" jdbcType="CHAR" />
+    <result column="success" property="success" jdbcType="CHAR" />
+    <result column="again_num" property="againNum" jdbcType="INTEGER" />
+    <result column="again_time" property="againTime" jdbcType="INTEGER" />
+    <result column="error_express" property="errorExpress" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+    <result column="sql_cache_key" property="sqlCacheKey" jdbcType="VARCHAR" />
+    <result column="bef_proc" property="befProc" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    data_cache_id, data_cache_name, data_cache_desc, relation_id, load_cyc, interval, 
+    week_month, first_last, begin_date, end_date, serial, is_queue, cancel, table_id, 
+    sql_id, dataarea_id, mast_flag, success, again_num, again_time, error_express, resource_id, 
+    grp_id, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time, sql_cache_key, 
+    bef_proc
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDataCacheKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_data_cache
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and data_cache_name = #{dataCacheName,jdbcType=CHAR}
+      and data_cache_desc = #{dataCacheDesc,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDataCacheKey" >
+    delete from est_data_cache
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and data_cache_name = #{dataCacheName,jdbcType=CHAR}
+      and data_cache_desc = #{dataCacheDesc,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDataCache" >
+    insert into est_data_cache (data_cache_id, data_cache_name, data_cache_desc, 
+      relation_id, load_cyc, interval, 
+      week_month, first_last, begin_date, 
+      end_date, serial, is_queue, cancel, 
+      table_id, sql_id, dataarea_id, 
+      mast_flag, success, again_num, 
+      again_time, error_express, resource_id, 
+      grp_id, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time, sql_cache_key, 
+      bef_proc)
+    values (#{dataCacheId,jdbcType=CHAR}, #{dataCacheName,jdbcType=CHAR}, #{dataCacheDesc,jdbcType=CHAR}, 
+      #{relationId,jdbcType=CHAR}, #{loadCyc,jdbcType=CHAR}, #{interval,jdbcType=INTEGER}, 
+      #{weekMonth,jdbcType=CHAR}, #{firstLast,jdbcType=CHAR}, #{beginDate,jdbcType=CHAR}, 
+      #{endDate,jdbcType=CHAR}, #{serial,jdbcType=CHAR}, #{isQueue,jdbcType=CHAR}, #{cancel,jdbcType=CHAR}, 
+      #{tableId,jdbcType=CHAR}, #{sqlId,jdbcType=CHAR}, #{dataareaId,jdbcType=CHAR}, 
+      #{mastFlag,jdbcType=CHAR}, #{success,jdbcType=CHAR}, #{againNum,jdbcType=INTEGER}, 
+      #{againTime,jdbcType=INTEGER}, #{errorExpress,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, 
+      #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR}, #{sqlCacheKey,jdbcType=VARCHAR}, 
+      #{befProc,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDataCache" >
+    insert into est_data_cache
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataCacheId != null" >
+        data_cache_id,
+      </if>
+      <if test="dataCacheName != null" >
+        data_cache_name,
+      </if>
+      <if test="dataCacheDesc != null" >
+        data_cache_desc,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="loadCyc != null" >
+        load_cyc,
+      </if>
+      <if test="interval != null" >
+        interval,
+      </if>
+      <if test="weekMonth != null" >
+        week_month,
+      </if>
+      <if test="firstLast != null" >
+        first_last,
+      </if>
+      <if test="beginDate != null" >
+        begin_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="serial != null" >
+        serial,
+      </if>
+      <if test="isQueue != null" >
+        is_queue,
+      </if>
+      <if test="cancel != null" >
+        cancel,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+      <if test="sqlId != null" >
+        sql_id,
+      </if>
+      <if test="dataareaId != null" >
+        dataarea_id,
+      </if>
+      <if test="mastFlag != null" >
+        mast_flag,
+      </if>
+      <if test="success != null" >
+        success,
+      </if>
+      <if test="againNum != null" >
+        again_num,
+      </if>
+      <if test="againTime != null" >
+        again_time,
+      </if>
+      <if test="errorExpress != null" >
+        error_express,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+      <if test="sqlCacheKey != null" >
+        sql_cache_key,
+      </if>
+      <if test="befProc != null" >
+        bef_proc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataCacheId != null" >
+        #{dataCacheId,jdbcType=CHAR},
+      </if>
+      <if test="dataCacheName != null" >
+        #{dataCacheName,jdbcType=CHAR},
+      </if>
+      <if test="dataCacheDesc != null" >
+        #{dataCacheDesc,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="loadCyc != null" >
+        #{loadCyc,jdbcType=CHAR},
+      </if>
+      <if test="interval != null" >
+        #{interval,jdbcType=INTEGER},
+      </if>
+      <if test="weekMonth != null" >
+        #{weekMonth,jdbcType=CHAR},
+      </if>
+      <if test="firstLast != null" >
+        #{firstLast,jdbcType=CHAR},
+      </if>
+      <if test="beginDate != null" >
+        #{beginDate,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=CHAR},
+      </if>
+      <if test="serial != null" >
+        #{serial,jdbcType=CHAR},
+      </if>
+      <if test="isQueue != null" >
+        #{isQueue,jdbcType=CHAR},
+      </if>
+      <if test="cancel != null" >
+        #{cancel,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="sqlId != null" >
+        #{sqlId,jdbcType=CHAR},
+      </if>
+      <if test="dataareaId != null" >
+        #{dataareaId,jdbcType=CHAR},
+      </if>
+      <if test="mastFlag != null" >
+        #{mastFlag,jdbcType=CHAR},
+      </if>
+      <if test="success != null" >
+        #{success,jdbcType=CHAR},
+      </if>
+      <if test="againNum != null" >
+        #{againNum,jdbcType=INTEGER},
+      </if>
+      <if test="againTime != null" >
+        #{againTime,jdbcType=INTEGER},
+      </if>
+      <if test="errorExpress != null" >
+        #{errorExpress,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="sqlCacheKey != null" >
+        #{sqlCacheKey,jdbcType=VARCHAR},
+      </if>
+      <if test="befProc != null" >
+        #{befProc,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDataCache" >
+    update est_data_cache
+    <set >
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="loadCyc != null" >
+        load_cyc = #{loadCyc,jdbcType=CHAR},
+      </if>
+      <if test="interval != null" >
+        interval = #{interval,jdbcType=INTEGER},
+      </if>
+      <if test="weekMonth != null" >
+        week_month = #{weekMonth,jdbcType=CHAR},
+      </if>
+      <if test="firstLast != null" >
+        first_last = #{firstLast,jdbcType=CHAR},
+      </if>
+      <if test="beginDate != null" >
+        begin_date = #{beginDate,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=CHAR},
+      </if>
+      <if test="serial != null" >
+        serial = #{serial,jdbcType=CHAR},
+      </if>
+      <if test="isQueue != null" >
+        is_queue = #{isQueue,jdbcType=CHAR},
+      </if>
+      <if test="cancel != null" >
+        cancel = #{cancel,jdbcType=CHAR},
+      </if>
+      <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=CHAR},
+      </if>
+      <if test="sqlId != null" >
+        sql_id = #{sqlId,jdbcType=CHAR},
+      </if>
+      <if test="dataareaId != null" >
+        dataarea_id = #{dataareaId,jdbcType=CHAR},
+      </if>
+      <if test="mastFlag != null" >
+        mast_flag = #{mastFlag,jdbcType=CHAR},
+      </if>
+      <if test="success != null" >
+        success = #{success,jdbcType=CHAR},
+      </if>
+      <if test="againNum != null" >
+        again_num = #{againNum,jdbcType=INTEGER},
+      </if>
+      <if test="againTime != null" >
+        again_time = #{againTime,jdbcType=INTEGER},
+      </if>
+      <if test="errorExpress != null" >
+        error_express = #{errorExpress,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+      <if test="sqlCacheKey != null" >
+        sql_cache_key = #{sqlCacheKey,jdbcType=VARCHAR},
+      </if>
+      <if test="befProc != null" >
+        bef_proc = #{befProc,jdbcType=CHAR},
+      </if>
+    </set>
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and data_cache_name = #{dataCacheName,jdbcType=CHAR}
+      and data_cache_desc = #{dataCacheDesc,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDataCache" >
+    update est_data_cache
+    set relation_id = #{relationId,jdbcType=CHAR},
+      load_cyc = #{loadCyc,jdbcType=CHAR},
+      interval = #{interval,jdbcType=INTEGER},
+      week_month = #{weekMonth,jdbcType=CHAR},
+      first_last = #{firstLast,jdbcType=CHAR},
+      begin_date = #{beginDate,jdbcType=CHAR},
+      end_date = #{endDate,jdbcType=CHAR},
+      serial = #{serial,jdbcType=CHAR},
+      is_queue = #{isQueue,jdbcType=CHAR},
+      cancel = #{cancel,jdbcType=CHAR},
+      table_id = #{tableId,jdbcType=CHAR},
+      sql_id = #{sqlId,jdbcType=CHAR},
+      dataarea_id = #{dataareaId,jdbcType=CHAR},
+      mast_flag = #{mastFlag,jdbcType=CHAR},
+      success = #{success,jdbcType=CHAR},
+      again_num = #{againNum,jdbcType=INTEGER},
+      again_time = #{againTime,jdbcType=INTEGER},
+      error_express = #{errorExpress,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      sql_cache_key = #{sqlCacheKey,jdbcType=VARCHAR},
+      bef_proc = #{befProc,jdbcType=CHAR}
+    where data_cache_id = #{dataCacheId,jdbcType=CHAR}
+      and data_cache_name = #{dataCacheName,jdbcType=CHAR}
+      and data_cache_desc = #{dataCacheDesc,jdbcType=CHAR}
+  </update>
+</mapper>

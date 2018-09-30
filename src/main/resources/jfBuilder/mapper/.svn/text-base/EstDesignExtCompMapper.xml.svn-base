@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignExtCompMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignExtComp" >
+    <id column="es_id" property="esId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="es_name" property="esName" jdbcType="CHAR" />
+    <result column="es_desc" property="esDesc" jdbcType="CHAR" />
+    <result column="design_comment" property="designComment" jdbcType="VARCHAR" />
+    <result column="common_flag" property="commonFlag" jdbcType="CHAR" />
+    <result column="sa_flag" property="saFlag" jdbcType="CHAR" />
+    <result column="adapter_flag" property="adapterFlag" jdbcType="CHAR" />
+    <result column="protocol_type" property="protocolType" jdbcType="CHAR" />
+    <result column="req_dta" property="reqDta" jdbcType="CHAR" />
+    <result column="resp_dta" property="respDta" jdbcType="CHAR" />
+    <result column="dta_id" property="dtaId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    es_id, project_id, seq_no, es_name, es_desc, design_comment, common_flag, sa_flag, 
+    adapter_flag, protocol_type, req_dta, resp_dta, dta_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_ext_comp
+    where es_id = #{esId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_design_ext_comp
+    where es_id = #{esId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignExtComp" >
+    insert into est_design_ext_comp (es_id, project_id, seq_no, 
+      es_name, es_desc, design_comment, 
+      common_flag, sa_flag, adapter_flag, 
+      protocol_type, req_dta, resp_dta, 
+      dta_id)
+    values (#{esId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{seqNo,jdbcType=INTEGER}, 
+      #{esName,jdbcType=CHAR}, #{esDesc,jdbcType=CHAR}, #{designComment,jdbcType=VARCHAR}, 
+      #{commonFlag,jdbcType=CHAR}, #{saFlag,jdbcType=CHAR}, #{adapterFlag,jdbcType=CHAR}, 
+      #{protocolType,jdbcType=CHAR}, #{reqDta,jdbcType=CHAR}, #{respDta,jdbcType=CHAR}, 
+      #{dtaId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignExtComp" >
+    insert into est_design_ext_comp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="esId != null" >
+        es_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="esName != null" >
+        es_name,
+      </if>
+      <if test="esDesc != null" >
+        es_desc,
+      </if>
+      <if test="designComment != null" >
+        design_comment,
+      </if>
+      <if test="commonFlag != null" >
+        common_flag,
+      </if>
+      <if test="saFlag != null" >
+        sa_flag,
+      </if>
+      <if test="adapterFlag != null" >
+        adapter_flag,
+      </if>
+      <if test="protocolType != null" >
+        protocol_type,
+      </if>
+      <if test="reqDta != null" >
+        req_dta,
+      </if>
+      <if test="respDta != null" >
+        resp_dta,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="esId != null" >
+        #{esId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="esName != null" >
+        #{esName,jdbcType=CHAR},
+      </if>
+      <if test="esDesc != null" >
+        #{esDesc,jdbcType=CHAR},
+      </if>
+      <if test="designComment != null" >
+        #{designComment,jdbcType=VARCHAR},
+      </if>
+      <if test="commonFlag != null" >
+        #{commonFlag,jdbcType=CHAR},
+      </if>
+      <if test="saFlag != null" >
+        #{saFlag,jdbcType=CHAR},
+      </if>
+      <if test="adapterFlag != null" >
+        #{adapterFlag,jdbcType=CHAR},
+      </if>
+      <if test="protocolType != null" >
+        #{protocolType,jdbcType=CHAR},
+      </if>
+      <if test="reqDta != null" >
+        #{reqDta,jdbcType=CHAR},
+      </if>
+      <if test="respDta != null" >
+        #{respDta,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignExtComp" >
+    update est_design_ext_comp
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="esName != null" >
+        es_name = #{esName,jdbcType=CHAR},
+      </if>
+      <if test="esDesc != null" >
+        es_desc = #{esDesc,jdbcType=CHAR},
+      </if>
+      <if test="designComment != null" >
+        design_comment = #{designComment,jdbcType=VARCHAR},
+      </if>
+      <if test="commonFlag != null" >
+        common_flag = #{commonFlag,jdbcType=CHAR},
+      </if>
+      <if test="saFlag != null" >
+        sa_flag = #{saFlag,jdbcType=CHAR},
+      </if>
+      <if test="adapterFlag != null" >
+        adapter_flag = #{adapterFlag,jdbcType=CHAR},
+      </if>
+      <if test="protocolType != null" >
+        protocol_type = #{protocolType,jdbcType=CHAR},
+      </if>
+      <if test="reqDta != null" >
+        req_dta = #{reqDta,jdbcType=CHAR},
+      </if>
+      <if test="respDta != null" >
+        resp_dta = #{respDta,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        dta_id = #{dtaId,jdbcType=CHAR},
+      </if>
+    </set>
+    where es_id = #{esId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignExtComp" >
+    update est_design_ext_comp
+    set project_id = #{projectId,jdbcType=CHAR},
+      seq_no = #{seqNo,jdbcType=INTEGER},
+      es_name = #{esName,jdbcType=CHAR},
+      es_desc = #{esDesc,jdbcType=CHAR},
+      design_comment = #{designComment,jdbcType=VARCHAR},
+      common_flag = #{commonFlag,jdbcType=CHAR},
+      sa_flag = #{saFlag,jdbcType=CHAR},
+      adapter_flag = #{adapterFlag,jdbcType=CHAR},
+      protocol_type = #{protocolType,jdbcType=CHAR},
+      req_dta = #{reqDta,jdbcType=CHAR},
+      resp_dta = #{respDta,jdbcType=CHAR},
+      dta_id = #{dtaId,jdbcType=CHAR}
+    where es_id = #{esId,jdbcType=CHAR}
+  </update>
+</mapper>

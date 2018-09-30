@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstCloudProjectDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstCloudProjectDetail" >
+    <id column="detail_id" property="detailId" jdbcType="CHAR" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="resource_type" property="resourceType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    detail_id, cloud_project_id, resource_id, resource_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_cloud_project_detail
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_cloud_project_detail
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstCloudProjectDetail" >
+    insert into est_cloud_project_detail (detail_id, cloud_project_id, resource_id, 
+      resource_type)
+    values (#{detailId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, 
+      #{resourceType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstCloudProjectDetail" >
+    insert into est_cloud_project_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        detail_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="detailId != null" >
+        #{detailId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstCloudProjectDetail" >
+    update est_cloud_project_detail
+    <set >
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=CHAR},
+      </if>
+    </set>
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstCloudProjectDetail" >
+    update est_cloud_project_detail
+    set cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      resource_type = #{resourceType,jdbcType=CHAR}
+    where detail_id = #{detailId,jdbcType=CHAR}
+  </update>
+</mapper>

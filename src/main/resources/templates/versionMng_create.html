@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/easyUI/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyUI/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="/static/easyUI/demo/demo.css">
+	<script type="text/javascript" src="/static/myjs/pub.js"></script>
+	<script type="text/javascript" src="/static/easyUI/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/easyUI/jquery.easyui.min.js"></script>
+<meta charset="UTF-8">
+<title>Create</title>
+</head>
+<body >
+
+<form id='form1' method="post" enctype="multipart/form-data">
+<div class="easyui-panel" title="" style="width:400px;padding:30px 70px 30px 70px;">
+		
+	<div style="margin-bottom:20px">
+		<input id='file' class="easyui-filebox" label="版本清单文件路径:" labelPosition="top" 
+		data-options="prompt:'请选择一份文件',buttonText:'&nbsp;选&nbsp;择&nbsp;',required:true" style="width:100%" name='uploadFileName'>
+		
+		<input type="text" id="versionListPath" style="display:none"/>
+		<label id='upload_warning' style="color:red"></label>
+		<div>
+			<a href="#"  id='upload_but' class="easyui-linkbutton" style="width:100%">上传文件</a>
+		</div>
+		
+		
+    </div>
+    
+	<div style="margin-bottom:20px">
+		<div >上送目标环境:</div>
+<!-- 		<input id="toEnvironment"  class="easyui-combobox" style="width:100%"> -->
+		<select id="toEnvironment" class="easyui-combobox" style="width:100%">
+		    <option value="esb-105">esb-105</option>
+		    <option value="esb-106">esb-106</option>
+		    <option value="esb-107">esb-107</option>
+		    <option value="esb-109">esb-109</option>
+		    <option value="zhqz-120">zhqz-120</option>
+		    <option value="zhqz-123">zhqz-123</option>
+		</select>
+    </div>
+	<div style="margin-bottom:20px">
+		<div >源文件来源环境:</div>
+<!-- 		<input id="fromEnvironment"  class="easyui-combobox" style="width:100%"> -->
+		<select id="fromEnvironment" class="easyui-combobox" style="width:100%">
+		    <option value="esb-107">esb-107</option>
+		    <option value="esb-106">esb-106</option>
+		    <option value="esb-105">esb-105</option>
+		    <option value="esb-109">esb-109</option>
+		    <option value="zhqz-120">zhqz-120</option>
+		    <option value="zhqz-123">zhqz-123</option>
+		</select>
+    </div>
+	<div style="margin-bottom:20px">
+		<div >服务器类型:</div>
+		<select id="serverType" class="easyui-combobox"  style="width:100%">
+		    <option value="esb">esb_esb</option>
+		    <option value="zhqz">zhqz_综合前置</option>
+		</select>
+    </div>
+	<div style="margin-bottom:20px">
+		<div >结果包类型:</div>
+		<select id="resultType" class="easyui-combobox" style="width:100%">
+		    <option value="incremental">incremental_增量包</option>
+		    <option value="all">all_全量包</option>
+		</select>
+    </div>
+	<div>
+		<lable id="warning" style="color:red"></lable>
+		<a id="create_but" href="#" class="easyui-linkbutton" style="width:60%">创建</a>
+	</div>
+</div>
+	
+</form>
+<script type="text/javascript">
+
+
+$(function () {
+	
+	$('#upload_but').click(function(){
+		$('#upload_warning').text('文件上传中，请稍等。。。');
+	    $('#form1').form('submit',{
+	        url: "/uploadFile.do",
+	        onSubmit: function(){
+	        	
+	        },
+	        success: function(datas){
+	        	$('#upload_warning').text('');
+				datas = $.parseJSON( datas );
+				showResult(datas);
+				$('#versionListPath').val(datas.data);
+	        }
+	    });
+	});
+	
+	$('#create_but').click(function(){
+		//等待窗口
+		$.messager.progress({
+            title: '请稍等',
+            msg: '交易处理中...',
+            text: '',
+            interval: 100,
+        });
+	 	$.ajax({
+		     url:"/createVersion.do",  
+		     dataType:"json", 
+		     type:"GET",
+		     data:{
+		         "versionListPath":$('#versionListPath').val(),        
+		         "toEnvironment":$('#toEnvironment').val(),        
+		         "fromEnvironment":$('#fromEnvironment').val(),        
+		         "serverType":$('#serverType').val(),        
+		         "resultType": $('#resultType').val()      
+		     },
+		     success:function(data){         
+		    	 $.messager.progress('close');
+		    	 if(showResult(data)){
+		    		 alert(data.data);
+		    		 window.location.href="/downFile.do?filePathName="+encodeURIComponent(data.data);
+		    	 }
+		    	 
+		    },
+		    error:function(error){
+		    	$.messager.alert("info", "创建版本失败", "error");
+		    }
+		 });
+	});
+	
+	
+	
+	
+	
+	
+// 	$.ajax({
+//         url:"rest/dict/selectdict",  
+//         dataType:"json", 
+//         type:"GET",
+//         data:{
+//             "type":"audit_state"        
+//         },
+//         success:function(data){                                 
+//                     //绑定第一个下拉框
+//                     $('#qysjzt').combobox({
+//                             data: data,                        
+//                             valueField: 'code',
+//                             textField: 'description'}
+//                             );                       
+//        },
+//        error:function(error){
+//            alert("初始化下拉控件失败");
+//        }
+//     })
+
+    
+    
+// var datacom = [
+//     {
+//         "id": 0,
+//         "text": "0"
+//     },
+//      {
+//          "id": 1,
+//          "text": "1"
+//      },
+//       {
+//           "id": 2,
+//           "text": "2"
+//       },
+//        {
+//            "id": 3,
+//            "text": "3"
+//        }
+// ];
+// $('#qysjzt').combobox({
+//     data:datacom,                        
+//     valueField: 'id',
+//     textField: 'text'}
+//     );  
+
+});
+
+</script>
+</body>
+</html>

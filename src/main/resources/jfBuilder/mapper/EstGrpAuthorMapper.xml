@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstGrpAuthorMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstGrpAuthor" >
+    <id column="grp_id" property="grpId" jdbcType="CHAR" />
+    <id column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="author_type" property="authorType" jdbcType="CHAR" />
+    <result column="author_res" property="authorRes" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    grp_id, resource_id, project_id, author_type, author_res
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstGrpAuthorKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_grp_author
+    where grp_id = #{grpId,jdbcType=CHAR}
+      and resource_id = #{resourceId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstGrpAuthorKey" >
+    delete from est_grp_author
+    where grp_id = #{grpId,jdbcType=CHAR}
+      and resource_id = #{resourceId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstGrpAuthor" >
+    insert into est_grp_author (grp_id, resource_id, project_id, 
+      author_type, author_res)
+    values (#{grpId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{authorType,jdbcType=CHAR}, #{authorRes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstGrpAuthor" >
+    insert into est_grp_author
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="authorType != null" >
+        author_type,
+      </if>
+      <if test="authorRes != null" >
+        author_res,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="authorType != null" >
+        #{authorType,jdbcType=CHAR},
+      </if>
+      <if test="authorRes != null" >
+        #{authorRes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstGrpAuthor" >
+    update est_grp_author
+    <set >
+      <if test="authorType != null" >
+        author_type = #{authorType,jdbcType=CHAR},
+      </if>
+      <if test="authorRes != null" >
+        author_res = #{authorRes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where grp_id = #{grpId,jdbcType=CHAR}
+      and resource_id = #{resourceId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstGrpAuthor" >
+    update est_grp_author
+    set author_type = #{authorType,jdbcType=CHAR},
+      author_res = #{authorRes,jdbcType=VARCHAR}
+    where grp_id = #{grpId,jdbcType=CHAR}
+      and resource_id = #{resourceId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+  </update>
+</mapper>

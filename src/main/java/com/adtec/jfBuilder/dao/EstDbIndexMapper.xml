@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbIndexMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDbIndex" >
+    <id column="tabid" property="tabid" jdbcType="INTEGER" />
+    <id column="index_name" property="indexName" jdbcType="CHAR" />
+    <result column="index_type" property="indexType" jdbcType="CHAR" />
+    <result column="part1" property="part1" jdbcType="SMALLINT" />
+    <result column="part2" property="part2" jdbcType="SMALLINT" />
+    <result column="part3" property="part3" jdbcType="SMALLINT" />
+    <result column="part4" property="part4" jdbcType="SMALLINT" />
+    <result column="part5" property="part5" jdbcType="SMALLINT" />
+    <result column="part6" property="part6" jdbcType="SMALLINT" />
+    <result column="part7" property="part7" jdbcType="SMALLINT" />
+    <result column="part8" property="part8" jdbcType="SMALLINT" />
+    <result column="part9" property="part9" jdbcType="SMALLINT" />
+    <result column="part10" property="part10" jdbcType="SMALLINT" />
+    <result column="part11" property="part11" jdbcType="SMALLINT" />
+    <result column="part12" property="part12" jdbcType="SMALLINT" />
+    <result column="part13" property="part13" jdbcType="SMALLINT" />
+    <result column="part14" property="part14" jdbcType="SMALLINT" />
+    <result column="part15" property="part15" jdbcType="SMALLINT" />
+    <result column="part16" property="part16" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tabid, index_name, index_type, part1, part2, part3, part4, part5, part6, part7, part8, 
+    part9, part10, part11, part12, part13, part14, part15, part16
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstDbIndexKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_index
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and index_name = #{indexName,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbIndexKey" >
+    delete from est_db_index
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and index_name = #{indexName,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDbIndex" >
+    insert into est_db_index (tabid, index_name, index_type, 
+      part1, part2, part3, 
+      part4, part5, part6, 
+      part7, part8, part9, 
+      part10, part11, part12, 
+      part13, part14, part15, 
+      part16)
+    values (#{tabid,jdbcType=INTEGER}, #{indexName,jdbcType=CHAR}, #{indexType,jdbcType=CHAR}, 
+      #{part1,jdbcType=SMALLINT}, #{part2,jdbcType=SMALLINT}, #{part3,jdbcType=SMALLINT}, 
+      #{part4,jdbcType=SMALLINT}, #{part5,jdbcType=SMALLINT}, #{part6,jdbcType=SMALLINT}, 
+      #{part7,jdbcType=SMALLINT}, #{part8,jdbcType=SMALLINT}, #{part9,jdbcType=SMALLINT}, 
+      #{part10,jdbcType=SMALLINT}, #{part11,jdbcType=SMALLINT}, #{part12,jdbcType=SMALLINT}, 
+      #{part13,jdbcType=SMALLINT}, #{part14,jdbcType=SMALLINT}, #{part15,jdbcType=SMALLINT}, 
+      #{part16,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDbIndex" >
+    insert into est_db_index
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="indexName != null" >
+        index_name,
+      </if>
+      <if test="indexType != null" >
+        index_type,
+      </if>
+      <if test="part1 != null" >
+        part1,
+      </if>
+      <if test="part2 != null" >
+        part2,
+      </if>
+      <if test="part3 != null" >
+        part3,
+      </if>
+      <if test="part4 != null" >
+        part4,
+      </if>
+      <if test="part5 != null" >
+        part5,
+      </if>
+      <if test="part6 != null" >
+        part6,
+      </if>
+      <if test="part7 != null" >
+        part7,
+      </if>
+      <if test="part8 != null" >
+        part8,
+      </if>
+      <if test="part9 != null" >
+        part9,
+      </if>
+      <if test="part10 != null" >
+        part10,
+      </if>
+      <if test="part11 != null" >
+        part11,
+      </if>
+      <if test="part12 != null" >
+        part12,
+      </if>
+      <if test="part13 != null" >
+        part13,
+      </if>
+      <if test="part14 != null" >
+        part14,
+      </if>
+      <if test="part15 != null" >
+        part15,
+      </if>
+      <if test="part16 != null" >
+        part16,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="indexName != null" >
+        #{indexName,jdbcType=CHAR},
+      </if>
+      <if test="indexType != null" >
+        #{indexType,jdbcType=CHAR},
+      </if>
+      <if test="part1 != null" >
+        #{part1,jdbcType=SMALLINT},
+      </if>
+      <if test="part2 != null" >
+        #{part2,jdbcType=SMALLINT},
+      </if>
+      <if test="part3 != null" >
+        #{part3,jdbcType=SMALLINT},
+      </if>
+      <if test="part4 != null" >
+        #{part4,jdbcType=SMALLINT},
+      </if>
+      <if test="part5 != null" >
+        #{part5,jdbcType=SMALLINT},
+      </if>
+      <if test="part6 != null" >
+        #{part6,jdbcType=SMALLINT},
+      </if>
+      <if test="part7 != null" >
+        #{part7,jdbcType=SMALLINT},
+      </if>
+      <if test="part8 != null" >
+        #{part8,jdbcType=SMALLINT},
+      </if>
+      <if test="part9 != null" >
+        #{part9,jdbcType=SMALLINT},
+      </if>
+      <if test="part10 != null" >
+        #{part10,jdbcType=SMALLINT},
+      </if>
+      <if test="part11 != null" >
+        #{part11,jdbcType=SMALLINT},
+      </if>
+      <if test="part12 != null" >
+        #{part12,jdbcType=SMALLINT},
+      </if>
+      <if test="part13 != null" >
+        #{part13,jdbcType=SMALLINT},
+      </if>
+      <if test="part14 != null" >
+        #{part14,jdbcType=SMALLINT},
+      </if>
+      <if test="part15 != null" >
+        #{part15,jdbcType=SMALLINT},
+      </if>
+      <if test="part16 != null" >
+        #{part16,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDbIndex" >
+    update est_db_index
+    <set >
+      <if test="indexType != null" >
+        index_type = #{indexType,jdbcType=CHAR},
+      </if>
+      <if test="part1 != null" >
+        part1 = #{part1,jdbcType=SMALLINT},
+      </if>
+      <if test="part2 != null" >
+        part2 = #{part2,jdbcType=SMALLINT},
+      </if>
+      <if test="part3 != null" >
+        part3 = #{part3,jdbcType=SMALLINT},
+      </if>
+      <if test="part4 != null" >
+        part4 = #{part4,jdbcType=SMALLINT},
+      </if>
+      <if test="part5 != null" >
+        part5 = #{part5,jdbcType=SMALLINT},
+      </if>
+      <if test="part6 != null" >
+        part6 = #{part6,jdbcType=SMALLINT},
+      </if>
+      <if test="part7 != null" >
+        part7 = #{part7,jdbcType=SMALLINT},
+      </if>
+      <if test="part8 != null" >
+        part8 = #{part8,jdbcType=SMALLINT},
+      </if>
+      <if test="part9 != null" >
+        part9 = #{part9,jdbcType=SMALLINT},
+      </if>
+      <if test="part10 != null" >
+        part10 = #{part10,jdbcType=SMALLINT},
+      </if>
+      <if test="part11 != null" >
+        part11 = #{part11,jdbcType=SMALLINT},
+      </if>
+      <if test="part12 != null" >
+        part12 = #{part12,jdbcType=SMALLINT},
+      </if>
+      <if test="part13 != null" >
+        part13 = #{part13,jdbcType=SMALLINT},
+      </if>
+      <if test="part14 != null" >
+        part14 = #{part14,jdbcType=SMALLINT},
+      </if>
+      <if test="part15 != null" >
+        part15 = #{part15,jdbcType=SMALLINT},
+      </if>
+      <if test="part16 != null" >
+        part16 = #{part16,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and index_name = #{indexName,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbIndex" >
+    update est_db_index
+    set index_type = #{indexType,jdbcType=CHAR},
+      part1 = #{part1,jdbcType=SMALLINT},
+      part2 = #{part2,jdbcType=SMALLINT},
+      part3 = #{part3,jdbcType=SMALLINT},
+      part4 = #{part4,jdbcType=SMALLINT},
+      part5 = #{part5,jdbcType=SMALLINT},
+      part6 = #{part6,jdbcType=SMALLINT},
+      part7 = #{part7,jdbcType=SMALLINT},
+      part8 = #{part8,jdbcType=SMALLINT},
+      part9 = #{part9,jdbcType=SMALLINT},
+      part10 = #{part10,jdbcType=SMALLINT},
+      part11 = #{part11,jdbcType=SMALLINT},
+      part12 = #{part12,jdbcType=SMALLINT},
+      part13 = #{part13,jdbcType=SMALLINT},
+      part14 = #{part14,jdbcType=SMALLINT},
+      part15 = #{part15,jdbcType=SMALLINT},
+      part16 = #{part16,jdbcType=SMALLINT}
+    where tabid = #{tabid,jdbcType=INTEGER}
+      and index_name = #{indexName,jdbcType=CHAR}
+  </update>
+</mapper>

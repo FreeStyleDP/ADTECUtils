@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstTaskidItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstTaskidItemKey" >
+    <id column="taskid_id" property="taskidId" jdbcType="CHAR" />
+    <id column="res_type" property="resType" jdbcType="CHAR" />
+    <id column="res_id" property="resId" jdbcType="CHAR" />
+    <id column="res_path" property="resPath" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstTaskidItemKey" >
+    delete from est_taskid_item
+    where taskid_id = #{taskidId,jdbcType=CHAR}
+      and res_type = #{resType,jdbcType=CHAR}
+      and res_id = #{resId,jdbcType=CHAR}
+      and res_path = #{resPath,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstTaskidItemKey" >
+    insert into est_taskid_item (taskid_id, res_type, res_id, 
+      res_path)
+    values (#{taskidId,jdbcType=CHAR}, #{resType,jdbcType=CHAR}, #{resId,jdbcType=CHAR}, 
+      #{resPath,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstTaskidItemKey" >
+    insert into est_taskid_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="taskidId != null" >
+        taskid_id,
+      </if>
+      <if test="resType != null" >
+        res_type,
+      </if>
+      <if test="resId != null" >
+        res_id,
+      </if>
+      <if test="resPath != null" >
+        res_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="taskidId != null" >
+        #{taskidId,jdbcType=CHAR},
+      </if>
+      <if test="resType != null" >
+        #{resType,jdbcType=CHAR},
+      </if>
+      <if test="resId != null" >
+        #{resId,jdbcType=CHAR},
+      </if>
+      <if test="resPath != null" >
+        #{resPath,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

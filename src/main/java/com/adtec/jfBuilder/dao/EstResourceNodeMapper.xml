@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstResourceNodeMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstResourceNode" >
+    <id column="seq_no" property="seqNo" jdbcType="SMALLINT" />
+    <id column="resource_lvl" property="resourceLvl" jdbcType="CHAR" />
+    <result column="resource_name" property="resourceName" jdbcType="CHAR" />
+    <result column="resource_type" property="resourceType" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    seq_no, resource_lvl, resource_name, resource_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstResourceNodeKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_resource_node
+    where seq_no = #{seqNo,jdbcType=SMALLINT}
+      and resource_lvl = #{resourceLvl,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstResourceNodeKey" >
+    delete from est_resource_node
+    where seq_no = #{seqNo,jdbcType=SMALLINT}
+      and resource_lvl = #{resourceLvl,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstResourceNode" >
+    insert into est_resource_node (seq_no, resource_lvl, resource_name, 
+      resource_type)
+    values (#{seqNo,jdbcType=SMALLINT}, #{resourceLvl,jdbcType=CHAR}, #{resourceName,jdbcType=CHAR}, 
+      #{resourceType,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstResourceNode" >
+    insert into est_resource_node
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="resourceLvl != null" >
+        resource_lvl,
+      </if>
+      <if test="resourceName != null" >
+        resource_name,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=SMALLINT},
+      </if>
+      <if test="resourceLvl != null" >
+        #{resourceLvl,jdbcType=CHAR},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstResourceNode" >
+    update est_resource_node
+    <set >
+      <if test="resourceName != null" >
+        resource_name = #{resourceName,jdbcType=CHAR},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where seq_no = #{seqNo,jdbcType=SMALLINT}
+      and resource_lvl = #{resourceLvl,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstResourceNode" >
+    update est_resource_node
+    set resource_name = #{resourceName,jdbcType=CHAR},
+      resource_type = #{resourceType,jdbcType=SMALLINT}
+    where seq_no = #{seqNo,jdbcType=SMALLINT}
+      and resource_lvl = #{resourceLvl,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstCustomMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstCustom" >
+    <id column="custom_id" property="customId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="custom_name" property="customName" jdbcType="CHAR" />
+    <result column="custom_desc" property="customDesc" jdbcType="VARCHAR" />
+    <result column="custom_type" property="customType" jdbcType="CHAR" />
+    <result column="file_path" property="filePath" jdbcType="VARCHAR" />
+    <result column="edit_flag" property="editFlag" jdbcType="CHAR" />
+    <result column="open_user" property="openUser" jdbcType="CHAR" />
+    <result column="open_date_time" property="openDateTime" jdbcType="CHAR" />
+    <result column="resource_id" property="resourceId" jdbcType="CHAR" />
+    <result column="grp_id" property="grpId" jdbcType="CHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    custom_id, project_id, dta_id, relation_id, custom_name, custom_desc, custom_type, 
+    file_path, edit_flag, open_user, open_date_time, resource_id, grp_id, crt_user, crt_date_time, 
+    lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_custom
+    where custom_id = #{customId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_custom
+    where custom_id = #{customId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstCustom" >
+    insert into est_custom (custom_id, project_id, dta_id, 
+      relation_id, custom_name, custom_desc, 
+      custom_type, file_path, edit_flag, 
+      open_user, open_date_time, resource_id, 
+      grp_id, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time)
+    values (#{customId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{dtaId,jdbcType=CHAR}, 
+      #{relationId,jdbcType=CHAR}, #{customName,jdbcType=CHAR}, #{customDesc,jdbcType=VARCHAR}, 
+      #{customType,jdbcType=CHAR}, #{filePath,jdbcType=VARCHAR}, #{editFlag,jdbcType=CHAR}, 
+      #{openUser,jdbcType=CHAR}, #{openDateTime,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR}, 
+      #{grpId,jdbcType=CHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstCustom" >
+    insert into est_custom
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customId != null" >
+        custom_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="customName != null" >
+        custom_name,
+      </if>
+      <if test="customDesc != null" >
+        custom_desc,
+      </if>
+      <if test="customType != null" >
+        custom_type,
+      </if>
+      <if test="filePath != null" >
+        file_path,
+      </if>
+      <if test="editFlag != null" >
+        edit_flag,
+      </if>
+      <if test="openUser != null" >
+        open_user,
+      </if>
+      <if test="openDateTime != null" >
+        open_date_time,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="grpId != null" >
+        grp_id,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customId != null" >
+        #{customId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="customName != null" >
+        #{customName,jdbcType=CHAR},
+      </if>
+      <if test="customDesc != null" >
+        #{customDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customType != null" >
+        #{customType,jdbcType=CHAR},
+      </if>
+      <if test="filePath != null" >
+        #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null" >
+        #{editFlag,jdbcType=CHAR},
+      </if>
+      <if test="openUser != null" >
+        #{openUser,jdbcType=CHAR},
+      </if>
+      <if test="openDateTime != null" >
+        #{openDateTime,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstCustom" >
+    update est_custom
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="dtaId != null" >
+        dta_id = #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="customName != null" >
+        custom_name = #{customName,jdbcType=CHAR},
+      </if>
+      <if test="customDesc != null" >
+        custom_desc = #{customDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="customType != null" >
+        custom_type = #{customType,jdbcType=CHAR},
+      </if>
+      <if test="filePath != null" >
+        file_path = #{filePath,jdbcType=VARCHAR},
+      </if>
+      <if test="editFlag != null" >
+        edit_flag = #{editFlag,jdbcType=CHAR},
+      </if>
+      <if test="openUser != null" >
+        open_user = #{openUser,jdbcType=CHAR},
+      </if>
+      <if test="openDateTime != null" >
+        open_date_time = #{openDateTime,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=CHAR},
+      </if>
+      <if test="grpId != null" >
+        grp_id = #{grpId,jdbcType=CHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where custom_id = #{customId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstCustom" >
+    update est_custom
+    set project_id = #{projectId,jdbcType=CHAR},
+      dta_id = #{dtaId,jdbcType=CHAR},
+      relation_id = #{relationId,jdbcType=CHAR},
+      custom_name = #{customName,jdbcType=CHAR},
+      custom_desc = #{customDesc,jdbcType=VARCHAR},
+      custom_type = #{customType,jdbcType=CHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      edit_flag = #{editFlag,jdbcType=CHAR},
+      open_user = #{openUser,jdbcType=CHAR},
+      open_date_time = #{openDateTime,jdbcType=CHAR},
+      resource_id = #{resourceId,jdbcType=CHAR},
+      grp_id = #{grpId,jdbcType=CHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where custom_id = #{customId,jdbcType=CHAR}
+  </update>
+</mapper>

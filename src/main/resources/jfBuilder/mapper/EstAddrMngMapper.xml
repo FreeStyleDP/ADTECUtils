@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstAddrMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstAddrMng" >
+    <id column="dta_id" property="dtaId" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="dest_addr" property="destAddr" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="max_conn_num" property="maxConnNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dta_id, project_id, env_id, dest_addr, cloud_project_id, max_conn_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstAddrMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_addr_mng
+    where dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and dest_addr = #{destAddr,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstAddrMngKey" >
+    delete from est_addr_mng
+    where dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and dest_addr = #{destAddr,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstAddrMng" >
+    insert into est_addr_mng (dta_id, project_id, env_id, 
+      dest_addr, cloud_project_id, max_conn_num
+      )
+    values (#{dtaId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{destAddr,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, #{maxConnNum,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstAddrMng" >
+    insert into est_addr_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dtaId != null" >
+        dta_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="destAddr != null" >
+        dest_addr,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="maxConnNum != null" >
+        max_conn_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dtaId != null" >
+        #{dtaId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="destAddr != null" >
+        #{destAddr,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="maxConnNum != null" >
+        #{maxConnNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstAddrMng" >
+    update est_addr_mng
+    <set >
+      <if test="maxConnNum != null" >
+        max_conn_num = #{maxConnNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and dest_addr = #{destAddr,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstAddrMng" >
+    update est_addr_mng
+    set max_conn_num = #{maxConnNum,jdbcType=INTEGER}
+    where dta_id = #{dtaId,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and dest_addr = #{destAddr,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

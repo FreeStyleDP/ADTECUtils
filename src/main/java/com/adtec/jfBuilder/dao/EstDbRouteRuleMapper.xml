@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbRouteRuleMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDbRouteRule" >
+    <id column="db_rule_id" property="dbRuleId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="sub_bus_id" property="subBusId" jdbcType="CHAR" />
+    <result column="data_area_id" property="dataAreaId" jdbcType="CHAR" />
+    <result column="db_rule_name" property="dbRuleName" jdbcType="CHAR" />
+    <result column="services_match" property="servicesMatch" jdbcType="CHAR" />
+    <result column="rule_expression" property="ruleExpression" jdbcType="CHAR" />
+    <result column="serial_no" property="serialNo" jdbcType="SMALLINT" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    db_rule_id, project_id, env_id, sub_bus_id, data_area_id, db_rule_name, services_match, 
+    rule_expression, serial_no, cloud_project_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_route_rule
+    where db_rule_id = #{dbRuleId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_db_route_rule
+    where db_rule_id = #{dbRuleId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDbRouteRule" >
+    insert into est_db_route_rule (db_rule_id, project_id, env_id, 
+      sub_bus_id, data_area_id, db_rule_name, 
+      services_match, rule_expression, serial_no, 
+      cloud_project_id)
+    values (#{dbRuleId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{envId,jdbcType=CHAR}, 
+      #{subBusId,jdbcType=CHAR}, #{dataAreaId,jdbcType=CHAR}, #{dbRuleName,jdbcType=CHAR}, 
+      #{servicesMatch,jdbcType=CHAR}, #{ruleExpression,jdbcType=CHAR}, #{serialNo,jdbcType=SMALLINT}, 
+      #{cloudProjectId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDbRouteRule" >
+    insert into est_db_route_rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dbRuleId != null" >
+        db_rule_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="subBusId != null" >
+        sub_bus_id,
+      </if>
+      <if test="dataAreaId != null" >
+        data_area_id,
+      </if>
+      <if test="dbRuleName != null" >
+        db_rule_name,
+      </if>
+      <if test="servicesMatch != null" >
+        services_match,
+      </if>
+      <if test="ruleExpression != null" >
+        rule_expression,
+      </if>
+      <if test="serialNo != null" >
+        serial_no,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dbRuleId != null" >
+        #{dbRuleId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="subBusId != null" >
+        #{subBusId,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaId != null" >
+        #{dataAreaId,jdbcType=CHAR},
+      </if>
+      <if test="dbRuleName != null" >
+        #{dbRuleName,jdbcType=CHAR},
+      </if>
+      <if test="servicesMatch != null" >
+        #{servicesMatch,jdbcType=CHAR},
+      </if>
+      <if test="ruleExpression != null" >
+        #{ruleExpression,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null" >
+        #{serialNo,jdbcType=SMALLINT},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDbRouteRule" >
+    update est_db_route_rule
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        env_id = #{envId,jdbcType=CHAR},
+      </if>
+      <if test="subBusId != null" >
+        sub_bus_id = #{subBusId,jdbcType=CHAR},
+      </if>
+      <if test="dataAreaId != null" >
+        data_area_id = #{dataAreaId,jdbcType=CHAR},
+      </if>
+      <if test="dbRuleName != null" >
+        db_rule_name = #{dbRuleName,jdbcType=CHAR},
+      </if>
+      <if test="servicesMatch != null" >
+        services_match = #{servicesMatch,jdbcType=CHAR},
+      </if>
+      <if test="ruleExpression != null" >
+        rule_expression = #{ruleExpression,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null" >
+        serial_no = #{serialNo,jdbcType=SMALLINT},
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id = #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </set>
+    where db_rule_id = #{dbRuleId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbRouteRule" >
+    update est_db_route_rule
+    set project_id = #{projectId,jdbcType=CHAR},
+      env_id = #{envId,jdbcType=CHAR},
+      sub_bus_id = #{subBusId,jdbcType=CHAR},
+      data_area_id = #{dataAreaId,jdbcType=CHAR},
+      db_rule_name = #{dbRuleName,jdbcType=CHAR},
+      services_match = #{servicesMatch,jdbcType=CHAR},
+      rule_expression = #{ruleExpression,jdbcType=CHAR},
+      serial_no = #{serialNo,jdbcType=SMALLINT},
+      cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+    where db_rule_id = #{dbRuleId,jdbcType=CHAR}
+  </update>
+</mapper>

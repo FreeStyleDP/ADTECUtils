@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignBeginBusMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignBeginBusKey" >
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="bus_id" property="busId" jdbcType="CHAR" />
+    <id column="relate_type" property="relateType" jdbcType="CHAR" />
+    <id column="cp_id" property="cpId" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDesignBeginBusKey" >
+    delete from est_design_begin_bus
+    where project_id = #{projectId,jdbcType=CHAR}
+      and bus_id = #{busId,jdbcType=CHAR}
+      and relate_type = #{relateType,jdbcType=CHAR}
+      and cp_id = #{cpId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignBeginBusKey" >
+    insert into est_design_begin_bus (project_id, bus_id, relate_type, 
+      cp_id)
+    values (#{projectId,jdbcType=CHAR}, #{busId,jdbcType=CHAR}, #{relateType,jdbcType=CHAR}, 
+      #{cpId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignBeginBusKey" >
+    insert into est_design_begin_bus
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="busId != null" >
+        bus_id,
+      </if>
+      <if test="relateType != null" >
+        relate_type,
+      </if>
+      <if test="cpId != null" >
+        cp_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="busId != null" >
+        #{busId,jdbcType=CHAR},
+      </if>
+      <if test="relateType != null" >
+        #{relateType,jdbcType=CHAR},
+      </if>
+      <if test="cpId != null" >
+        #{cpId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

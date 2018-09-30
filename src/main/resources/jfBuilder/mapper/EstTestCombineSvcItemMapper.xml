@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstTestCombineSvcItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstTestCombineSvcItemKey" >
+    <id column="combine_svc_id" property="combineSvcId" jdbcType="CHAR" />
+    <id column="single_svc_id" property="singleSvcId" jdbcType="CHAR" />
+    <id column="percent" property="percent" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstTestCombineSvcItemKey" >
+    delete from est_test_combine_svc_item
+    where combine_svc_id = #{combineSvcId,jdbcType=CHAR}
+      and single_svc_id = #{singleSvcId,jdbcType=CHAR}
+      and percent = #{percent,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstTestCombineSvcItemKey" >
+    insert into est_test_combine_svc_item (combine_svc_id, single_svc_id, percent
+      )
+    values (#{combineSvcId,jdbcType=CHAR}, #{singleSvcId,jdbcType=CHAR}, #{percent,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstTestCombineSvcItemKey" >
+    insert into est_test_combine_svc_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="combineSvcId != null" >
+        combine_svc_id,
+      </if>
+      <if test="singleSvcId != null" >
+        single_svc_id,
+      </if>
+      <if test="percent != null" >
+        percent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="combineSvcId != null" >
+        #{combineSvcId,jdbcType=CHAR},
+      </if>
+      <if test="singleSvcId != null" >
+        #{singleSvcId,jdbcType=CHAR},
+      </if>
+      <if test="percent != null" >
+        #{percent,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstCloudProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstCloudProject" >
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="addr_name" property="addrName" jdbcType="CHAR" />
+    <result column="cloud_env_id" property="cloudEnvId" jdbcType="CHAR" />
+    <result column="cloud_project_name" property="cloudProjectName" jdbcType="CHAR" />
+    <result column="cloud_project_desc" property="cloudProjectDesc" jdbcType="VARCHAR" />
+    <result column="project_mode" property="projectMode" jdbcType="VARCHAR" />
+    <result column="crt_user" property="crtUser" jdbcType="CHAR" />
+    <result column="crt_date_time" property="crtDateTime" jdbcType="CHAR" />
+    <result column="lst_mod_user" property="lstModUser" jdbcType="CHAR" />
+    <result column="lst_mod_date_time" property="lstModDateTime" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cloud_project_id, project_id, addr_name, cloud_env_id, cloud_project_name, cloud_project_desc, 
+    project_mode, crt_user, crt_date_time, lst_mod_user, lst_mod_date_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_cloud_project
+    where cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from est_cloud_project
+    where cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstCloudProject" >
+    insert into est_cloud_project (cloud_project_id, project_id, addr_name, 
+      cloud_env_id, cloud_project_name, cloud_project_desc, 
+      project_mode, crt_user, crt_date_time, 
+      lst_mod_user, lst_mod_date_time)
+    values (#{cloudProjectId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, #{addrName,jdbcType=CHAR}, 
+      #{cloudEnvId,jdbcType=CHAR}, #{cloudProjectName,jdbcType=CHAR}, #{cloudProjectDesc,jdbcType=VARCHAR}, 
+      #{projectMode,jdbcType=VARCHAR}, #{crtUser,jdbcType=CHAR}, #{crtDateTime,jdbcType=CHAR}, 
+      #{lstModUser,jdbcType=CHAR}, #{lstModDateTime,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstCloudProject" >
+    insert into est_cloud_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="addrName != null" >
+        addr_name,
+      </if>
+      <if test="cloudEnvId != null" >
+        cloud_env_id,
+      </if>
+      <if test="cloudProjectName != null" >
+        cloud_project_name,
+      </if>
+      <if test="cloudProjectDesc != null" >
+        cloud_project_desc,
+      </if>
+      <if test="projectMode != null" >
+        project_mode,
+      </if>
+      <if test="crtUser != null" >
+        crt_user,
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time,
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user,
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="addrName != null" >
+        #{addrName,jdbcType=CHAR},
+      </if>
+      <if test="cloudEnvId != null" >
+        #{cloudEnvId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectName != null" >
+        #{cloudProjectName,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectDesc != null" >
+        #{cloudProjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMode != null" >
+        #{projectMode,jdbcType=VARCHAR},
+      </if>
+      <if test="crtUser != null" >
+        #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstCloudProject" >
+    update est_cloud_project
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="addrName != null" >
+        addr_name = #{addrName,jdbcType=CHAR},
+      </if>
+      <if test="cloudEnvId != null" >
+        cloud_env_id = #{cloudEnvId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectName != null" >
+        cloud_project_name = #{cloudProjectName,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectDesc != null" >
+        cloud_project_desc = #{cloudProjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="projectMode != null" >
+        project_mode = #{projectMode,jdbcType=VARCHAR},
+      </if>
+      <if test="crtUser != null" >
+        crt_user = #{crtUser,jdbcType=CHAR},
+      </if>
+      <if test="crtDateTime != null" >
+        crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      </if>
+      <if test="lstModUser != null" >
+        lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      </if>
+      <if test="lstModDateTime != null" >
+        lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR},
+      </if>
+    </set>
+    where cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstCloudProject" >
+    update est_cloud_project
+    set project_id = #{projectId,jdbcType=CHAR},
+      addr_name = #{addrName,jdbcType=CHAR},
+      cloud_env_id = #{cloudEnvId,jdbcType=CHAR},
+      cloud_project_name = #{cloudProjectName,jdbcType=CHAR},
+      cloud_project_desc = #{cloudProjectDesc,jdbcType=VARCHAR},
+      project_mode = #{projectMode,jdbcType=VARCHAR},
+      crt_user = #{crtUser,jdbcType=CHAR},
+      crt_date_time = #{crtDateTime,jdbcType=CHAR},
+      lst_mod_user = #{lstModUser,jdbcType=CHAR},
+      lst_mod_date_time = #{lstModDateTime,jdbcType=CHAR}
+    where cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>

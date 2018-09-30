@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignRelateSublistMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDesignRelateSublist" >
+    <id column="view_id" property="viewId" jdbcType="CHAR" />
+    <id column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="table_id" property="tableId" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    view_id, seq_no, table_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDesignRelateSublistKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_design_relate_sublist
+    where view_id = #{viewId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDesignRelateSublistKey" >
+    delete from est_design_relate_sublist
+    where view_id = #{viewId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDesignRelateSublist" >
+    insert into est_design_relate_sublist (view_id, seq_no, table_id
+      )
+    values (#{viewId,jdbcType=CHAR}, #{seqNo,jdbcType=INTEGER}, #{tableId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDesignRelateSublist" >
+    insert into est_design_relate_sublist
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        view_id,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="tableId != null" >
+        table_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="viewId != null" >
+        #{viewId,jdbcType=CHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="tableId != null" >
+        #{tableId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDesignRelateSublist" >
+    update est_design_relate_sublist
+    <set >
+      <if test="tableId != null" >
+        table_id = #{tableId,jdbcType=CHAR},
+      </if>
+    </set>
+    where view_id = #{viewId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDesignRelateSublist" >
+    update est_design_relate_sublist
+    set table_id = #{tableId,jdbcType=CHAR}
+    where view_id = #{viewId,jdbcType=CHAR}
+      and seq_no = #{seqNo,jdbcType=INTEGER}
+  </update>
+</mapper>

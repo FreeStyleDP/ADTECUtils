@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDesignSvcDependonMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDesignSvcDependon" >
+    <result column="seq_no" property="seqNo" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="src_type" property="srcType" jdbcType="CHAR" />
+    <result column="src_id" property="srcId" jdbcType="CHAR" />
+    <result column="src_svc_id" property="srcSvcId" jdbcType="CHAR" />
+    <result column="dest_type" property="destType" jdbcType="CHAR" />
+    <result column="dest_id" property="destId" jdbcType="CHAR" />
+    <result column="dest_svc_id" property="destSvcId" jdbcType="CHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDesignSvcDependon" >
+    insert into est_design_svc_dependon (seq_no, project_id, src_type, 
+      src_id, src_svc_id, dest_type, dest_id, 
+      dest_svc_id, remark)
+    values (#{seqNo,jdbcType=INTEGER}, #{projectId,jdbcType=CHAR}, #{srcType,jdbcType=CHAR}, 
+      #{srcId,jdbcType=CHAR}, #{srcSvcId,jdbcType=CHAR}, #{destType,jdbcType=CHAR}, #{destId,jdbcType=CHAR}, 
+      #{destSvcId,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDesignSvcDependon" >
+    insert into est_design_svc_dependon
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="srcType != null" >
+        src_type,
+      </if>
+      <if test="srcId != null" >
+        src_id,
+      </if>
+      <if test="srcSvcId != null" >
+        src_svc_id,
+      </if>
+      <if test="destType != null" >
+        dest_type,
+      </if>
+      <if test="destId != null" >
+        dest_id,
+      </if>
+      <if test="destSvcId != null" >
+        dest_svc_id,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="srcType != null" >
+        #{srcType,jdbcType=CHAR},
+      </if>
+      <if test="srcId != null" >
+        #{srcId,jdbcType=CHAR},
+      </if>
+      <if test="srcSvcId != null" >
+        #{srcSvcId,jdbcType=CHAR},
+      </if>
+      <if test="destType != null" >
+        #{destType,jdbcType=CHAR},
+      </if>
+      <if test="destId != null" >
+        #{destId,jdbcType=CHAR},
+      </if>
+      <if test="destSvcId != null" >
+        #{destSvcId,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

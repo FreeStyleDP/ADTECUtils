@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstSvcLogicSqlMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstSvcLogicSqlKey" >
+    <id column="svc_id" property="svcId" jdbcType="CHAR" />
+    <id column="sql_id" property="sqlId" jdbcType="CHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstSvcLogicSqlKey" >
+    delete from est_svc_logic_sql
+    where svc_id = #{svcId,jdbcType=CHAR}
+      and sql_id = #{sqlId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstSvcLogicSqlKey" >
+    insert into est_svc_logic_sql (svc_id, sql_id)
+    values (#{svcId,jdbcType=CHAR}, #{sqlId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstSvcLogicSqlKey" >
+    insert into est_svc_logic_sql
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        svc_id,
+      </if>
+      <if test="sqlId != null" >
+        sql_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="svcId != null" >
+        #{svcId,jdbcType=CHAR},
+      </if>
+      <if test="sqlId != null" >
+        #{sqlId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

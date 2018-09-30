@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDataAreaItemMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDataAreaItem" >
+    <result column="data_area_id" property="dataAreaId" jdbcType="CHAR" />
+    <result column="data_source_id" property="dataSourceId" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.entity.EstDataAreaItem" >
+    insert into est_data_area_item (data_area_id, data_source_id)
+    values (#{dataAreaId,jdbcType=CHAR}, #{dataSourceId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDataAreaItem" >
+    insert into est_data_area_item
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dataAreaId != null" >
+        data_area_id,
+      </if>
+      <if test="dataSourceId != null" >
+        data_source_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dataAreaId != null" >
+        #{dataAreaId,jdbcType=CHAR},
+      </if>
+      <if test="dataSourceId != null" >
+        #{dataSourceId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

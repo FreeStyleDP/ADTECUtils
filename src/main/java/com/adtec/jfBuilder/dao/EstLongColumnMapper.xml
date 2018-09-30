@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstLongColumnMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstLongColumn" >
+    <id column="obj_id" property="objId" jdbcType="CHAR" />
+    <id column="obj_type" property="objType" jdbcType="CHAR" />
+    <id column="column_name" property="columnName" jdbcType="VARCHAR" />
+    <id column="seq_no" property="seqNo" jdbcType="CHAR" />
+    <result column="buf" property="buf" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    obj_id, obj_type, column_name, seq_no, buf
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.jfBuilder.entity.EstLongColumnKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_long_column
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and column_name = #{columnName,jdbcType=VARCHAR}
+      and seq_no = #{seqNo,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstLongColumnKey" >
+    delete from est_long_column
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and column_name = #{columnName,jdbcType=VARCHAR}
+      and seq_no = #{seqNo,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstLongColumn" >
+    insert into est_long_column (obj_id, obj_type, column_name, 
+      seq_no, buf)
+    values (#{objId,jdbcType=CHAR}, #{objType,jdbcType=CHAR}, #{columnName,jdbcType=VARCHAR}, 
+      #{seqNo,jdbcType=CHAR}, #{buf,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstLongColumn" >
+    insert into est_long_column
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="objType != null" >
+        obj_type,
+      </if>
+      <if test="columnName != null" >
+        column_name,
+      </if>
+      <if test="seqNo != null" >
+        seq_no,
+      </if>
+      <if test="buf != null" >
+        buf,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="objType != null" >
+        #{objType,jdbcType=CHAR},
+      </if>
+      <if test="columnName != null" >
+        #{columnName,jdbcType=VARCHAR},
+      </if>
+      <if test="seqNo != null" >
+        #{seqNo,jdbcType=CHAR},
+      </if>
+      <if test="buf != null" >
+        #{buf,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstLongColumn" >
+    update est_long_column
+    <set >
+      <if test="buf != null" >
+        buf = #{buf,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and column_name = #{columnName,jdbcType=VARCHAR}
+      and seq_no = #{seqNo,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstLongColumn" >
+    update est_long_column
+    set buf = #{buf,jdbcType=VARCHAR}
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and column_name = #{columnName,jdbcType=VARCHAR}
+      and seq_no = #{seqNo,jdbcType=CHAR}
+  </update>
+</mapper>

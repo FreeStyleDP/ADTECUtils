@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstMonitoripMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstMonitoripMng" >
+    <result column="obj_id" property="objId" jdbcType="CHAR" />
+    <result column="mchn_id" property="mchnId" jdbcType="CHAR" />
+    <result column="project_id" property="projectId" jdbcType="CHAR" />
+    <result column="env_id" property="envId" jdbcType="CHAR" />
+    <result column="ip_addr" property="ipAddr" jdbcType="CHAR" />
+    <result column="port" property="port" jdbcType="CHAR" />
+    <result column="max_conn" property="maxConn" jdbcType="SMALLINT" />
+    <result column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstMonitoripMng" >
+    insert into est_monitorip_mng (obj_id, mchn_id, project_id, 
+      env_id, ip_addr, port, max_conn, 
+      cloud_project_id)
+    values (#{objId,jdbcType=CHAR}, #{mchnId,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{ipAddr,jdbcType=CHAR}, #{port,jdbcType=CHAR}, #{maxConn,jdbcType=SMALLINT}, 
+      #{cloudProjectId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstMonitoripMng" >
+    insert into est_monitorip_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="mchnId != null" >
+        mchn_id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr,
+      </if>
+      <if test="port != null" >
+        port,
+      </if>
+      <if test="maxConn != null" >
+        max_conn,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="mchnId != null" >
+        #{mchnId,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="ipAddr != null" >
+        #{ipAddr,jdbcType=CHAR},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=CHAR},
+      </if>
+      <if test="maxConn != null" >
+        #{maxConn,jdbcType=SMALLINT},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

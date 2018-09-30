@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDbTableMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.jfBuilder.entity.EstDbTable" >
+    <id column="tabid" property="tabid" jdbcType="INTEGER" />
+    <result column="relation_id" property="relationId" jdbcType="CHAR" />
+    <result column="tabname" property="tabname" jdbcType="CHAR" />
+    <result column="ncols" property="ncols" jdbcType="SMALLINT" />
+    <result column="index_num" property="indexNum" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tabid, relation_id, tabname, ncols, index_num
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_db_table
+    where tabid = #{tabid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from est_db_table
+    where tabid = #{tabid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.jfBuilder.entity.EstDbTable" >
+    insert into est_db_table (tabid, relation_id, tabname, 
+      ncols, index_num)
+    values (#{tabid,jdbcType=INTEGER}, #{relationId,jdbcType=CHAR}, #{tabname,jdbcType=CHAR}, 
+      #{ncols,jdbcType=SMALLINT}, #{indexNum,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.jfBuilder.entity.EstDbTable" >
+    insert into est_db_table
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        tabid,
+      </if>
+      <if test="relationId != null" >
+        relation_id,
+      </if>
+      <if test="tabname != null" >
+        tabname,
+      </if>
+      <if test="ncols != null" >
+        ncols,
+      </if>
+      <if test="indexNum != null" >
+        index_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tabid != null" >
+        #{tabid,jdbcType=INTEGER},
+      </if>
+      <if test="relationId != null" >
+        #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="tabname != null" >
+        #{tabname,jdbcType=CHAR},
+      </if>
+      <if test="ncols != null" >
+        #{ncols,jdbcType=SMALLINT},
+      </if>
+      <if test="indexNum != null" >
+        #{indexNum,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.jfBuilder.entity.EstDbTable" >
+    update est_db_table
+    <set >
+      <if test="relationId != null" >
+        relation_id = #{relationId,jdbcType=CHAR},
+      </if>
+      <if test="tabname != null" >
+        tabname = #{tabname,jdbcType=CHAR},
+      </if>
+      <if test="ncols != null" >
+        ncols = #{ncols,jdbcType=SMALLINT},
+      </if>
+      <if test="indexNum != null" >
+        index_num = #{indexNum,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where tabid = #{tabid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.jfBuilder.entity.EstDbTable" >
+    update est_db_table
+    set relation_id = #{relationId,jdbcType=CHAR},
+      tabname = #{tabname,jdbcType=CHAR},
+      ncols = #{ncols,jdbcType=SMALLINT},
+      index_num = #{indexNum,jdbcType=SMALLINT}
+    where tabid = #{tabid,jdbcType=INTEGER}
+  </update>
+</mapper>

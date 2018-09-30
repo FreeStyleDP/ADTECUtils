@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adtec.jfBuilder.dao.EstDtaMchnMngMapper" >
+  <resultMap id="BaseResultMap" type="com.adtec.entity.EstDtaMchnMng" >
+    <id column="obj_id" property="objId" jdbcType="CHAR" />
+    <id column="obj_type" property="objType" jdbcType="CHAR" />
+    <id column="project_id" property="projectId" jdbcType="CHAR" />
+    <id column="env_id" property="envId" jdbcType="CHAR" />
+    <id column="mchn_id" property="mchnId" jdbcType="CHAR" />
+    <id column="cloud_project_id" property="cloudProjectId" jdbcType="CHAR" />
+    <result column="cmd_parm" property="cmdParm" jdbcType="VARCHAR" />
+    <result column="inst_num" property="instNum" jdbcType="INTEGER" />
+    <result column="max_inst" property="maxInst" jdbcType="INTEGER" />
+    <result column="ip_addr" property="ipAddr" jdbcType="CHAR" />
+    <result column="send_inst" property="sendInst" jdbcType="INTEGER" />
+    <result column="recv_inst" property="recvInst" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="CHAR" />
+    <result column="inst_control" property="instControl" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    obj_id, obj_type, project_id, env_id, mchn_id, cloud_project_id, cmd_parm, inst_num, 
+    max_inst, ip_addr, send_inst, recv_inst, group_id, inst_control
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.adtec.entity.EstDtaMchnMngKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from est_dta_mchn_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.adtec.entity.EstDtaMchnMngKey" >
+    delete from est_dta_mchn_mng
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.adtec.entity.EstDtaMchnMng" >
+    insert into est_dta_mchn_mng (obj_id, obj_type, project_id, 
+      env_id, mchn_id, cloud_project_id, 
+      cmd_parm, inst_num, max_inst, 
+      ip_addr, send_inst, recv_inst, 
+      group_id, inst_control)
+    values (#{objId,jdbcType=CHAR}, #{objType,jdbcType=CHAR}, #{projectId,jdbcType=CHAR}, 
+      #{envId,jdbcType=CHAR}, #{mchnId,jdbcType=CHAR}, #{cloudProjectId,jdbcType=CHAR}, 
+      #{cmdParm,jdbcType=VARCHAR}, #{instNum,jdbcType=INTEGER}, #{maxInst,jdbcType=INTEGER}, 
+      #{ipAddr,jdbcType=CHAR}, #{sendInst,jdbcType=INTEGER}, #{recvInst,jdbcType=INTEGER}, 
+      #{groupId,jdbcType=CHAR}, #{instControl,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.adtec.entity.EstDtaMchnMng" >
+    insert into est_dta_mchn_mng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        obj_id,
+      </if>
+      <if test="objType != null" >
+        obj_type,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="envId != null" >
+        env_id,
+      </if>
+      <if test="mchnId != null" >
+        mchn_id,
+      </if>
+      <if test="cloudProjectId != null" >
+        cloud_project_id,
+      </if>
+      <if test="cmdParm != null" >
+        cmd_parm,
+      </if>
+      <if test="instNum != null" >
+        inst_num,
+      </if>
+      <if test="maxInst != null" >
+        max_inst,
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr,
+      </if>
+      <if test="sendInst != null" >
+        send_inst,
+      </if>
+      <if test="recvInst != null" >
+        recv_inst,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="instControl != null" >
+        inst_control,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="objId != null" >
+        #{objId,jdbcType=CHAR},
+      </if>
+      <if test="objType != null" >
+        #{objType,jdbcType=CHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=CHAR},
+      </if>
+      <if test="envId != null" >
+        #{envId,jdbcType=CHAR},
+      </if>
+      <if test="mchnId != null" >
+        #{mchnId,jdbcType=CHAR},
+      </if>
+      <if test="cloudProjectId != null" >
+        #{cloudProjectId,jdbcType=CHAR},
+      </if>
+      <if test="cmdParm != null" >
+        #{cmdParm,jdbcType=VARCHAR},
+      </if>
+      <if test="instNum != null" >
+        #{instNum,jdbcType=INTEGER},
+      </if>
+      <if test="maxInst != null" >
+        #{maxInst,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddr != null" >
+        #{ipAddr,jdbcType=CHAR},
+      </if>
+      <if test="sendInst != null" >
+        #{sendInst,jdbcType=INTEGER},
+      </if>
+      <if test="recvInst != null" >
+        #{recvInst,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=CHAR},
+      </if>
+      <if test="instControl != null" >
+        #{instControl,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adtec.entity.EstDtaMchnMng" >
+    update est_dta_mchn_mng
+    <set >
+      <if test="cmdParm != null" >
+        cmd_parm = #{cmdParm,jdbcType=VARCHAR},
+      </if>
+      <if test="instNum != null" >
+        inst_num = #{instNum,jdbcType=INTEGER},
+      </if>
+      <if test="maxInst != null" >
+        max_inst = #{maxInst,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddr != null" >
+        ip_addr = #{ipAddr,jdbcType=CHAR},
+      </if>
+      <if test="sendInst != null" >
+        send_inst = #{sendInst,jdbcType=INTEGER},
+      </if>
+      <if test="recvInst != null" >
+        recv_inst = #{recvInst,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=CHAR},
+      </if>
+      <if test="instControl != null" >
+        inst_control = #{instControl,jdbcType=INTEGER},
+      </if>
+    </set>
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adtec.entity.EstDtaMchnMng" >
+    update est_dta_mchn_mng
+    set cmd_parm = #{cmdParm,jdbcType=VARCHAR},
+      inst_num = #{instNum,jdbcType=INTEGER},
+      max_inst = #{maxInst,jdbcType=INTEGER},
+      ip_addr = #{ipAddr,jdbcType=CHAR},
+      send_inst = #{sendInst,jdbcType=INTEGER},
+      recv_inst = #{recvInst,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=CHAR},
+      inst_control = #{instControl,jdbcType=INTEGER}
+    where obj_id = #{objId,jdbcType=CHAR}
+      and obj_type = #{objType,jdbcType=CHAR}
+      and project_id = #{projectId,jdbcType=CHAR}
+      and env_id = #{envId,jdbcType=CHAR}
+      and mchn_id = #{mchnId,jdbcType=CHAR}
+      and cloud_project_id = #{cloudProjectId,jdbcType=CHAR}
+  </update>
+</mapper>
