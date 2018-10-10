@@ -238,9 +238,11 @@ public class SftpClientUtils {
 		while (it.hasNext()) {
 			downloadFile = it.next().toString();
 			if (downloadFile.toString().indexOf(".") < 0) {
-				continue;
+				downloadByDirectory(directory + "/" + downloadFile, saveDirectory+ "/" + downloadFile);
+//				continue;
+			}else {
+				this.download(directory, downloadFile, saveDirectory);
 			}
-			this.download(directory, downloadFile, saveDirectory);
 		}
 	}
 
@@ -316,6 +318,7 @@ public class SftpClientUtils {
 		return streatm;
 	}
 	
+
 	public boolean isExist(String filePath) {
 //		System.out.println("f:"+filePath);
        try {
@@ -331,7 +334,7 @@ public class SftpClientUtils {
 	}
 
 	public static void main(String[] args) {  
-		
+		System.out.println("begin");
 		SftpClientUtils sftp = new SftpClientUtils();
 //		sftp.host="160.161.12.107";
 //		sftp.port=22;
@@ -346,7 +349,7 @@ public class SftpClientUtils {
 		try {
 			sftp.connect();
 //			sftp.download("/home/esb/etc/", "Bean.xml", "c:\\test2");
-			sftp.downloadByDirectory("/home/esb/log/chnl", "c://test");
+			sftp.downloadByDirectory("/home/esb/versionTest/etc/", "c://test");
 //			System.out.println(sftp.isExist("/home/esb/log/json.log1"));
 //			sftp.listFiles("/home/esb/log/json.log");
 			sftp.disconnect();
@@ -359,8 +362,8 @@ public class SftpClientUtils {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		System.out.println(sftp.getSftp().isConnected());
-		System.out.println(sftp.getSftp().isClosed());
+//		System.out.println(sftp.getSftp().isConnected());
+//		System.out.println(sftp.getSftp().isClosed());
 		
 		sftp = null;
 		System.out.println("finish");

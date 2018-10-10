@@ -15,12 +15,14 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.springframework.core.io.ClassPathResource;
 
 import com.adtec.VersionMng.enums.OperateType;
 import com.adtec.exception.BusinessException;
@@ -48,17 +50,17 @@ public class VersionMng2 {
 	/**
 	 * 需要用公共处理方法操作的文件
 	 */
-	public static String[] pubOperateFileType = { "Format.xml", "DataElement.xml", "Service.xml", "Enum.xml" };
+	public static String[] pubOperateFileType = {  "Service.xml", "Enum.xml" };
 
 	/**
 	 * 公共操作文件的 从第二节 开始是，比对用的 属性名
 	 */
-	public static String[] pubOperateAtrrName = { "FmtName", "ElemName", "Name", "EnumName" };
+	public static String[] pubOperateAtrrName = {  "Name", "EnumName" };
 	/**
 	 * 需要用特别方法处理的文件
 	 */
 	// public static String[] specialOperateFileType = {};
-	public static String[] specialOperateFileType = { "Route.xml" , ".class" ,"NetBankConf.xml" ,"Bean.xml" ,"Logic"};
+	public static String[] specialOperateFileType = { "Route.xml" , ".class" ,"NetBankConf.xml" ,"Bean.xml" ,"Logic","Format.xml", "DataElement.xml"};
 
 	/**
 	 * 远程文件路径前缀 及 用户路径
@@ -69,9 +71,8 @@ public class VersionMng2 {
 		// System.out.println(readEnvironmentConf("esb-106").getIpAddr());
 		System.out.println("begin");
 		createNewVersion(
-				"D:\\dp_work\\4_other\\eclipseWorkspace\\ADTECUtil\\src\\main\\java\\com\\adtec\\VersionMng\\版本清单模板",
-				"esb-to", "esb-from", "esb", "incremental");
-		
+				"D:\\dp_work\\4_other\\eclipseWorkspace\\ADTECUtils\\src\\main\\java\\com\\adtec\\VersionMng\\版本清单模板",
+				"esb-106", "esb-107", "esb", "incremental");
 	}
 
 	/**
@@ -110,11 +111,13 @@ public class VersionMng2 {
 
 		try {
 			getFile(versionLists, toEnvironment, fromEnvironment, serverType, resultType, tempPath);
-		} catch (Exception e) {
+		}catch (BusinessException e) {
+			throw new BusinessException(e.getErrorCode(), "下载文件失败："+e.getErrorMsg());
+		}catch (Exception e) {
 			e.printStackTrace();
-			throw new BusinessException("9999", "下载文件失败");
+			throw new BusinessException("9999", "下载文件失败："+e.getMessage());
 		}
-
+		
 		createNewVersion(versionLists, tempPath, resultType);
 
 		try {
@@ -123,7 +126,7 @@ public class VersionMng2 {
 			e.printStackTrace();
 		}
 		
-		FileUtil.deleteDir(tempPath);
+//		FileUtil.deleteDir(tempPath);
 		System.out.println("finish");
 		return createVersionPath + File.separator + now + ".tar";
 	}
@@ -142,9 +145,10 @@ public class VersionMng2 {
 		 * 业务流程： 1. 遍历版本清单对象，根据 from文件内容，修改to的内容
 		 */
 		for (int i = 0; i < versionLists.size(); i++) {
-			operateFile(tempPath, versionLists.get(i));
+			operateFile(tempPath, versionLists.get(i) , resultType);
 		}
 	}
+
 
 	/**
 	 * 操作生成单个文件
@@ -154,13 +158,16 @@ public class VersionMng2 {
 	 * @param tempPath
 	 * @param versionList
 	 */
-	private static void operateFile(String tempPath, VersionList versionList) {
+	private static void operateFile(String tempPath, VersionList versionList, String resultType) {
 		String fileName = versionList.getFileName();
-		String toFileName = tempPath + File.separator + "to" + File.separator + fileName.substring(remotePre.length()-1);// 去除前面的 用户路径
-		String fromFileName = tempPath + File.separator + "from" + File.separator + fileName.substring(remotePre.length()-1);// 去除前面的 用户路径
+		String fileNameTemp = fileName.replaceAll("all:", "");
+		String toFileName = tempPath + File.separator + "to" + File.separator + fileNameTemp.substring(remotePre.length()-1);// 去除前面的 用户路径
+		String fromFileName = tempPath + File.separator + "from" + File.separator + fileNameTemp.substring(remotePre.length()-1);// 去除前面的 用户路径
 		String fileTyp = fileName.substring(fileName.lastIndexOf("/") + 1);
 
-		if (isNeedDealFile(toFileName , pubOperateFileType)) {// 需公共方法处理的文件
+		if(fileName.replaceAll("：", ":").startsWith("all:")) {//处理全量  操作文件夹
+			operateALl(toFileName, fromFileName, versionList, resultType);
+		}else if (isNeedDealFile(toFileName , pubOperateFileType)) {// 需公共方法处理的文件
 			Create.createPubTypeFile(toFileName, fromFileName, versionList);
 		} else if (isNeedDealFile(toFileName , specialOperateFileType)) {// 需特殊处理的文件
 			/*
@@ -211,6 +218,39 @@ public class VersionMng2 {
 
 
 	/**
+	 * 操作全量处理文件夹
+	 * @time 2018年10月9日 下午5:01:32
+	 * @author dengp_w
+	 * @param toFileName
+	 * @param fromFileName
+	 * @param versionList
+	 */
+	private static void operateALl(String toFileName, String fromFileName, VersionList versionList, String resultType) {
+		if(versionList.getVersionOpers().size() != 1) {
+			throw new BusinessException("9999", "全量处理方式时，其对于的操作项有且只有一个，此文件中有【"+versionList.getVersionOpers().size()+"】个，请修改");
+		}
+		VersionOper versionOper = versionList.getVersionOpers().get(0);
+		if(OperateType.DELETE.getName().equals(versionOper.getOperate()) && !resultType.equals("all")) {
+			throw new BusinessException("9999", "全量处理方式时，【"+OperateType.DELETE.getName()+"】只能针对于打全量包时使用");
+		}
+		if(OperateType.UPDEAT.getName().equals(versionOper.getOperate()) ) {
+			throw new BusinessException("9999", "全量处理方式时，不能使用【"+OperateType.UPDEAT.getName()+"】处理方式");
+		}
+		File toFile = new File(toFileName);
+		File fromFile = new File(fromFileName);
+		if(!fromFile.isDirectory()) {
+			throw new BusinessException("9999", "全量处理方式时，只能处理文件夹");
+		}
+		
+		try {
+			FileUtils.copyDirectory(fromFile, toFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	/**
 	 * 
 	 * @time 2018年9月25日 下午4:15:20
 	 * @author dengp_w
@@ -223,7 +263,7 @@ public class VersionMng2 {
 	 * @throws Exception 
 	 */
 	private static void getFile(List<VersionList> versionLists, String toEnvironment, String fromEnvironment,
-			String serverType, String resultType, String tempPath) throws Exception {
+			String serverType, String resultType, String tempPath) throws Exception  {
 		List<String> downFile = new ArrayList<String>();
 		String fileName = null;
 		Ftp toFtp = readEnvironmentConf(toEnvironment);
@@ -234,7 +274,7 @@ public class VersionMng2 {
 		from_client.connect();
 		
 		for (int i = 0; i <versionLists.size() ; i++) {
-			fileName = versionLists.get(i).getFileName();
+			fileName = versionLists.get(i).getFileName().replaceAll("all:", "");
 			if(fileName.contains("etc")) {
 				remotePre = fileName.substring(0, fileName.indexOf("etc"));
 				
@@ -246,11 +286,17 @@ public class VersionMng2 {
 				continue;
 			}
 			
-			String relavtiveName = fileName.substring( remotePre.length(), fileName.lastIndexOf("/")+1);//相对路径名称 去除开头的用户路径    结尾的文件名
+			String regex = ".*\\..*";//以后缀 .*** 结尾 表示文件
+			String relavtiveName = null;
+			if(fileName.matches(regex)) {//文件
+				relavtiveName = fileName.substring( remotePre.length(), fileName.lastIndexOf("/")+1);//相对路径名称 去除开头的用户路径    结尾的文件名
+			}else{
+				relavtiveName = fileName.substring( remotePre.length());//相对路径名称 去除开头的用户路径   
+			}
+			
 			String toPath = tempPath + File.separator + "to" + File.separator + relavtiveName;
 			String fromPath = tempPath + File.separator +"from" + File.separator + relavtiveName;
 			
-			String regex = ".*\\..*";//以后缀 .*** 结尾 表示文件
 			
 			
 			if("incremental".equals(resultType) //增量版本时
@@ -269,9 +315,20 @@ public class VersionMng2 {
 				}
 			}
 			
-			if(from_client.isExist(fromPath)) {
-				throw new BusinessException("9999", "环境【"+fromFtp.getIpAddr()+"】文件【"+fileName+"】不存在");
+			if(!from_client.isExist(fileName)) {
+				/*
+				 * 遍历文件的 所有操作类型，如果都是 删除类型，可以不下载,否则 报错
+				 */
+				List<VersionOper> versionOpers = versionLists.get(i).getVersionOpers();
+				for (VersionOper versionOper : versionOpers) {
+					if(!OperateType.DELETE.getName().equals(versionOper.getOperate())) {
+						throw new BusinessException("9999", "环境【"+fromFtp.getIpAddr()+"】文件【"+fileName+"】不存在");
+					}
+				}
+				
+				continue;
 			}
+			
 			if(fileName.matches(regex)) {//下文件
 				from_client.download(fileName.substring(0, fileName.lastIndexOf("/")), 
 						fileName.substring( fileName.lastIndexOf("/")+1) , fromPath);
@@ -282,8 +339,8 @@ public class VersionMng2 {
 		}
 		
 		if("all".equals(resultType) ) {//全量版本时
-			to_client.downloadByDirectory(remotePre+File.separator + "etc", tempPath + File.separator + "to" + File.separator );
-			to_client.downloadByDirectory(remotePre+File.separator + "src", tempPath + File.separator + "to" + File.separator );
+			to_client.downloadByDirectory(remotePre+File.separator + "etc", tempPath + File.separator + "to" + File.separator  + "etc");
+			to_client.downloadByDirectory(remotePre+File.separator + "src", tempPath + File.separator + "to" + File.separator+ "src" );
 		}
 		
 		to_client.disconnect();
@@ -301,9 +358,19 @@ public class VersionMng2 {
 	 */
 	private static Ftp readEnvironmentConf(String toEnvironment) {
 		SAXReader saxReader = new SAXReader();
-		Document document;
+		Document document = null;
 		try {
-			document = saxReader.read(new File(VersionMng2.class.getResource("/conf/envirmentConf.xml").getPath()));
+			
+			try {
+				document = saxReader.read(new ClassPathResource("/conf/envirmentConf.xml").getInputStream());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+//			try {
+//				document = saxReader.read((new ClassPathResource("conf/envirmentConf.xml")).getFile());
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
 			Element rootE = document.getRootElement();
 			List<Element> elements = rootE.elements();
 			for (Element element : elements) {
@@ -320,7 +387,7 @@ public class VersionMng2 {
 		} catch (DocumentException e) {
 			e.printStackTrace();
 		} 
-		return null;
+		throw new BusinessException("9999", "没有找到环境【"+toEnvironment+"】的相关信息，请先配置环境");
 	}
 
 	/**
@@ -344,7 +411,9 @@ public class VersionMng2 {
 				if ("".equals(readLine) || readLine.startsWith("#")) {
 					continue;
 				} else if (isNeedDealFile(readLine.trim() , pubOperateFileType)
-						|| isNeedDealFile(readLine.trim() , specialOperateFileType)) {
+						|| isNeedDealFile(readLine.trim() , specialOperateFileType)
+						|| readLine.trim().startsWith("all")//处理全量 文件夹操作
+						) {
 					if (versionList != null) {
 						versionList.setVersionOpers(versionOpers);
 						versionLists.add(versionList);
@@ -362,7 +431,8 @@ public class VersionMng2 {
 						}
 					}
 					versionList.setFileName(fileName);
-				} else if (fileName != null) {
+				} else if ( (readLine.contains(":") ||readLine.contains("：") )
+						&& fileName != null) {
 					readLine = readLine.trim().replace("：", ":");// 防止中英文符号干扰
 					String[] split = readLine.split(":",-1);
 					VersionOper versionOper = new VersionOper(split[0], split[1]);

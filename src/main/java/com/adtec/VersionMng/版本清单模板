@@ -3,20 +3,23 @@
 #		2. .class 文件的操作 以 "" 代替文件
 #		3. Logic 等文件夹的  需以"/"结尾
 # 首先以文件名开头
-/home/esb/versionTest/etc/ACCT_CLI_test/DataElement.xml
+#/home/esb/versionTest/etc/ACCT_CLI_test/DataElement.xml
 #新增：OBJ_DP0096_REQ
 #修改：OBJ_DP0095_REQ
 #删除：OBJ_DP0094_REQ
-新增：OBJ_EBANK_SVR_GW6109_RES
+#新增：OBJ_EBANK_SVR_GW6109_RES
 #删除：OBJ_STM_SVR_GW7400_RES
 #修改：OBJ_EBANK_SVR_GW6109_RES
-/home/esb/versionTest/etc/ACCT_CLI_test/Route.xml
-新增：RT_ACCT_CLI_00
-/home/esb/versionTest/etc/ACCT_CLI_test/NetBankConf.xml
-新增：CB0004
-/home/esb/versionTest/src/bean/Book.class
-新增：
+#/home/esb/versionTest/etc/ACCT_CLI_test/Route.xml
+#新增：RT_ACCT_CLI_00
+#/home/esb/versionTest/etc/ACCT_CLI_test/NetBankConf.xml
+#新增：CB0004
+#/home/esb/versionTest/src/bean/Book.class
+#新增：
 /home/esb/versionTest/etc/ACCT_CLI_test/Logic/
 删除：AC8806.xml
 删除：AC8807.xml
+
+/home/esb/versionTest/etc/DataElement.xml
+删除：OBJ_EBANK_SVR_GW6111_RES
 

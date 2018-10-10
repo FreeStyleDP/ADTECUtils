@@ -116,7 +116,6 @@ $(function () {
 		     success:function(data){         
 		    	 $.messager.progress('close');
 		    	 if(showResult(data)){
-		    		 alert(data.data);
 		    		 window.location.href="/downFile.do?filePathName="+encodeURIComponent(data.data);
 		    	 }
 		    	 

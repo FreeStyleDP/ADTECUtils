@@ -1,0 +1,34 @@
+# 注意事项：
+#               1. 可以以#开头，表示注释
+#               2. .class 文件的操作 以 "" 代替文件
+#               3. Logic 等文件夹的  需以"/"结尾
+# 首先以文件名开头
+/home/esb/versionTest/etc/DataElement.xml
+新增:OBJ_EBANK_SVR_GW2317_REQ
+新增:OBJ_EBANK_SVR_GW2317_RES
+
+/home/esb/versionTest/etc/COMM/EBANK_SVR/Format.xml
+新增:FMT_EBANK_SVR_GW2317_REQ
+新增:FMT_EBANK_SVR_GW2317_RES
+
+/home/esb/versionTest/etc/COMM/EBANK_SVR/Service.xml
+新增:GW2317
+
+/home/esb/versionTest/etc/COMM/HOST_CLI/Format.xml
+新增:FMT_HOST_CLT_S231700_IN
+新增:FMT_HOST_CLT_S231700_OUT
+
+/home/esb/versionTest/etc/COMM/HOST_CLI/Service.xml
+新增:S231700
+
+
+/home/esb/versionTest/etc/NetBankConf.xml
+新增：GW2317
+
+all:/home/esb/versionTest/etc/COMM/ACCT_CLI
+新增:
+#/home/esb/versionTest/etc/ACCT_CLI_test/Route.xml
+#新增：RT_ACCT_CLI_00
+
+#/home/esb/versionTest/src/bean/Book.class
+#新增：

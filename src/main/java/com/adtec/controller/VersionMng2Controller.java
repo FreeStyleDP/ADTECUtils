@@ -1,12 +1,10 @@
 package com.adtec.controller;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,7 +14,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tools.ant.types.FileList.FileName;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,13 +24,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.adtec.VersionMng.VersionMng2;
 import com.adtec.entity.DTO.JsonResult;
-import com.adtec.exception.BusinessException;
 
 @Controller
 public class VersionMng2Controller extends BaseController{
 
 	@RequestMapping("/index")
 	public String toIndex() {
+//		System.out.println((new ClassPathResource("conf/envirmentConf.xml")).getPath());
 		return "index";
 	}
 	@RequestMapping("/versionMng_create")
