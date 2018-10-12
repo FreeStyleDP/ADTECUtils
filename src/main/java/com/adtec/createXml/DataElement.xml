@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<DataElementTab RecNum="2">
+  <DataElement DataType="Struct" ElemName="OBJ_ACCT_ZD0001_REQ" ElemDesc="DP0096输入报文" NodeClassName="PUB" NodeClassDesc="公共数据对象" XmlNodeName="request">
+    <ItemTab RecNum="7">
+      <Item ItemName="TRAN_CODE" ItemDesc="交易代码" ItemType="DataDict" TypeName="String(30)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="MSG_TYPE" ItemDesc="报文类型" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="SERVICE_SCENE" ItemDesc="服务场景码" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="SERVICE_CODE" ItemDesc="服务编码" ItemType="DataDict" TypeName="String(9)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="USER_ID" ItemDesc="柜员号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="COMPANY_ACCT_CHRT" ItemDesc="单位账户性质" ItemType="DataDict" TypeName="String(12)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_ACCT_ARRAY" ItemDesc="开户信息数组" ItemType="DataElem" TypeName="OBJ_ACCT_OPEN_ACCT_ARRAY" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+    </ItemTab>
+  </DataElement>
+  <DataElement DataType="Struct" ElemName="OBJ_ACCT_OPEN_ACCT_ARRAY" ElemDesc="开户信息数组" NodeClassName="PUB" NodeClassDesc="公共数据对象" XmlNodeName="OPEN_ACCT_ARRAY">
+    <ItemTab RecNum="83">
+      <Item ItemName="ACCT_NO" ItemDesc="账号" ItemType="DataDict" TypeName="String(50)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_ACCT_DATE" ItemDesc="开户日期" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_CHRT" ItemDesc="账户性质" ItemType="DataDict" TypeName="String(12)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ORG_ID" ItemDesc="机构号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="RE_CLIENT_NAME" ItemDesc="企业名称" ItemType="DataDict" TypeName="String(150)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="RE_CLIENT_ENG_NAME" ItemDesc="企业英文名称" ItemType="DataDict" TypeName="String(150)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_CLIENT_TYPE" ItemDesc="账户所有人类型" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REGISTER_ADDRESS" ItemDesc="登记地址" ItemType="DataDict" TypeName="String(120)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="DETAIL_ADDRESS" ItemDesc="详细地址" ItemType="DataDict" TypeName="String(140)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="STATE" ItemDesc="省份" ItemType="DataDict" TypeName="String(200)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="CITY" ItemDesc="城市" ItemType="DataDict" TypeName="String(8)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="DISTRICT" ItemDesc="地区" ItemType="DataDict" TypeName="String(40)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="AREA_CODE" ItemDesc="地区代码" ItemType="DataDict" TypeName="String(6)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REGISTER_ORGAN" ItemDesc="登记机关" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REGISTER_NO_TYPE" ItemDesc="登记注册号类型" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REGISTER_NO" ItemDesc="登记注册号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="COR_SCOPE" ItemDesc="企业规模" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ORG_TYPE" ItemDesc="组织机构类型" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ORG_DETAIL_TYPE" ItemDesc="组织机构细分类型" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_DOC_TYPE1" ItemDesc="证明文件1类型" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_DOC_NO1" ItemDesc="证明文件1编号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_DOC_TYPE2" ItemDesc="证明文件2类型" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="OPEN_DOC_NO2" ItemDesc="证明文件2编号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="CERT_START_DATE" ItemDesc="证件起始日期" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="CERT_END_DATE" ItemDesc="证件到期日期" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INDUSTRY_CODE" ItemDesc="行业类别代码" ItemType="DataDict" TypeName="String(4)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REG_CAPITAL_FLAG" ItemDesc="注册资本标志" ItemType="DataDict" TypeName="String(1)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REG_CAPITAL_CCY" ItemDesc="注册资本币种" ItemType="DataDict" TypeName="String(3)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="REG_CAPITAL" ItemDesc="注册资本" ItemType="DataDict" TypeName="String(120)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUSINESS_RANGE" ItemDesc="经营范围" ItemType="DataDict" TypeName="String(300)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUSS_RANGE" ItemDesc="业务范围" ItemType="DataDict" TypeName="String(300)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ORG_CODE" ItemDesc="组织机构代码" ItemType="DataDict" TypeName="String(9)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="NO_TAXREG_DOC" ItemDesc="无需税务登记证明文件" ItemType="DataDict" TypeName="String(80)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="STATE_TAXPAYER_ID" ItemDesc="纳税人识别号(国税)" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="TAXPAYER_ID" ItemDesc="纳税人识别号(地税)" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="JUR_PER_TYPE" ItemDesc="法人类型" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="JUR_PER_NAME" ItemDesc="法定代表人名称" ItemType="DataDict" TypeName="String(150)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="JUR_PER_GLOBAL_TYPE" ItemDesc="法人证件类型" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="JUR_PER_GLOBAL_ID" ItemDesc="法人证件号" ItemType="DataDict" TypeName="String(40)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="CONTACT_PHONE" ItemDesc="联系电话" ItemType="DataDict" TypeName="String(30)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="POSTAL_CODE" ItemDesc="邮政编码" ItemType="DataDict" TypeName="String(6)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="MANAGER_PHONE" ItemDesc="主管电话" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="WORK_STATE" ItemDesc="办公省份" ItemType="DataDict" TypeName="String(200)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="WORK_CITY" ItemDesc="办公城市" ItemType="DataDict" TypeName="String(8)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="WORK_DISTRICT" ItemDesc="办公地区" ItemType="DataDict" TypeName="String(40)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="WORK_DETAIL_ADDRESS" ItemDesc="办公详细地址" ItemType="DataDict" TypeName="String(140)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ECON_TYPE" ItemDesc="经济类型" ItemType="DataDict" TypeName="String(16)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="FIN_ITEM_CODE" ItemDesc="经济分类科目代码" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BRANCH_CREDIT_CODE" ItemDesc="机构信用代码" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="LOAN_CARD_NO" ItemDesc="贷款卡号" ItemType="DataDict" TypeName="String(50)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BRANCH_STATUS" ItemDesc="机构状态" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_BRANCH" ItemDesc="上级机构" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_ACCT_LICENSE_NO" ItemDesc="上级基本户开户许可核准号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_ORG_CODE" ItemDesc="上级组织机构代码" ItemType="DataDict" TypeName="String(9)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_JUR_PER_TYPE" ItemDesc="上级法定代表人类型" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_JUR_PER_NAME" ItemDesc="上级法人姓名" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_JUR_PER_GLOBAL_TYPE" ItemDesc="上级法人证件类型" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ATTACH_JUR_PER_GLOBAL_ID" ItemDesc="上级法人证件号码" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_LICENSE_NO" ItemDesc="账户开户许可证号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_CLASS" ItemDesc="账户类别" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_NAME_PREFIX" ItemDesc="账户名称前缀" ItemType="DataDict" TypeName="String(50)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_NAME_SUFFIX" ItemDesc="账户名称后缀" ItemType="DataDict" TypeName="String(50)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="FUND_KIND" ItemDesc="资金性质" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="DRAW_FLG" ItemDesc="是否有取现" ItemType="DataDict" TypeName="String(2)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="FUND_MANAGER_NAME" ItemDesc="资金管理人姓名" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="FUND_MANAGER_GLOBAL_TYPE" ItemDesc="资金管理人身份证种类" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="FUND_MANAGER_GLOBAL_ID" ItemDesc="资金管理人身份证编号" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_NAME" ItemDesc="内设部门名称" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_PER_NAME" ItemDesc="内设部门负责人姓名" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_PER_GLOBAL_TYPE" ItemDesc="内设部门负责人身份证件种类" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_PER_GLOBAL_ID" ItemDesc="内设部门负责人身份证件编号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_PHONE" ItemDesc="内设部门电话" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_POSTCODE" ItemDesc="内设部门邮政编码" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="INSIDE_DEP_ADDRESS" ItemDesc="内设部门地址" ItemType="DataDict" TypeName="String(50)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_DUE_DATE" ItemDesc="账户到期日期" ItemType="DataDict" TypeName="String(8)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ACCT_OPEN_REASON" ItemDesc="开户原因" ItemType="DataDict" TypeName="String(150)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="ITEM_NAME" ItemDesc="项目名称" ItemType="DataDict" TypeName="String(100)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_NAME" ItemDesc="安装负责人姓名" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_GLOBAL_TYPE" ItemDesc="安装负责人身份证件种类" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_GLOBAL_ID" ItemDesc="安装负责人身份证件编号" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_PHONE" ItemDesc="安装负责人电话" ItemType="DataDict" TypeName="String(20)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_POSTCODE" ItemDesc="安装负责人邮政编码" ItemType="DataDict" TypeName="String(10)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+      <Item ItemName="BUILD_PER_ADDRESS" ItemDesc="安装负责人地址" ItemType="DataDict" TypeName="String(150)" ItemDeft="" ElemType="No" NodeType="Node" Security="No" EnumName="" EnumKvp="" RelateItemName="">
+        <ScopeExpr><![CDATA[]]></ScopeExpr>
+      </Item>
+    </ItemTab>
+  </DataElement>
+</DataElementTab>

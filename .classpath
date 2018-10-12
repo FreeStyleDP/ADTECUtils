@@ -27,5 +27,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/JavaFrame-struct-6.0.0.3.RELEASE.jar" sourcepath="D:/dp_work/4_other/eclipseWorkspace/NCPS/WebRoot/WEB-INF/lib/JavaFrame-struct-6.0.0.3.RELEASE.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

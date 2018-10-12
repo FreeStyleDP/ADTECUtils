@@ -1,5 +1,7 @@
 package com.adtec.VersionMng;
 
+import static org.hamcrest.Matchers.instanceOf;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,17 +52,18 @@ public class VersionMng2 {
 	/**
 	 * 需要用公共处理方法操作的文件
 	 */
-	public static String[] pubOperateFileType = {  "Service.xml", "Enum.xml" };
+	public static String[] pubOperateFileType = {  "Service.xml", "Enum.xml"};
 
 	/**
 	 * 公共操作文件的 从第二节 开始是，比对用的 属性名
 	 */
-	public static String[] pubOperateAtrrName = {  "Name", "EnumName" };
+	public static String[] pubOperateAtrrName = {  "Name", "EnumName"};
 	/**
 	 * 需要用特别方法处理的文件
 	 */
 	// public static String[] specialOperateFileType = {};
-	public static String[] specialOperateFileType = { "Route.xml" , ".class" ,"NetBankConf.xml" ,"Bean.xml" ,"Logic","Format.xml", "DataElement.xml"};
+	public static String[] specialOperateFileType = { "Route.xml" , ".class" ,"NetBankConf.xml" ,"Bean.xml" ,"Logic","Format.xml",
+			"DataElement.xml" , "DataMap.xml"};
 
 	/**
 	 * 远程文件路径前缀 及 用户路径
@@ -185,15 +188,21 @@ public class VersionMng2 {
 
 					// 反射调用对应文件的处理方法
 					try {
-						Method method3 = Create.class.getMethod(methodName, Class.forName("java.lang.String"),
-								Class.forName("java.lang.String"), Class.forName("com.adtec.VersionMng.VersionList"));
-						method3.invoke(null, toFileName, fromFileName, versionList);
+							Method method3 = Create.class.getMethod(methodName, Class.forName("java.lang.String"),
+									Class.forName("java.lang.String"), Class.forName("com.adtec.VersionMng.VersionList"));
+							method3.invoke(null, toFileName, fromFileName, versionList);
+							
 					} catch (IllegalAccessException e) {
 						e.printStackTrace();
 					} catch (IllegalArgumentException e) {
 						e.printStackTrace();
 					} catch (InvocationTargetException e) {
-						e.printStackTrace();
+						Throwable targetException = e.getTargetException();
+						if(targetException instanceof BusinessException) {
+							throw (BusinessException)targetException;
+						}else {
+							e.printStackTrace();
+						}
 					} catch (NoSuchMethodException e) {
 						e.printStackTrace();
 					} catch (SecurityException e) {

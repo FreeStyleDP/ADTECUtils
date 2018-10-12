@@ -5,6 +5,8 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 
+import net.bytebuddy.asm.Advice.This;
+
 public class Test {
 
 	public static void main(String[] args) {
@@ -16,11 +18,15 @@ public class Test {
 //			e.printStackTrace();
 //		}
 		
-		System.out.println("isD："+ (new File("D:\\dp_work\\9_book\\")).isDirectory());
-		String s = "dsef.xml";
-		String path = "sdf/dsefaf/dsef.xml";
-		System.out.println(s.replaceAll(".xml", ""));
-		System.out.println(path.replaceAll("dsef.xml", ""));
-		System.out.println("sfd\bsfd");
+//		System.out.println("isD："+ (new File("D:\\dp_work\\9_book\\")).isDirectory());
+//		String s = "dsef.xml";
+//		String path = "sdf/dsefaf/dsef.xml";
+//		System.out.println(s.replaceAll(".xml", ""));
+//		System.out.println(path.replaceAll("dsef.xml", ""));
+//		System.out.println("sfd\bsfd");
+		
+		System.out.println(Integer.class.isAssignableFrom(int.class));
+		
+		
 	}
 }

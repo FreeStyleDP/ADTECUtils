@@ -11,6 +11,10 @@
 新增:FMT_EBANK_SVR_GW2317_REQ
 新增:FMT_EBANK_SVR_GW2317_RES
 
+
+/home/esb/versionTest/etc/COMM/EBANK_SVR/DataMap.xml
+新增:EBANK_SVR|GW3001|DTA-CHNL|GW3001|ALA
+
 /home/esb/versionTest/etc/COMM/EBANK_SVR/Service.xml
 新增:GW2317
 
